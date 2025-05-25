@@ -6,23 +6,23 @@
 //
 
 @propertyWrapper
-struct Inlet<T> {
-    var wrappedValue: T
+public struct Inlet<T> {
+    public var wrappedValue: T
 
-    init(wrappedValue: T) {
+    public init(wrappedValue: T) {
         self.wrappedValue = wrappedValue
     }
 }
 
 @propertyWrapper
-struct Outlet<T> {
-    var wrappedValue: T {
+public struct Outlet<T> {
+    public var wrappedValue: T {
         set(v) { self.binding.wrappedValue = v }
         get { self.binding.wrappedValue }
     }
     let binding: MaxBinding<T>
 
-    init(_ binding: MaxBinding<T>, type: MaxDataType) {
+    public init(_ binding: MaxBinding<T>, type: MaxDataType) {
         self.binding = binding
 //      self.type = type
     }

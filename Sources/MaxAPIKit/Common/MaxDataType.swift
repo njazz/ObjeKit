@@ -7,7 +7,7 @@
 
 
 // 1. Define data types
-enum MaxDataType {
+public enum MaxDataType {
     case bang
   
     case int
