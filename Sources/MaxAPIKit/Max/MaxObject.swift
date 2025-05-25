@@ -11,43 +11,14 @@ public protocol Initializable {
     init()
 }
 
-// MARK: ---
+// MARK: -
 
 public protocol MaxObject : AnyObject , Initializable {
     static var className : String { get }
     
-    init()
-    
-//    static func _initObject(_ ptr: UnsafeMutableRawPointer?) -> UnsafeMutableRawPointer?
-    
-//  func process()
-//
-//  func cleanup()
+    // var object: MaxObject { get }
 }
 
-
-
-
-//
-//@propertyWrapper
-//struct Ctor<T : MaxObject> {
-//    var wrappedValue: @convention(c) (UnsafeMutableRawPointer?) -> UnsafeMutableRawPointer? {
-//        return { _ in
-//            let instance = T()
-//            let unmanaged = Unmanaged.passRetained(Box(instance))
-//            return UnsafeMutableRawPointer(unmanaged.toOpaque())
-//        }
-//    }
-//}
-//
-//@propertyWrapper
-//struct Dtor<T: MaxObject> {
-//    var wrappedValue: @convention(c) (UnsafeMutableRawPointer?) -> Void {
-//        return { ptr in
-//            guard let ptr else { return }
-//            Unmanaged<Box<T>>.fromOpaque(ptr).release()
-//        }
-//    }
-//}
-
-
+public protocol MaxComponent : AnyObject, Initializable {
+    var children: [MaxComponent] { get }
+}
