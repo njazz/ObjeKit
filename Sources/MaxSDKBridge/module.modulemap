@@ -1,0 +1,12 @@
+module MaxAPIKitBridge /*[system] */{
+    umbrella header "max_sdk_bridge.h"
+    export *
+}
+
+//module MaxAPIKitBridge._private {
+//    header "ext.h"
+//    header "ext_obex.h"
+//    header "ext_common.h"
+//    header "ext_atoms.h"
+//    export *
+//}
