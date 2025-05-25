@@ -13,8 +13,6 @@ struct Inlet<T> {
     self.wrappedValue = wrappedValue
   }
 
-  // Here you might want hooks for handling incoming messages
-  // or connecting to Max’s inlet mechanism
 }
 
 @propertyWrapper

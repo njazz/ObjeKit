@@ -5,7 +5,6 @@
 //  Created by alex on 25/05/2025.
 //
 
-
 @propertyWrapper
 struct MSPInlet {
   var wrappedValue: UnsafePointer<Float>?
