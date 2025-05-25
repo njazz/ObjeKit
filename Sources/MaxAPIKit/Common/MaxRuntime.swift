@@ -29,6 +29,7 @@ public enum MaxRuntime {
                 cName,
                 ctor,
                 dtor,
+                
 //                MaxDispatcher.initObject,
 //                MaxDispatcher.free,
                 
@@ -39,6 +40,8 @@ public enum MaxRuntime {
 
         class_register(gensym("box"), _class)
     }
+    
+    
 
 //    static func bangThunk<T: MaxObject>(_ selfPtr: UnsafeMutableRawPointer, _ inlet: Int32) {
 //        let box = Unmanaged<Box<T>>.fromOpaque(selfPtr).takeUnretainedValue()

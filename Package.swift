@@ -23,11 +23,16 @@ let package = Package(
                     name: "MaxSDKBridge",
                     path: "Sources/MaxSDKBridge",
                     publicHeadersPath: "include",
+                   
                     cSettings: [
                         .headerSearchPath("include"),
                         .headerSearchPath("../../ThirdParty/max-sdk/source/max-sdk-base/c74support/max-includes"),
                         .headerSearchPath("../../ThirdParty/max-sdk/source/max-sdk-base/c74support/msp-includes"),
-                    ]
+                    ],
+                    cxxSettings: [
+                                   
+                                   .unsafeFlags(["-std=c++17"])
+                               ]
                 ),
         
         .target(

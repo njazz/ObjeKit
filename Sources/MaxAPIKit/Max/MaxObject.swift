@@ -5,20 +5,27 @@
 //  Created by alex on 25/05/2025.
 //
 
+@_implementationOnly import MaxSDKBridge
 
+public protocol Initializable {
+    init()
+}
 
 // MARK: ---
 
-public protocol MaxObject : AnyObject {
-//    var className : String { get }
+public protocol MaxObject : AnyObject , Initializable {
+    static var className : String { get }
+    
     init()
     
 //    static func _initObject(_ ptr: UnsafeMutableRawPointer?) -> UnsafeMutableRawPointer?
     
-  func process()
-
-  func cleanup()
+//  func process()
+//
+//  func cleanup()
 }
+
+
 
 
 //
@@ -43,26 +50,4 @@ public protocol MaxObject : AnyObject {
 //    }
 //}
 
-public class Box<T : MaxObject> {
-    let value: T
 
-    public init(_ value: T) {
-        self.value = value
-    }
-
-    public static func create(_ type: T.Type) -> Box<T> {
-       Box(T())
-    }
-
-    public func toRaw() -> UnsafeMutableRawPointer {
-        return Unmanaged.passRetained(self).toOpaque()
-    }
-
-    public static func fromRaw(_ ptr: UnsafeMutableRawPointer, _ type: T.Type) -> Unmanaged<Box<T>> {
-        return Unmanaged<Box<T>>.fromOpaque(ptr)
-    }
-
-    func release() {
-        Unmanaged.passUnretained(self).release()
-    }
-}
