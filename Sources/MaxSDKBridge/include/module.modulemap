@@ -1,5 +1,5 @@
-module MaxAPIKitBridge /*[system] */{
-    umbrella header "max_sdk_bridge.h"
+module MaxSDKBridge [system] {
+    header "max_sdk_bridge.h"
     export *
 }
 

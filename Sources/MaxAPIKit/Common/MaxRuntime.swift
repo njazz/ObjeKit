@@ -4,10 +4,11 @@
 //
 //  Created by alex on 25/05/2025.
 //
-import MaxSDKBridge
 
-enum MaxRuntime {
-    static func register<T: MaxObject>(name: String, _ type: T.Type) {
+@_implementationOnly import MaxSDKBridge
+
+public enum MaxRuntime {
+    public static func register<T>(name: String, _ type: T.Type) {
         let cName = name.withCString { strdup($0)
         }
         
@@ -44,5 +45,10 @@ enum MaxRuntime {
     final class Box<T> {
         let value: T
         init(_ value: T) { self.value = value }
+    }
+    
+    // MARK: -
+    public static func post(_ text: String) {
+        poststring(UnsafeMutablePointer<CChar>(mutating: text))
     }
 }

@@ -11,6 +11,6 @@
 
 //static t_symbol* _CLASS_BOX = CLASS_BOX;
 
-t_class* _class_new_basic(const char* name, method init, method free, size_t size) {
+static inline t_class* _class_new_basic(const char* name, method init, method free, size_t size) {
    return class_new(name, init, free, size, NULL, 0);
 }

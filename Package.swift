@@ -3,15 +3,19 @@ import PackageDescription
 
 let package = Package(
     name: "MaxAPIKit",
-    platforms: [.macOS(.v12)],
+    platforms: [.macOS(.v11)],
     products: [
         .library(
             name: "MaxAPIKit",
             targets: ["MaxAPIKit"]
         ),
+        .library(
+            name: "MaxSDKBridge",
+            targets: ["MaxSDKBridge"]
+        ),
     ],
     dependencies: [
-        // any dependencies if needed
+        
     ],
     targets: [
 
@@ -22,48 +26,22 @@ let package = Package(
                     cSettings: [
                         .headerSearchPath("include"),
                         .headerSearchPath("../../ThirdParty/max-sdk/source/max-sdk-base/c74support/max-includes"),
-                        .headerSearchPath("../../ThirdParty/max-sdk/source/max-sdk-base/c74support/msp-includes")
+                        .headerSearchPath("../../ThirdParty/max-sdk/source/max-sdk-base/c74support/msp-includes"),
                     ]
                 ),
         
         .target(
             name: "MaxAPIKit",
-            dependencies: ["MaxSDKBridge"/*, "MaxSDK"*/],
-            path: "Sources/MaxAPIKit",
-            publicHeadersPath: "include",
+            dependencies: ["MaxSDKBridge"],
+            path: "Sources/MaxAPIKit"
+            ,
             cSettings: [
+                .headerSearchPath("include"),
                 .headerSearchPath("../../ThirdParty/max-sdk/source/max-sdk-base/c74support/max-includes"),
-                .headerSearchPath("../../ThirdParty/max-sdk/source/max-sdk-base/c74support/msp-includes")
-                // If you have libs to link, might add linkerSettings below
+                .headerSearchPath("../../ThirdParty/max-sdk/source/max-sdk-base/c74support/msp-includes"),
             ]
-        ),
-        
-            .target(
-                name: "TestObject",
-                dependencies: [/*"max_c_wrapper", */"MaxAPIKit"],
-                path: "Sources/TestObject",
-                
-                
-                cSettings: [
-                    .headerSearchPath("../../ThirdParty/max-sdk/source/max-sdk-base/c74support/max-includes"),
-                    .headerSearchPath("../../ThirdParty/max-sdk/source/max-sdk-base/c74support/msp-includes")
-                ],
-                swiftSettings: [
-                    // probably none or optimize for release
-                ],
-                
-                linkerSettings: [
-                    .unsafeFlags([
-                            "-dynamiclib",
-                            "-o", "TestObject.mxo",
-                            "-install_name", "@rpath/TestObject.mxo"
-                        ])
-                    // link flags if needed
-                    // example: .linkedLibrary("max"), .unsafeFlags(["-L../../ThirdParty/max-sdk/lib"])
-                ]
-                
-            ),
-        
+        )
 
     ]
+    
 )
