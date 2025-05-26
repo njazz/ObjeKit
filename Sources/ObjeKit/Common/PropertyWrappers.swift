@@ -36,7 +36,15 @@ public struct Outlet<T>: MaxIOComponent {
 
 // MARK: -
 
+// Attribute
 
+// Argument - read only / with requirements
+
+// AudioIn / AudioOut - Buffer wrap
+
+// expand?
+// MatrixIn / MatrixOut
+// textureIn / TextureOut
 
 // MARK: -
 

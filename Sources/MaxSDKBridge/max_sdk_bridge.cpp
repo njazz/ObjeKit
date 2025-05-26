@@ -19,7 +19,6 @@ struct Wrapper {
         return _wrapperTarget ? _wrapperTarget((void*)&Wrapper::call) : nullptr ;
     }
     
-    
 };
 
 constexpr int NumWrappers = 64;

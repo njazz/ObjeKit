@@ -27,7 +27,7 @@ class MaxObjectAttach: MaxIOVisitor {
         // Example C API call - replace with your actual bridging logic
         MaxRuntime.post("\((object)) : Registering inlet with value: \(inlet.wrappedValue)")
         // c_api_register_inlet(...)
-        if (self.object == nil) { return }
+//        if (self.object == nil) { return }
         
         inlet_new(self.object, nil)
     }
@@ -49,9 +49,11 @@ class MaxObjectAttach: MaxIOVisitor {
         case .int:
             wrapper.onInt = method.callAsInt
         case .float:
-            wrapper.onFloat = method.callAsFloat
-        case .selector(_):
-            wrapper.onSelector = method.callAsSelector
+            wrapper.onDouble = method.callAsFloat
+        case .selector(var name):
+            wrapper.onSelector[name] = method.callAsSelector
+        case .list:
+            wrapper.onSelector[""] = method.callAsSelector
         }
     }
 }

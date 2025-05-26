@@ -26,6 +26,7 @@ public enum MaxMethodKind {
      case int
      case float
      case selector(String)
+    case list
  }
 
 @propertyWrapper
@@ -39,23 +40,33 @@ public struct MaxMethod: MaxIOComponent {
     }
     
     // Store any function matching known signatures
-    public init(_ kind: MaxMethodKind, _ function: @escaping () -> Void) {
-        self.kind = kind
+    public init(_ function: @escaping () -> Void) {
+        self.kind = .bang
         self._function = function
     }
     
-    public init(_ kind: MaxMethodKind, _ function: @escaping (Float) -> Void) {
-        self.kind = kind
+    public init(_ function: @escaping (CDouble) -> Void) {
+        self.kind = .float
         self._function = function
     }
     
-    public init(_ kind: MaxMethodKind, _ function: @escaping (Int) -> Void) {
-        self.kind = kind
+    public init(_ function: @escaping (CLong) -> Void) {
+        self.kind = .int
         self._function = function
     }
     
-    public init(_ kind: MaxMethodKind, _ function: @escaping (String, [MaxValue]) -> Void) {
-        self.kind = kind
+    public init(_ name: String, _ function: @escaping ([MaxValue]) -> Void) {
+        self.kind = .selector(name)
+        self._function = function
+    }
+    
+    public init(_ name: String, _ function: @escaping () -> Void) {
+        self.kind = .selector(name)
+        self._function = { (_:[MaxValue]) in function() }
+    }
+    
+    public init(_ function: @escaping ([MaxValue]) -> Void) {
+        self.kind = .list
         self._function = function
     }
     
@@ -70,21 +81,21 @@ public struct MaxMethod: MaxIOComponent {
         }
     }
     
-    public func callAsFloat(_ v: Float) {
-        if let fn = _function as? (Float) -> Void {
+    public func callAsFloat(_ v: Double) {
+        if let fn = _function as? (Double) -> Void {
             fn(v)
         }
     }
     
-    public func callAsInt(_ v: Int) {
-        if let fn = _function as? (Int) -> Void {
+    public func callAsInt(_ v: CLong) {
+        if let fn = _function as? (CLong) -> Void {
             fn(v)
         }
     }
     
-    public func callAsSelector(_ sel: String, _ args: [MaxValue]) {
-        if let fn = _function as? (String, [MaxValue]) -> Void {
-            fn(sel, args)
+    public func callAsSelector(_ args: [MaxValue]) {
+        if let fn = _function as? ([MaxValue]) -> Void {
+            fn(args)
         }
     }
 }
