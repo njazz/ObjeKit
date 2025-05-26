@@ -1,6 +1,6 @@
 //
 //  MaxObject.swift
-//  MaxAPIKit
+//  ObjeKit
 //
 //  Created by alex on 25/05/2025.
 //

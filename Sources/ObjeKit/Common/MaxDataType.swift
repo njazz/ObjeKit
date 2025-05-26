@@ -1,6 +1,6 @@
 //
 //  MaxDataType.swift
-//  MaxAPIKit
+//  ObjeKit
 //
 //  Created by alex on 25/05/2025.
 //
@@ -13,6 +13,8 @@ public enum MaxValue {
     case symbol(String)
     case unknown
 }
+
+public typealias MaxList = [MaxValue]
 
 // MARK: -
 

@@ -2,12 +2,12 @@
 import PackageDescription
 
 let package = Package(
-    name: "MaxAPIKit",
+    name: "ObjeKit",
     platforms: [.macOS(.v11)],
     products: [
         .library(
-            name: "MaxAPIKit",
-            targets: ["MaxAPIKit"]
+            name: "ObjeKit",
+            targets: ["ObjeKit"]
         ),
         .library(
             name: "MaxSDKBridge",
@@ -36,9 +36,9 @@ let package = Package(
                 ),
         
         .target(
-            name: "MaxAPIKit",
+            name: "ObjeKit",
             dependencies: ["MaxSDKBridge"],
-            path: "Sources/MaxAPIKit"
+            path: "Sources/ObjeKit"
             ,
             cSettings: [
                 .headerSearchPath("include"),

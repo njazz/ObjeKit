@@ -3,7 +3,7 @@ module MaxSDKBridge [system] {
     export *
 }
 
-//module MaxAPIKitBridge._private {
+//module ObjeKitBridge._private {
 //    header "ext.h"
 //    header "ext_obex.h"
 //    header "ext_common.h"

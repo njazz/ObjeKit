@@ -1,12 +1,12 @@
 //
 //  main.swift
-//  MaxAPIKit
+//  ObjeKit
 //
 //  Created by alex on 25/05/2025.
 //
 
 import Foundation
-import MaxAPIKit
+import ObjeKit
 
 // MARK: - Define a Swift Max Object
 
