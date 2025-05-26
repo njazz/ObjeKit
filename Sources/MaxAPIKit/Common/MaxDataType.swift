@@ -6,6 +6,16 @@
 //
 
 
+// minimal
+public enum MaxValue {
+    case int(Int)
+    case float(Double)
+    case symbol(String)
+    case unknown
+}
+
+// MARK: -
+
 // 1. Define data types
 public enum MaxDataType {
     case bang

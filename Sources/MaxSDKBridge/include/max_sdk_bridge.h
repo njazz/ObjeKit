@@ -25,8 +25,9 @@ method get_next_ctor(method ctor);
 // MARK: -
 
 typedef struct t_wrapped_object {
-    t_object _obj;
-    void* _ptr;
+    t_object maxObject;
+    void* box;
+    
 } t_wrapped_object;
 
 static inline size_t t_wrapped_object_size() { return sizeof(t_wrapped_object); }

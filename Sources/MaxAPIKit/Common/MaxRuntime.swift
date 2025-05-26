@@ -9,6 +9,6 @@
 
 public enum MaxRuntime {
     public static func post(_ text: String) {
-        poststring(text)
+        poststring(text)        
     }
 }

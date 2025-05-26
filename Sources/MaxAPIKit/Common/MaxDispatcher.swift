@@ -25,7 +25,29 @@ func _ctor(_ p: UnsafeMutableRawPointer?) -> UnsafeMutableRawPointer? {
     if let swiftClass = MaxDispatcher._swiftClassMap["\(ctor_ptr)"] {
         let box = Box.create(DispatcherClass.self)
         box.value.object = swiftClass.init()
-        typed_obj.pointee._ptr = box.toRaw()
+        typed_obj.pointee.box = box.toRaw()
+        
+        // init
+        let visitor = MaxObjectAttach(obj!.assumingMemoryBound(to: t_object.self), wrapper: box.value)
+        
+        let mirror = Mirror(reflecting: box.value.object!)
+        // Gather all property wrappers conforming to MaxIOComponent
+        let wrappers = mirror.children.compactMap { child -> MaxIOComponent? in
+            // Property wrappers are stored under _propertyName, or sometimes with $propertyName, so we test both
+            if let component = child.value as? MaxIOComponent {
+                return component
+            }
+            return nil
+        }
+        
+        // properties
+        for component in wrappers {
+            component.accept(visitor: visitor)
+        }
+                
+        // build pattern
+        box.value.object!.io.accept(visitor: visitor)
+
     }
     
     return obj
@@ -35,15 +57,23 @@ func _dtor(ptr: UnsafeMutableRawPointer?) -> UnsafeMutableRawPointer? {
     if (ptr==nil) { return nil }
     
     let obj = ptr!.assumingMemoryBound(to: t_wrapped_object.self)
-    let p = obj.pointee._ptr
+    let p = obj.pointee.box
 
     if p != nil { Box.fromRaw(p!, DispatcherClass.self).release() }
     return nil
 }
 
-struct DispatcherClass: Initializable {
+// MARK: -
+
+class DispatcherClass: Initializable {
     var object: MaxObject?
-    init() {}
+    
+    required init() {}
+    
+    var onBang : ()->Void = {}
+    var onFloat : (Float)->Void = {_ in}
+    var onInt : (Int)->Void = {_ in}
+    var onSelector : (String, [MaxValue])->Void = { _,_  in }
 }
 
 // MARK: -

@@ -7,7 +7,7 @@
 
 
 @resultBuilder
-public struct MaxIOBuilder {
+public struct MaxObjectBuilder {
     public static func buildBlock(_ components: MaxObject...) -> MaxObject {
         // If only one component, return it directly
         if components.count == 1 {
@@ -34,5 +34,14 @@ public struct MaxIOBuilder {
     // Optional: support for arrays of components (e.g. loops)
     public static func buildArray(_ components: [MaxObject]) -> MaxObject {
         CompositeMaxObject(components)
+    }
+}
+
+// MARK: -
+
+@resultBuilder
+public struct MaxIOBuilder {
+    public static func buildBlock(_ components: MaxIOComponent...) -> MaxIOComponent {
+        CompositeMaxIO(components)
     }
 }

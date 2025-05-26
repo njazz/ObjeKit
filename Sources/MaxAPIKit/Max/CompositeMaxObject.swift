@@ -5,23 +5,40 @@
 //  Created by alex on 26/05/2025.
 //
 
-
 public class CompositeMaxObject: MaxObject {
     public static var className: String { "Composite" }
-    
-    let children: [MaxObject]
 
-    public required init(){
-        self.children = []
+    public let objects: [MaxObject]
+
+    public required init() {
+        objects = []
     }
-    
+
     public init(_ children: [MaxObject] = []) {
-        self.children = children
+        objects = children
     }
 
-    public func performAction() {
-        for child in children {
-//            child.performAction()
+    public var io: [MaxIOComponent] {
+        objects.flatMap { $0.io }
+    }
+}
+
+// MARK: -
+
+public class CompositeMaxIO : MaxIOComponent {
+    public let io: [MaxIOComponent]
+    
+    public required init() {
+        io = []
+    }
+    
+    public init(_ io: [MaxIOComponent] = []) {
+        self.io = io
+    }
+    
+    public func accept<V: MaxIOVisitor>(visitor: V) {
+        for component in io {
+            component.accept(visitor: visitor)
         }
     }
 }
