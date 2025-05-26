@@ -13,11 +13,7 @@ public protocol Initializable {
 
 // MARK: -
 
-public protocol MaxIOVisitor {
-    func visit<T>(_ inlet: Inlet<T>)
-    func visit<T>(_ outlet: Outlet<T>)
-    func visit(_ method: MaxMethod)
-}
+
 
 // MARK: -
 

@@ -7,6 +7,7 @@
 
 @_implementationOnly import MaxSDKBridge
 
+/// some wrappers for Max API
 public enum MaxRuntime {
     public static func post(_ text: String) {
         poststring(text)        

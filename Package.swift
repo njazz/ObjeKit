@@ -6,6 +6,10 @@ let package = Package(
     platforms: [.macOS(.v11)],
     products: [
         .library(
+            name: "DSPLKit",
+            targets: ["DSPLKit"]
+        ),
+        .library(
             name: "ObjeKit",
             targets: ["ObjeKit"]
         ),
@@ -35,9 +39,14 @@ let package = Package(
                                ]
                 ),
         
+            .target(
+            name: "DSPLKit",
+            path: "Sources/DSPLKit"
+        ),
+        
         .target(
             name: "ObjeKit",
-            dependencies: ["MaxSDKBridge"],
+            dependencies: ["MaxSDKBridge", "DSPLKit"],
             path: "Sources/ObjeKit"
             ,
             cSettings: [
@@ -46,6 +55,7 @@ let package = Package(
                 .headerSearchPath("../../ThirdParty/max-sdk/source/max-sdk-base/c74support/msp-includes"),
             ]
         )
+        
 
     ]
     

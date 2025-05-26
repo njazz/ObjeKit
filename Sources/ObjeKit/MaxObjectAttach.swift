@@ -24,17 +24,13 @@ class MaxObjectAttach: MaxIOVisitor {
     }
     
     func visit<T>(_ inlet: Inlet<T>) {
-        // Example C API call - replace with your actual bridging logic
         MaxRuntime.post("\((object)) : Registering inlet with value: \(inlet.wrappedValue)")
-        // c_api_register_inlet(...)
-//        if (self.object == nil) { return }
         
         let this_inlet = inlet_new(self.object, nil)
     }
     
     func visit<T>(_ outlet: Outlet<T>) {
         MaxRuntime.post("\((object)) : Registering outlet with value: \(outlet.wrappedValue)")
-        // c_api_register_outlet(...)
         
         let this_outlet = outlet_new(self.object, nil)
         
@@ -56,24 +52,10 @@ class MaxObjectAttach: MaxIOVisitor {
             wrapper.onInt = method.callAsInt
         case .float:
             wrapper.onDouble = method.callAsFloat
-        case .selector(var name):
+        case .selector(let name):
             wrapper.onSelector[name] = method.callAsSelector
         case .list:
             wrapper.onSelector[""] = method.callAsSelector
         }
-    }
-}
-
-class MaxClassAttach : MaxIOVisitor {
-    func visit<T>(_ inlet: Inlet<T>) {
-        
-    }
-    
-    func visit<T>(_ outlet: Outlet<T>) {
-        
-    }
-    
-    func visit(_ method: MaxMethod) {
-        
     }
 }

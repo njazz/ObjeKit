@@ -5,7 +5,6 @@
 //  Created by alex on 25/05/2025.
 //
 
-
 public class Box<T : Initializable > {
     var value: T
 

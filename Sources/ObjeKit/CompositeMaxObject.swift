@@ -19,7 +19,7 @@ public class CompositeMaxObject: MaxObject {
     }
 
     public var io: [MaxIOComponent] {
-        objects.flatMap { $0.io }
+        objects.compactMap { $0.io }
     }
 }
 

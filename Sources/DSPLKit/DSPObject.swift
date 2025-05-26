@@ -14,8 +14,10 @@ public protocol DSPObject : DSPInspectable {
     func process()
     var configuration: DSPConfiguration { get set }
     
-    @DSPBuilder static func build() -> some DSPObject
+//    @DSPBuilder
+//    static func build() ->  DSPObject
     
+    var build: DSPObject { get }
 
 }
 // MARK: -
@@ -46,3 +48,5 @@ extension DSPInspectable {
         }
     }
 }
+
+public protocol DSPIOComponent {}

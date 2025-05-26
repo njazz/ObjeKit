@@ -5,7 +5,9 @@
 //  Created by alex on 25/05/2025.
 //
 
+import DSPLKit
 
+// yet unused
 protocol MSPObject : MaxObject {
   func setupDSP(sampleRate: Double, vectorSize: UInt)
 

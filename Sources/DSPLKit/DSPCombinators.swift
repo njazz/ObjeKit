@@ -7,6 +7,14 @@
 
 
 public struct Parallel: DSPObject {
+    public var build: any DSPObject
+    
+//    public static func build() -> any DSPObject {
+//        
+//    }
+    
+    public var configuration: DSPConfiguration
+    
     var left: DSPObject
     var right: DSPObject
     
@@ -17,6 +25,14 @@ public struct Parallel: DSPObject {
 }
 
 public struct Sequential: DSPObject {
+    public var build: any DSPObject
+    
+//    public static func build() -> any DSPObject {
+//        
+//    }
+    
+    public var configuration: DSPConfiguration
+    
     var first: DSPObject
     var second: DSPObject
     
@@ -40,9 +56,9 @@ public final class ParallelDSP: DSPInspectable {
     }
 
     public func process() {
-        for node in nodes {
-            (node as? DSPNode)?.process()
-        }
+//        for node in nodes {
+//            (node as? DSPNode)?.process()
+//        }
     }
 
     public var allInputs: [UnsafePointer<Float>] {
