@@ -29,14 +29,20 @@ class MaxObjectAttach: MaxIOVisitor {
         // c_api_register_inlet(...)
 //        if (self.object == nil) { return }
         
-        inlet_new(self.object, nil)
+        let this_inlet = inlet_new(self.object, nil)
     }
     
     func visit<T>(_ outlet: Outlet<T>) {
         MaxRuntime.post("\((object)) : Registering outlet with value: \(outlet.wrappedValue)")
         // c_api_register_outlet(...)
         
-        outlet_new(self.object, nil)
+        let this_outlet = outlet_new(self.object, nil)
+        
+        outlet.onChange = { [this_outlet] value in
+            MaxRuntime.post("outlet")
+            outlet_bang(this_outlet)
+        }
+        
     }
     
     func visit(_ method: MaxMethod) {
