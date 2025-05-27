@@ -4,7 +4,7 @@
 //
 //  Created by alex on 26/05/2025.
 //
-@_implementationOnly import MaxSDKBridge
+@_implementationOnly import MSDKBridge
 
 class DispatcherClass: Initializable {
     required init() {}

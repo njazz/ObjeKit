@@ -5,7 +5,7 @@
 //  Created by alex on 26/05/2025.
 //
 
-@_implementationOnly import MaxSDKBridge
+@_implementationOnly import MSDKBridge
 
 internal func _ctor(_ p: UnsafeMutableRawPointer?) -> UnsafeMutableRawPointer? {
     MaxRuntime.post ("input pointer: \(String(describing: p))")

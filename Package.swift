@@ -1,6 +1,8 @@
 // swift-tools-version:5.7
 import PackageDescription
 
+let sdkVersionSuffix = "-8.2"
+
 let package = Package(
     name: "ObjeKit",
     platforms: [.macOS(.v11)],
@@ -14,24 +16,26 @@ let package = Package(
             targets: ["ObjeKit"]
         ),
         .library(
-            name: "MaxSDKBridge",
-            targets: ["MaxSDKBridge"]
+            name: "MSDKBridge",
+            targets: ["MSDKBridge"]
         ),
     ],
     dependencies: [
         
     ],
     targets: [
-
+        
         .target(
-                    name: "MaxSDKBridge",
-                    path: "Sources/MaxSDKBridge",
+            
+                    name: "MSDKBridge",
+                    path: "Sources/MSDKBridge",
+                    
                     publicHeadersPath: "include",
                    
                     cSettings: [
                         .headerSearchPath("include"),
-                        .headerSearchPath("../../ThirdParty/max-sdk/source/max-sdk-base/c74support/max-includes"),
-                        .headerSearchPath("../../ThirdParty/max-sdk/source/max-sdk-base/c74support/msp-includes"),
+                        .headerSearchPath("../../ThirdParty/max-sdk\(sdkVersionSuffix)/source/max-sdk-base/c74support/max-includes"),
+                        .headerSearchPath("../../ThirdParty/max-sdk\(sdkVersionSuffix)/source/max-sdk-base/c74support/msp-includes"),
                     ],
                     cxxSettings: [
                                    
@@ -46,13 +50,12 @@ let package = Package(
         
         .target(
             name: "ObjeKit",
-            dependencies: ["MaxSDKBridge", "DSPLKit"],
-            path: "Sources/ObjeKit"
-            ,
+            dependencies: ["MSDKBridge", "DSPLKit"],
+            path: "Sources/ObjeKit",
             cSettings: [
                 .headerSearchPath("include"),
-                .headerSearchPath("../../ThirdParty/max-sdk/source/max-sdk-base/c74support/max-includes"),
-                .headerSearchPath("../../ThirdParty/max-sdk/source/max-sdk-base/c74support/msp-includes"),
+                .headerSearchPath("../../ThirdParty/max-sdk\(sdkVersionSuffix)/source/max-sdk-base/c74support/max-includes"),
+                .headerSearchPath("../../ThirdParty/max-sdk\(sdkVersionSuffix)/source/max-sdk-base/c74support/msp-includes"),
             ]
         )
         

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FA41EB872DE376D2002D63B0 /* tester.maxpat in CopyFiles */ = {isa = PBXBuildFile; fileRef = FA41EB832DE37632002D63B0 /* tester.maxpat */; };
-		FAB946832DE4756E006A9DAE /* ObjeKit in Frameworks */ = {isa = PBXBuildFile; productRef = FAB946822DE4756E006A9DAE /* ObjeKit */; };
+		FACB4A1D2DE6692D0084C9D8 /* ObjeKit in Frameworks */ = {isa = PBXBuildFile; productRef = FACB4A1C2DE6692D0084C9D8 /* ObjeKit */; };
 		FAE80BBA2DE3647000574E37 /* ObjeKitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE80BB92DE35FF600574E37 /* ObjeKitTest.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAB946832DE4756E006A9DAE /* ObjeKit in Frameworks */,
+				FACB4A1D2DE6692D0084C9D8 /* ObjeKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,11 +83,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				FA41EB7C2DE36F73002D63B0 /* PBXTargetDependency */,
+				FACB4A1B2DE669290084C9D8 /* PBXTargetDependency */,
 			);
 			name = ObjeKitTest;
 			packageProductDependencies = (
-				FAB946822DE4756E006A9DAE /* ObjeKit */,
+				FACB4A1C2DE6692D0084C9D8 /* ObjeKit */,
 			);
 			productName = "max-sdk-kit-test";
 			productReference = FAE80BAF2DE35FCB00574E37 /* ObjeKitTest.mxo */;
@@ -117,7 +117,7 @@
 			mainGroup = FAE80BA62DE35FCB00574E37;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				FA41EB782DE36F62002D63B0 /* XCLocalSwiftPackageReference "../../MaxAPIKit" */,
+				FACB4A192DE667CA0084C9D8 /* XCLocalSwiftPackageReference "../../ObjeKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = FAE80BB02DE35FCB00574E37 /* Products */;
@@ -151,9 +151,9 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		FA41EB7C2DE36F73002D63B0 /* PBXTargetDependency */ = {
+		FACB4A1B2DE669290084C9D8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = FA41EB7B2DE36F73002D63B0 /* MaxAPIKit */;
+			productRef = FACB4A1A2DE669290084C9D8 /* ObjeKit */;
 		};
 /* End PBXTargetDependency section */
 
@@ -345,21 +345,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		FA41EB782DE36F62002D63B0 /* XCLocalSwiftPackageReference "../../MaxAPIKit" */ = {
+		FACB4A192DE667CA0084C9D8 /* XCLocalSwiftPackageReference "../../ObjeKit" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../MaxAPIKit;
+			relativePath = ../../ObjeKit;
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FA41EB7B2DE36F73002D63B0 /* MaxAPIKit */ = {
+		FACB4A1A2DE669290084C9D8 /* ObjeKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FA41EB782DE36F62002D63B0 /* XCLocalSwiftPackageReference "../../MaxAPIKit" */;
-			productName = MaxAPIKit;
+			package = FACB4A192DE667CA0084C9D8 /* XCLocalSwiftPackageReference "../../ObjeKit" */;
+			productName = ObjeKit;
 		};
-		FAB946822DE4756E006A9DAE /* ObjeKit */ = {
+		FACB4A1C2DE6692D0084C9D8 /* ObjeKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = FA41EB782DE36F62002D63B0 /* XCLocalSwiftPackageReference "../../MaxAPIKit" */;
+			package = FACB4A192DE667CA0084C9D8 /* XCLocalSwiftPackageReference "../../ObjeKit" */;
 			productName = ObjeKit;
 		};
 /* End XCSwiftPackageProductDependency section */

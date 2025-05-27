@@ -1,4 +1,0 @@
-module MaxSDKBridge [system] {
-    header "max_sdk_bridge.h"
-    export *
-}

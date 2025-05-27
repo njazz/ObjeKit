@@ -4,9 +4,9 @@
 //
 //  Created by alex on 26/05/2025.
 //
-//@_implementationOnly import MaxSDKBridge
+//@_implementationOnly import MSDKBridge
 
-@_implementationOnly import MaxSDKBridge
+@_implementationOnly import MSDKBridge
 
 func _addressOf<T : AnyObject>(_ object: T?) -> UInt {
     if object == nil { 0 } else {
