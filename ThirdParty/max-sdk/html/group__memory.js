@@ -1,0 +1,27 @@
+var group__memory =
+[
+    [ "MM_UNIFIED", "group__memory.html#ga6ae185a510cc76224680e6156b843055", null ],
+    [ "disposhandle", "group__memory.html#gae325435a83824eb6b42e0885b68b9110", null ],
+    [ "freebytes", "group__memory.html#ga5520eadf3494221726cfaf3cbd35f8e9", null ],
+    [ "freebytes16", "group__memory.html#gad3943682e8f9813a8fe4f8d407a32ac9", null ],
+    [ "getbytes", "group__memory.html#gad4269b29be988878da2d8d5579696d60", null ],
+    [ "getbytes16", "group__memory.html#ga2b3c29bac42419b0fe1ad954029a2179", null ],
+    [ "growhandle", "group__memory.html#ga6402eb4bbf3acd03d3e2f1133195bac3", null ],
+    [ "newhandle", "group__memory.html#ga50135e5f9bb18030ff1d12e9976253ab", null ],
+    [ "sysmem_copyptr", "group__memory.html#gab4da890c39d3b7c67c07c966ca74ce04", null ],
+    [ "sysmem_freehandle", "group__memory.html#ga5815994f7d02b77c24f8c684df9acd83", null ],
+    [ "sysmem_freeptr", "group__memory.html#ga200c82639e547869db1f3887d17102d3", null ],
+    [ "sysmem_handlesize", "group__memory.html#ga54929317f2b3edd4a9e163ec9b2f791a", null ],
+    [ "sysmem_lockhandle", "group__memory.html#ga0210051c59eca87f2d1440718d7afc7d", null ],
+    [ "sysmem_newhandle", "group__memory.html#ga2afc324580bca92459ec78a9f9e5de24", null ],
+    [ "sysmem_newhandleclear", "group__memory.html#ga62677e4f64fdc138c6b4bc037061df5a", null ],
+    [ "sysmem_newptr", "group__memory.html#ga24c6073f05e5c4a9bf980b7a4320fbf4", null ],
+    [ "sysmem_newptrclear", "group__memory.html#ga4f2ea0eef82c40a6d78a6f53c75ce604", null ],
+    [ "sysmem_nullterminatehandle", "group__memory.html#gafbf843b809bb3958b5ce8a9f79707655", null ],
+    [ "sysmem_ptrandhand", "group__memory.html#gac268e9241c0a344dce00fa6295090dc8", null ],
+    [ "sysmem_ptrbeforehand", "group__memory.html#ga93af78c9cde716f5248744f3de743509", null ],
+    [ "sysmem_ptrsize", "group__memory.html#gadbb10510c2bc5b6235c8939b77f3e0c0", null ],
+    [ "sysmem_resizehandle", "group__memory.html#ga3ca007063b7a720936db031bf57a40ec", null ],
+    [ "sysmem_resizeptr", "group__memory.html#gaf47faf5804c3827476592829e3f5974b", null ],
+    [ "sysmem_resizeptrclear", "group__memory.html#gaddd4b4a07a591470081c86bfefb825b6", null ]
+];
