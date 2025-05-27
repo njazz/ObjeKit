@@ -126,16 +126,24 @@ internal func _method_list(_ ptr: UnsafeMutableRawPointer?, _ s: UnsafeMutablePo
     let sSymbol = String(cString:symbol)
     
     if object.onSelector.keys.contains(sSymbol) {
-        MaxRuntime.post("perform: \(sSymbol)")
+//        MaxRuntime.post("perform: \(sSymbol)")
         guard let fn = object.onSelector[sSymbol] else { return }
-        fn([])
+        
+        let atoms = atomsFromPointer(argc, argv)
+        let maxList = atoms.asMaxList
+        
+        fn(maxList)
         return
     }
     
     // list
     
     MaxRuntime.post("perform list")
-    object.onList ([])
+    
+    let atoms = atomsFromPointer(argc, argv)
+    let maxList = atoms.asMaxList
+    
+    object.onList (maxList)
     
     
 //    dispatcher.takeUnretainedValue().value.onDouble(value)

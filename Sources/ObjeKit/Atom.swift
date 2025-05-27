@@ -7,16 +7,6 @@
 
 @_implementationOnly import MaxSDKBridge
 
-// minimal
-public enum MaxValue {
-    case int(Int)
-    case float(Double)
-    case symbol(String)
-    case unknown
-}
-
-public typealias MaxList = [MaxValue]
-
 enum Atom {
     case float(Double)
     case int(Int)
@@ -25,7 +15,7 @@ enum Atom {
 
     init(_ ptr: UnsafeMutablePointer<t_atom>) {
         let type = UInt32(atom_gettype(ptr))
-        
+
         switch type {
         case A_FLOAT.rawValue:
             self = .float(Double(atom_getfloat(ptr)))
@@ -42,29 +32,14 @@ enum Atom {
 
 // MARK: -
 
-extension MaxValue {
-    init(_ atom: Atom) {
-        switch atom {
-        case .float(let value):
-            self = .float(value)
-        case .int(let value):
-            self = .int(value)
-        case .symbol(let value):
-            self = .symbol(value)
-        case .unknown:
-            self = .unknown
-        }
-    }
-}
-
 extension Atom {
     init(_ maxValue: MaxValue) {
         switch maxValue {
-        case .float(let value):
+        case let .float(value):
             self = .float(value)
-        case .int(let value):
+        case let .int(value):
             self = .int(value)
-        case .symbol(let value):
+        case let .symbol(value):
             self = .symbol(value)
         case .unknown:
             self = .unknown
@@ -76,13 +51,7 @@ extension Atom {
 
 extension Array where Element == Atom {
     var asMaxList: MaxList {
-        self.map(MaxValue.init)
-    }
-}
-
-extension Array where Element == MaxValue {
-    var asAtoms: [Atom] {
-        self.map(Atom.init)
+        map(MaxValue.init)
     }
 }
 
@@ -90,7 +59,7 @@ extension Array where Element == MaxValue {
 
 func atomsFromPointer(_ count: CLong, _ ptr: UnsafeMutablePointer<t_atom>?) -> [Atom] {
     guard let ptr = ptr else { return [] }
-    return (0..<count).map { i in
+    return (0 ..< count).map { i in
         Atom(ptr.advanced(by: Int(i)))
     }
 }
@@ -102,11 +71,11 @@ func makeAtomPointer(from atoms: [Atom]) -> (argc: CLong, argv: UnsafeMutablePoi
     for (i, atom) in atoms.enumerated() {
         let ptr = argv.advanced(by: i)
         switch atom {
-        case .float(let f):
+        case let .float(f):
             atom_setfloat(ptr, Double(f))
-        case .int(let i):
+        case let .int(i):
             atom_setlong(ptr, CLong(i))
-        case .symbol(let s):
+        case let .symbol(s):
             let cstr = strdup(s) // assume strdup is fine; Max will likely manage it if atom_setsym stores it
             atom_setsym(ptr, gensym(cstr))
         case .unknown:

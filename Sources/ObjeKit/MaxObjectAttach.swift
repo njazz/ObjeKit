@@ -55,7 +55,7 @@ class MaxObjectAttach: MaxIOVisitor {
         case .selector(let name):
             wrapper.onSelector[name] = method.callAsSelector
         case .list:
-            wrapper.onSelector[""] = method.callAsSelector
+            wrapper.onList = method.callAsSelector
         }
     }
 }

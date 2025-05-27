@@ -5,22 +5,6 @@
 //  Created by alex on 26/05/2025.
 //
 
-//
-//@propertyWrapper
-//public struct MaxMethod: MaxIOComponent {
-//    var name : String
-//    public var wrappedValue: () -> Void
-//    public init(_ name: String = "", wrappedValue: @escaping () -> Void) {
-//        self.name = name
-//        self.wrappedValue = wrappedValue
-//    }
-//    
-//    public func accept<V>(visitor: V) where V : MaxIOVisitor {
-//        visitor.visit(self)
-//    }
-//}
-
-
 public enum MaxMethodKind {
      case bang
      case int
@@ -28,6 +12,8 @@ public enum MaxMethodKind {
      case selector(String)
     case list
  }
+
+// MARK: -
 
 @propertyWrapper
 public struct MaxMethod: MaxIOComponent {
@@ -99,43 +85,3 @@ public struct MaxMethod: MaxIOComponent {
         }
     }
 }
-
-// @propertyWrapper
-// public struct MaxMethod<Signature>: MaxIOComponent {
-//     public let kind: MaxMethodKind
-//     public var wrappedValue: Signature
-//
-//     public init(_ kind: MaxMethodKind, wrappedValue: Signature) {
-//         self.kind = kind
-//         self.wrappedValue = wrappedValue
-//     }
-//     
-//     // Convenience init for () -> Void
-//     public init(_ kind: MaxMethodKind, _ function: @escaping () -> Void) where Signature == () -> Void {
-//         self.kind = kind
-//         self.wrappedValue = function as! Signature
-//     }
-//
-//     // Convenience init for (Float) -> Void
-//     public init(_ kind: MaxMethodKind, _ function: @escaping (Float) -> Void) where Signature == (Float) -> Void {
-//         self.kind = kind
-//         self.wrappedValue = function as! Signature
-//     }
-//
-//     // Convenience init for (Int) -> Void
-//     public init(_ kind: MaxMethodKind, _ function: @escaping (Int) -> Void) where Signature == (Int) -> Void {
-//         self.kind = kind
-//         self.wrappedValue = function as! Signature
-//     }
-//     
-//     // Convenience init for (String, [MaxValue]) -> Void
-//     public init(_ kind: MaxMethodKind, _ function: @escaping (String, [MaxValue]) -> Void) where Signature == (String, [MaxValue]) -> Void {
-//         self.kind = kind
-//         self.wrappedValue = function as! Signature
-//     }
-//     
-//     public func accept<V>(visitor: V) where V: MaxIOVisitor {
-//         visitor.visit(self)
-//     }
-// }
- 
