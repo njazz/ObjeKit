@@ -13,10 +13,6 @@ public protocol Initializable {
 
 // MARK: -
 
-
-
-// MARK: -
-
 public protocol MaxObject: AnyObject, Initializable {
     static var className: String { get }
 
@@ -30,6 +26,7 @@ public protocol MaxComponent: AnyObject, Initializable {
 
 public protocol MaxIOComponent {
     func accept<V: MaxIOVisitor>(visitor: V)
+    func accept<V: MaxClassIOVisitor>(visitor: V)
 }
 
 // MARK: -
@@ -41,4 +38,5 @@ public extension MaxObject {
 
 public extension MaxIOComponent {
     func accept<V: MaxIOVisitor>(visitor: V) {}
+    func accept<V: MaxClassIOVisitor>(visitor: V) {}
 }
