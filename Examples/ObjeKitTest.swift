@@ -27,6 +27,11 @@ class ObjeKitTest : MaxObject {
     @MaxState
     var value : Float = 3.3
     
+    @MaxMethod("method1")
+    var method1 = {
+        MaxRuntime.post("method1")
+    }
+    
     @MaxIOBuilder
     var io: any MaxIOComponent {
         
@@ -37,11 +42,11 @@ class ObjeKitTest : MaxObject {
             MaxRuntime.post("bang! value: \(self.value)")
         }
         
-        MaxMethod(){ (value : Double) in
+        MaxMethod() { (value : Double) in
             MaxRuntime.post("float: \(value)")
         }
         
-        MaxMethod(){ (value : CLong) in
+        MaxMethod() { (value : CLong) in
             MaxRuntime.post("int: \(value)")
         }
                 

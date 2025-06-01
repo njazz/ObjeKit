@@ -5,6 +5,12 @@
 //  Created by alex on 26/05/2025.
 //
 
+public struct DSPConfiguration {
+    public var sampleRate: Float
+    public var blockSize: Int
+}
+// MARK: -
+
 public protocol DSPInspectable {
     var allInputs: [UnsafePointer<Float>] { get }
     var allOutputs: [UnsafeMutablePointer<Float>] { get }
@@ -19,12 +25,6 @@ public protocol DSPObject : DSPInspectable {
     
     var build: DSPObject { get }
 
-}
-// MARK: -
-
-public struct DSPConfiguration {
-    public var sampleRate: Float
-    public var blockSize: Int
 }
 
 // MARK: -
