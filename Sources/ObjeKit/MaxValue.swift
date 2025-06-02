@@ -160,12 +160,12 @@ public extension MaxValue {
 }
 
 extension MaxList {
-    func unpack<T1>() -> T1? where T1: MaxValueConvertible {
+    public func unpack<T1>() -> T1? where T1: MaxValueConvertible {
         guard count == 1 else { return nil }
         return self[0].convert(to: T1.self)
     }
 
-    func unpack<T1, T2>() -> (T1, T2)? where T1: MaxValueConvertible, T2: MaxValueConvertible {
+    public func unpack<T1, T2>() -> (T1, T2)? where T1: MaxValueConvertible, T2: MaxValueConvertible {
         guard count == 2 else { return nil }
         guard
             let v1 = self[0].convert(to: T1.self),

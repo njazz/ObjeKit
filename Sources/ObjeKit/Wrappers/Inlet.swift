@@ -70,7 +70,8 @@ public struct Inlet: MaxIOComponent {
         _contents = function
     }
 
-    public init(_ function: @escaping ([MaxValue]) -> Void) {
+    public init(inlet: InletIndex = .index(0), _ function: @escaping ([MaxValue]) -> Void) {
+        self.index = inlet
         kind = .list
         _contents = function
     }
@@ -91,6 +92,8 @@ public struct Inlet: MaxIOComponent {
         visitor.visit(self)
     }
 
+    // MARK: -
+    
     // Optionally, helper to call with dynamic casting
     public func callAsBang() {
         if let fn = _contents as? () -> Void {
