@@ -135,9 +135,12 @@ extension Array where Element == String {
 
 // MARK: - Lossless unpacking
 
-protocol LosslessConvertible {}
+public protocol LosslessConvertible {}
+
 extension Int: LosslessConvertible {}
+extension UInt: LosslessConvertible {}
 extension Double: LosslessConvertible {}
+extension Float: LosslessConvertible {}
 extension String: LosslessConvertible {}
 
 extension MaxValue {

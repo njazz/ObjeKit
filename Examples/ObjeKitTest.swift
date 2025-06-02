@@ -21,8 +21,7 @@ class ObjeKitTest : MaxObject {
         MaxRuntime.post("objekit test object: deinit")
     }
     
-    @Inlet(2)
-    var inlet2 : Int = 10
+    // MARK: - state objects
     
     @MaxState
     var value : Float = 3.3
@@ -32,16 +31,20 @@ class ObjeKitTest : MaxObject {
         MaxRuntime.post("method1")
     }
     
-    @Argument(optional:false, description: "property argument")
-    var arg0 = { (v:MaxValue) in }
+    // MARK: - inlets provided as property wrappers
+    
+    @Inlet(2)
+    var inlet2 : Int = 10
     
     @MaxIOBuilder
     var io: any MaxIOComponent {
         
-        Argument(wrappedValue:{ (v:MaxValue) in } , description: "builder argument") 
+        // MARK: - builder: arguments
         
-        Inlet() { (v:Int) in self.inlet2 = v }
+        Argument(optional:false, description: "required argument, string") { (v:String) in }
+        Argument( description: "optional argument, int") { (v:Int) in }
         
+        // MARK: - builder:  methods
         MaxMethod() {
             self.value += 1
             MaxRuntime.post("bang! value: \(self.value)")
@@ -63,6 +66,9 @@ class ObjeKitTest : MaxObject {
         MaxMethod() { (value:[MaxValue]) in
             MaxRuntime.post("list: \(value)")
         }
+        
+        // MARK: - builder:  I/O
+        Inlet() { (v:Int) in self.inlet2 = v }
 
         Outlet(0) { self.$value }
         Outlet { self.$value }

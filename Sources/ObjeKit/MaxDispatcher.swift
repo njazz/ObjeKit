@@ -20,7 +20,7 @@ public class MaxDispatcher {
     public static func setup<T: MaxObject>(_ t : T.Type) {
         let s = T.className
         
-        guard let current_ctor : method = get_next_ctor(_ctor) else {
+        guard let current_ctor : method_ctor = get_next_ctor(_ctor) else {
             MaxRuntime.post ("Dispatch error")
             return
         }

@@ -14,7 +14,9 @@ extern "C" {
 #include "ext_obex.h"
 #include "ext_common.h"
 
-method get_next_ctor(method ctor);
+typedef void*(*method_with_args)(void*,/*t_symbol*, */ long, t_atom*)  ;
+typedef method_with_args method_ctor;
+method_ctor get_next_ctor(method_ctor ctor);
 
 #ifdef __cplusplus
 }
@@ -38,8 +40,8 @@ void t_wrapped_object_free_proxy(t_wrapped_object* x) { proxy_delete(x->m_proxy)
 
 // MARK: -
 
-static inline t_class* _class_new_basic(const char* name, method init, method free, size_t size) {
-   return class_new(name, init, free, size, NULL, 0);
+static inline t_class* _class_new_basic(const char* name, method_ctor init, method free, size_t size) {
+   return class_new(name, (method)init, free, size, NULL, A_GIMME, 0);   // A_GIMME, 0
 }
 
 // MARK: -

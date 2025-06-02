@@ -10,13 +10,13 @@
 #include <iostream>
 #include <array>
 
-thread_local method _wrapperTarget {nullptr};
+thread_local method_ctor _wrapperTarget {nullptr};
 
 template <int N>
 struct Wrapper {
-    static void* call(void* v) {
-        
-        return _wrapperTarget ? _wrapperTarget((void*)&Wrapper::call) : nullptr ;
+    // NB
+    static void* call(void* v,/* t_symbol* s, */long argc, t_atom* argv) {
+        return _wrapperTarget ? _wrapperTarget((void*)&Wrapper::call,/*s,*/argc,argv) : nullptr ;
     }
     
 };
@@ -26,7 +26,7 @@ constexpr int NumWrappers = 64;
 // Generate array of wrapper function pointers
 template <int... Ns>
 constexpr auto makePtrArray(std::integer_sequence<int, Ns...>) {
-    return std::array<method, sizeof...(Ns)>{ &Wrapper<Ns>::call... };
+    return std::array<method_ctor, sizeof...(Ns)>{ &Wrapper<Ns>::call... };
 }
 
 constexpr thread_local auto ptrs = makePtrArray(std::make_integer_sequence<int, NumWrappers>{});
@@ -35,11 +35,13 @@ static int currentIndex = 0;
 
 extern "C" {
 
+
+
 // C function to get the next function pointer (rotating)
-method get_next_ctor(method ctor) {
-    _wrapperTarget = ctor;
+method_ctor get_next_ctor(method_ctor ctor) {
+    _wrapperTarget = (method_ctor)ctor;
     
-    method f = ptrs[currentIndex];
+    method_ctor f = ptrs[currentIndex];
     currentIndex = (currentIndex + 1); //% NumWrappers;
     if (currentIndex>= NumWrappers) return nil;
     return f;

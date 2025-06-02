@@ -6,6 +6,12 @@
 //
 @_implementationOnly import MSDKBridge
 
+struct ArgumentData {
+    var untypedSetter : (MaxValue)->Bool    /// returns false if fails type conversion
+    var optional : Bool
+    var description : String?
+}
+
 /// Proxy class forwarding to swift object
 class DispatcherClass: Initializable {
     required init() {}
@@ -19,7 +25,7 @@ class DispatcherClass: Initializable {
     var onList : ([MaxValue])->Void = {_ in}
     
     // 
-    var arguments : [(MaxValue)->Void] = []
+    var arguments : [ArgumentData] = []
     var requiredArguments : UInt = 0
 }
 

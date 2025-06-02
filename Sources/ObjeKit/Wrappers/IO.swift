@@ -18,7 +18,7 @@ public struct Inlet<T>: MaxIOComponent {
     }
 }
 
-@propertyWrapper
+//@propertyWrapper
 public class Outlet<T>: MaxIOComponent {
     var index: UInt8?  // append new if nil
     private var binding: MaxBinding<T>

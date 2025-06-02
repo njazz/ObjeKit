@@ -63,8 +63,8 @@ class AttachInstance: MaxIOVisitor {
     }
     
     // new:
-    func visit<T>(_ argument: Argument<T>) -> Bool {
-        MaxRuntime.post("\((object)) : Registering \(argument.optional ? "optional ":"")argument \(currentArgumentIndex) \(argument.description != nil ? "(\(argument.description!))" : "" )")
+    func visit<T: MaxArgumentValue>(_ argument: Argument<T>) -> Bool {
+        MaxRuntime.post("\((object)) : Registering \(argument.optional ? "optional ":"")argument at \(currentArgumentIndex) \(argument.description != nil ? "(\(argument.description!))" : "" )")
         
         if (!argument.optional && currentArgumentIsOptional){
             MaxRuntime.post("\((object)) : Warning: non-optional argument at index \(currentArgumentIndex) following optional one")
@@ -72,12 +72,35 @@ class AttachInstance: MaxIOVisitor {
         
         if (!currentArgumentIsOptional && argument.optional) { currentArgumentIsOptional = true }
         
-        guard let arg = argument.wrappedValue as? (MaxValue)->Void else {
-            MaxRuntime.post("\((object)) : Error: bad argument handler provided")
-            return false
+        
+        let untypedSetter = { (v:MaxValue) in
+            
+            let value = v.convert(to: T.self)
+            
+            if value == nil {
+                MaxRuntime.post("\((self.object)) : Error: bad argument value provided, expected: \(T.self)")
+                return false
+            }
+            
+            argument.setter(value!)
+            return true
+            
+//            switch v {
+//            case let val as T:
+//                argument.setter(val)
+//                return true
+//            default:
+//                MaxRuntime.post("\((self.object)) : Error: bad argument value provided, expected: \(T.self)")
+//                return false
+//            }
+        
         }
         
-        wrapper.arguments.append(arg)
+        wrapper.arguments.append(
+            ArgumentData(untypedSetter: untypedSetter,
+                         optional: argument.optional,
+                         description: argument.description)
+        )
         
         currentArgumentIndex += 1
         
@@ -85,6 +108,8 @@ class AttachInstance: MaxIOVisitor {
         {
             wrapper.requiredArguments += 1
         }
+        
+        MaxRuntime.post("...done");
         
         return true
     }
