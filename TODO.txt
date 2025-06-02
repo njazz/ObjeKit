@@ -1,3 +1,4 @@
+[ ] outlets
 [ ] Arguments
 [ ] Attributes
 [ ] DSP

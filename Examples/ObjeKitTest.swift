@@ -11,14 +11,14 @@ import Cocoa
 import SwiftUI
 
 class ObjeKitTest : MaxObject {
-    static var className: String { "ObjeKitTest"}
+    static var className: String { "objekit.test"}
     
     required init() {
-        MaxRuntime.post("test object: init")
+        MaxRuntime.post("objekit test object: init")
     }
     
     deinit {
-        MaxRuntime.post("test object: deinit")
+        MaxRuntime.post("objekit test object: deinit")
     }
     
     @Inlet(2)
@@ -32,8 +32,13 @@ class ObjeKitTest : MaxObject {
         MaxRuntime.post("method1")
     }
     
+    @Argument(optional:false, description: "property argument")
+    var arg0 = { (v:MaxValue) in }
+    
     @MaxIOBuilder
     var io: any MaxIOComponent {
+        
+        Argument(wrappedValue:{ (v:MaxValue) in } , description: "builder argument") 
         
         Inlet() { (v:Int) in self.inlet2 = v }
         

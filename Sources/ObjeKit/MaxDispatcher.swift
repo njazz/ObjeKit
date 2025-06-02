@@ -7,14 +7,16 @@
 
 @_implementationOnly import MSDKBridge
 
+/// Dynamically dispatching max object
 public class MaxDispatcher {
+    // TODO: ctor -> ID
     static var _metadata: [String: DispatcherClassMetadata] = [:]
 
+    // TODO: use metadata:
     static var _classMap: [String: UnsafeMutablePointer<t_class>] = [:]
     static var _swiftClassMap: [String: MaxObject.Type] = [:]
-    
-    // TODO: ctor -> ID
 
+    /// public setup function to be exported
     public static func setup<T: MaxObject>(_ t : T.Type) {
         let s = T.className
         
@@ -23,10 +25,7 @@ public class MaxDispatcher {
             return
         }
         
-//        let c_ctor : @convention(c) (UnsafeMutableRawPointer?) -> UnsafeMutableRawPointer? = _ctor
         let ctor_ptr = unsafeBitCast(current_ctor, to: UnsafeRawPointer.self)
-        
-//        MaxRuntime.post ("current ctor: \(unsafeBitCast(current_ctor, to: UnsafeRawPointer.self)) ctor: \(unsafeBitCast(c_ctor, to: UnsafeRawPointer.self))")
         
         let _class = _class_new_basic(s,
                                       current_ctor,
@@ -43,8 +42,6 @@ public class MaxDispatcher {
             MaxRuntime.post("Couldn't initialize class")
             return
         }
-        
-//        MaxRuntime.post ("class pointer: \(_class) for \(s) | ctor: \(current_ctor)")
 
         MaxDispatcher._classMap["\(ctor_ptr)"] = _class
         MaxDispatcher._swiftClassMap["\(ctor_ptr)"] = t

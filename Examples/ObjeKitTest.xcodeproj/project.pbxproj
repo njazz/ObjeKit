@@ -27,7 +27,7 @@
 
 /* Begin PBXFileReference section */
 		FA41EB832DE37632002D63B0 /* tester.maxpat */ = {isa = PBXFileReference; lastKnownFileType = text; path = tester.maxpat; sourceTree = SOURCE_ROOT; };
-		FAE80BAF2DE35FCB00574E37 /* ObjeKitTest.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObjeKitTest.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAE80BAF2DE35FCB00574E37 /* objekit.test.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = objekit.test.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE80BB92DE35FF600574E37 /* ObjeKitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjeKitTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,7 +63,7 @@
 		FAE80BB02DE35FCB00574E37 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FAE80BAF2DE35FCB00574E37 /* ObjeKitTest.mxo */,
+				FAE80BAF2DE35FCB00574E37 /* objekit.test.mxo */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,9 +71,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FAE80BAE2DE35FCB00574E37 /* ObjeKitTest */ = {
+		FAE80BAE2DE35FCB00574E37 /* objekit.test */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FAE80BB32DE35FCB00574E37 /* Build configuration list for PBXNativeTarget "ObjeKitTest" */;
+			buildConfigurationList = FAE80BB32DE35FCB00574E37 /* Build configuration list for PBXNativeTarget "objekit.test" */;
 			buildPhases = (
 				FAE80BAB2DE35FCB00574E37 /* Sources */,
 				FAE80BAC2DE35FCB00574E37 /* Frameworks */,
@@ -85,12 +85,12 @@
 			dependencies = (
 				FACB4A1B2DE669290084C9D8 /* PBXTargetDependency */,
 			);
-			name = ObjeKitTest;
+			name = objekit.test;
 			packageProductDependencies = (
 				FACB4A1C2DE6692D0084C9D8 /* ObjeKit */,
 			);
 			productName = "max-sdk-kit-test";
-			productReference = FAE80BAF2DE35FCB00574E37 /* ObjeKitTest.mxo */;
+			productReference = FAE80BAF2DE35FCB00574E37 /* objekit.test.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -124,7 +124,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FAE80BAE2DE35FCB00574E37 /* ObjeKitTest */,
+				FAE80BAE2DE35FCB00574E37 /* objekit.test */,
 			);
 		};
 /* End PBXProject section */
@@ -333,7 +333,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FAE80BB32DE35FCB00574E37 /* Build configuration list for PBXNativeTarget "ObjeKitTest" */ = {
+		FAE80BB32DE35FCB00574E37 /* Build configuration list for PBXNativeTarget "objekit.test" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FAE80BB42DE35FCB00574E37 /* Debug */,

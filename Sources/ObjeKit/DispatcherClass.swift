@@ -6,6 +6,7 @@
 //
 @_implementationOnly import MSDKBridge
 
+/// Proxy class forwarding to swift object
 class DispatcherClass: Initializable {
     required init() {}
     
@@ -16,6 +17,10 @@ class DispatcherClass: Initializable {
     var onInt : (CLong)->Void = {_ in}
     var onSelector : [String : ([MaxValue])->Void] = [:]
     var onList : ([MaxValue])->Void = {_ in}
+    
+    // 
+    var arguments : [(MaxValue)->Void] = []
+    var requiredArguments : UInt = 0
 }
 
 struct DispatcherClassMetadata {

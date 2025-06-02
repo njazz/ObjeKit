@@ -8,15 +8,19 @@
 
 @_implementationOnly import MSDKBridge
 
-func _addressOf<T : AnyObject>(_ object: T?) -> UInt {
-    if object == nil { 0 } else {
-        UInt(bitPattern: Unmanaged.passUnretained(object!).toOpaque())
-    }
-}
+//func _addressOf<T : AnyObject>(_ object: T?) -> UInt {
+//    if object == nil { 0 } else {
+//        UInt(bitPattern: Unmanaged.passUnretained(object!).toOpaque())
+//    }
+//}
 
-class MaxObjectAttach: MaxIOVisitor {
+/// Attach DispatcherClass instance to max object instance
+class AttachInstance: MaxIOVisitor {
     var object : UnsafeMutablePointer<t_object>
     var wrapper : DispatcherClass
+    
+    var currentArgumentIndex : UInt = 0
+    var currentArgumentIsOptional = false
     
     init(_ object: UnsafeMutablePointer<t_object>, wrapper: DispatcherClass) {
         self.object = object
@@ -43,7 +47,6 @@ class MaxObjectAttach: MaxIOVisitor {
     
     func visit(_ method: MaxMethod) {
         MaxRuntime.post("\((object)) : Registering method \(method.kind)")
-        // c_api_register_method(...)
         
         switch method.kind {
         case .bang:
@@ -58,4 +61,35 @@ class MaxObjectAttach: MaxIOVisitor {
             wrapper.onList = method.callAsSelector
         }
     }
+    
+    // new:
+    func visit<T>(_ argument: Argument<T>) -> Bool {
+        MaxRuntime.post("\((object)) : Registering \(argument.optional ? "optional ":"")argument \(currentArgumentIndex) \(argument.description != nil ? "(\(argument.description!))" : "" )")
+        
+        if (!argument.optional && currentArgumentIsOptional){
+            MaxRuntime.post("\((object)) : Warning: non-optional argument at index \(currentArgumentIndex) following optional one")
+        }
+        
+        if (!currentArgumentIsOptional && argument.optional) { currentArgumentIsOptional = true }
+        
+        guard let arg = argument.wrappedValue as? (MaxValue)->Void else {
+            MaxRuntime.post("\((object)) : Error: bad argument handler provided")
+            return false
+        }
+        
+        wrapper.arguments.append(arg)
+        
+        currentArgumentIndex += 1
+        
+        if !currentArgumentIsOptional
+        {
+            wrapper.requiredArguments += 1
+        }
+        
+        return true
+    }
 }
+
+// MARK: -
+
+

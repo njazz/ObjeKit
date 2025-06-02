@@ -31,6 +31,32 @@ extension MaxValue {
     }
 }
 
+extension MaxValue {
+    init(any value: Any) {
+        switch value {
+        case let int as Int:
+            self = .int(int)
+        case let double as Double:
+            self = .float(double)
+        case let float as Float:
+            self = .float(Double(float))
+        case let string as String:
+            self = .symbol(string)
+        case let int32 as Int32:
+            self = .int(Int(int32))
+        case let int64 as Int64:
+            self = .int(Int(int64))
+        case let uint as UInt:
+            self = .int(Int(uint))
+        case let bool as Bool:
+            self = .int(bool ? 1 : 0)
+        default:
+            self = .unknown
+        }
+    }
+}
+
+
 //extension Array where Element == MaxValue {
 //    var asAtoms: [Atom] {
 //        self.map(Atom.init)

@@ -180,7 +180,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 253.0, 296.0, 70.0, 22.0 ],
-					"text" : "ObjeKitTest"
+					"text" : "objekit.test"
 				}
 
 			}

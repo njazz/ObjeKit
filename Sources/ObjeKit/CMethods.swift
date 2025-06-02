@@ -31,9 +31,10 @@ internal func _ctor(_ p: UnsafeMutableRawPointer?) -> UnsafeMutableRawPointer? {
         typed_obj.pointee.box = box.toRaw()
         
         // init
-        let visitor = MaxObjectAttach(obj!.assumingMemoryBound(to: t_object.self), wrapper: box.value)
+        let visitor = AttachInstance(obj!.assumingMemoryBound(to: t_object.self), wrapper: box.value)
         
         let mirror = Mirror(reflecting: box.value.object!)
+        
         // Gather all property wrappers conforming to MaxIOComponent
         let wrappers = mirror.children.compactMap { child -> MaxIOComponent? in
             // Property wrappers are stored under _propertyName, or sometimes with $propertyName, so we test both

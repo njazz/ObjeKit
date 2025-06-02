@@ -5,7 +5,6 @@
 //  Created by alex on 26/05/2025.
 //
 
-
 @resultBuilder
 public struct MaxObjectBuilder {
     public static func buildBlock(_ components: MaxObject...) -> MaxObject {
