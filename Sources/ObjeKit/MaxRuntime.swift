@@ -10,6 +10,15 @@
 /// Some wrappers for Max API
 public enum MaxRuntime {
     public static func post(_ text: String) {
-        poststring(text)        
+        poststring(text)
     }
+    
+    public static func warning(_ text: String) {
+        _warning(text)        
+    }
+    
+    public static func error(_ text: String) {
+        _error(text)
+    }
+    
 }

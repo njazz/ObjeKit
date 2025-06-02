@@ -135,16 +135,16 @@ extension Array where Element == String {
 
 // MARK: - Lossless unpacking
 
-public protocol LosslessConvertible {}
+public protocol MaxValueConvertible {}
 
-extension Int: LosslessConvertible {}
-extension UInt: LosslessConvertible {}
-extension Double: LosslessConvertible {}
-extension Float: LosslessConvertible {}
-extension String: LosslessConvertible {}
+extension Int: MaxValueConvertible {}
+extension UInt: MaxValueConvertible {}
+extension Double: MaxValueConvertible {}
+extension Float: MaxValueConvertible {}
+extension String: MaxValueConvertible {}
 
 extension MaxValue {
-    func convert<T: LosslessConvertible>(to type: T.Type) -> T? {
+    func convert<T: MaxValueConvertible>(to type: T.Type) -> T? {
         switch (self, type) {
         case (.int(let i), is Int.Type): return i as? T
         case (.float(let f), is Double.Type): return f as? T
@@ -156,12 +156,12 @@ extension MaxValue {
 }
 
 extension MaxList {
-    func unpack<T1>() -> T1? where T1: LosslessConvertible {
+    func unpack<T1>() -> T1? where T1: MaxValueConvertible {
         guard count == 1 else { return nil }
         return self[0].convert(to: T1.self)
     }
 
-    func unpack<T1, T2>() -> (T1, T2)? where T1: LosslessConvertible, T2: LosslessConvertible {
+    func unpack<T1, T2>() -> (T1, T2)? where T1: MaxValueConvertible, T2: MaxValueConvertible {
         guard count == 2 else { return nil }
         guard
             let v1 = self[0].convert(to: T1.self),

@@ -60,7 +60,7 @@ internal func _ctor(_ p: UnsafeMutableRawPointer?,
         
         // check size / fail
         if (argc < box.value.requiredArguments){
-            MaxRuntime.post("Missing arguments: \(box.value.arguments[0...argc].map { e in e.description ?? "[No description]" })")
+            MaxRuntime.error("Missing arguments: \(box.value.arguments[0...argc].map { e in e.description ?? "[No description]" })")
             return nil
         }
         
@@ -73,7 +73,7 @@ internal func _ctor(_ p: UnsafeMutableRawPointer?,
                 
                 let result = arg.untypedSetter(v)
                 if !result {
-                    MaxRuntime.post("Bad argument provided: \(v) for \(arg.description ?? "[No description]")")
+                    MaxRuntime.error("Bad argument provided: \(v) for \(arg.description ?? "[No description]")")
                     return nil
                 }
             }
@@ -81,7 +81,7 @@ internal func _ctor(_ p: UnsafeMutableRawPointer?,
         
         // extra
         if (argc > box.value.arguments.count){
-            MaxRuntime.post("Extra arguments provided: \(argc) of \(box.value.arguments.count)")
+            MaxRuntime.warning("Extra arguments provided: \(argc) of \(box.value.arguments.count)")
         }
 
         // load arguments values

@@ -72,3 +72,15 @@ static inline void _class_add_full_method(t_class* t, const _full_method m, cons
 }
 
 static inline t_symbol* class_box() { return CLASS_BOX; }
+
+// MARK: -
+
+static inline
+void _error(const char* str){
+    error("%s\n", str);
+}
+
+static inline
+void _warning(const char* str){
+    object_warn(0, "%s\n", str);
+}

@@ -8,12 +8,6 @@
 
 @_implementationOnly import MSDKBridge
 
-//func _addressOf<T : AnyObject>(_ object: T?) -> UInt {
-//    if object == nil { 0 } else {
-//        UInt(bitPattern: Unmanaged.passUnretained(object!).toOpaque())
-//    }
-//}
-
 /// Attach DispatcherClass instance to max object instance
 class AttachInstance: MaxIOVisitor {
     var object : UnsafeMutablePointer<t_object>
@@ -62,12 +56,11 @@ class AttachInstance: MaxIOVisitor {
         }
     }
     
-    // new:
-    func visit<T: MaxArgumentValue>(_ argument: Argument<T>) -> Bool {
+    func visit<T: MaxValueConvertible>(_ argument: Argument<T>) -> Bool {
         MaxRuntime.post("\((object)) : Registering \(argument.optional ? "optional ":"")argument at \(currentArgumentIndex) \(argument.description != nil ? "(\(argument.description!))" : "" )")
         
         if (!argument.optional && currentArgumentIsOptional){
-            MaxRuntime.post("\((object)) : Warning: non-optional argument at index \(currentArgumentIndex) following optional one")
+            MaxRuntime.warning("\((object)) : Non-optional argument at index \(currentArgumentIndex) following optional one")
         }
         
         if (!currentArgumentIsOptional && argument.optional) { currentArgumentIsOptional = true }
@@ -78,22 +71,12 @@ class AttachInstance: MaxIOVisitor {
             let value = v.convert(to: T.self)
             
             if value == nil {
-                MaxRuntime.post("\((self.object)) : Error: bad argument value provided, expected: \(T.self)")
+                MaxRuntime.error("\((self.object)) : bad argument value provided, expected: \(T.self)")
                 return false
             }
             
             argument.setter(value!)
             return true
-            
-//            switch v {
-//            case let val as T:
-//                argument.setter(val)
-//                return true
-//            default:
-//                MaxRuntime.post("\((self.object)) : Error: bad argument value provided, expected: \(T.self)")
-//                return false
-//            }
-        
         }
         
         wrapper.arguments.append(

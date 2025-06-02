@@ -1,4 +1,5 @@
-[ ] outlets
+[ ] Inlets
+[ ] Outlets
 [x] Arguments
 [ ] Attributes
 [ ] DSP
