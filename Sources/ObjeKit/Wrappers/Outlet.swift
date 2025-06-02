@@ -5,20 +5,22 @@
 //  Created by alex on 26/05/2025.
 //
 
-@propertyWrapper
-public struct Inlet<T>: MaxIOComponent {
-    var index : UInt8?  // append new if nil
-    public var wrappedValue: T
-    public init(wrappedValue: T, _ index: UInt8? = nil) {
-        self.wrappedValue = wrappedValue
-    }
-    
-    public func accept<V>(visitor: V) where V : MaxIOVisitor {
-        visitor.visit(self)
-    }
-}
 
 //@propertyWrapper
+//public struct Inlet<T>: MaxIOComponent {
+//    var index : UInt8?  // append new if nil
+//    
+//    public var wrappedValue: T
+//    public init(wrappedValue: T, _ index: UInt8? = nil) {
+//        self.wrappedValue = wrappedValue
+//    }
+//    
+//    public func accept<V>(visitor: V) where V : MaxIOVisitor {
+//        visitor.visit(self)
+//    }
+//}
+
+@propertyWrapper
 public class Outlet<T>: MaxIOComponent {
     var index: UInt8?  // append new if nil
     private var binding: MaxBinding<T>

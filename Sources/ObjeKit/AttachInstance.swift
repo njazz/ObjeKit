@@ -21,11 +21,11 @@ class AttachInstance: MaxIOVisitor {
         self.wrapper = wrapper
     }
     
-    func visit<T>(_ inlet: Inlet<T>) {
-        MaxRuntime.post("\((object)) : Registering inlet with value: \(inlet.wrappedValue)")
-        
-        let this_inlet = inlet_new(self.object, nil)
-    }
+//    func visit<T>(_ inlet: Inlet<T>) {
+//        MaxRuntime.post("\((object)) : Registering inlet with value: \(inlet.wrappedValue)")
+//        
+//        let this_inlet = inlet_new(self.object, nil)
+//    }
     
     func visit<T>(_ outlet: Outlet<T>) {
         MaxRuntime.post("\((object)) : Registering outlet with value: \(outlet.wrappedValue)")
@@ -39,7 +39,7 @@ class AttachInstance: MaxIOVisitor {
         
     }
     
-    func visit(_ method: MaxMethod) {
+    func visit(_ method: Inlet) {
         MaxRuntime.post("\((object)) : Registering method \(method.kind)")
         
         switch method.kind {
@@ -53,6 +53,11 @@ class AttachInstance: MaxIOVisitor {
             wrapper.onSelector[name] = method.callAsSelector
         case .list:
             wrapper.onList = method.callAsSelector
+        }
+        
+        // add inlets accordingly
+        if case .available = method.index{
+            let this_inlet = inlet_new(self.object, nil)
         }
     }
     

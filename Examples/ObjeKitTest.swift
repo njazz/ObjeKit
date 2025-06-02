@@ -7,9 +7,6 @@
 
 import ObjeKit
 
-import Cocoa
-import SwiftUI
-
 class ObjeKitTest : MaxObject {
     static var className: String { "objekit.test"}
     
@@ -26,16 +23,6 @@ class ObjeKitTest : MaxObject {
     @MaxState
     var value : Float = 3.3
     
-    @MaxMethod("method1")
-    var method1 = {
-        MaxRuntime.post("method1")
-    }
-    
-    // MARK: - inlets provided as property wrappers
-    
-    @Inlet(2)
-    var inlet2 : Int = 10
-    
     @MaxIOBuilder
     var io: any MaxIOComponent {
         
@@ -45,30 +32,35 @@ class ObjeKitTest : MaxObject {
         Argument( description: "optional argument, int") { (v:Int) in }
         
         // MARK: - builder:  methods
-        MaxMethod() {
+        Inlet("method1")
+        {
+            MaxRuntime.post("method1")
+        }
+        
+        Inlet() {
             self.value += 1
             MaxRuntime.post("bang! value: \(self.value)")
         }
         
-        MaxMethod() { (value : Double) in
+        Inlet() { (value : Double) in
             MaxRuntime.post("float: \(value)")
         }
         
-        MaxMethod() { (value : CLong) in
+        Inlet() { (value : CLong) in
             MaxRuntime.post("int: \(value)")
         }
                 
-        MaxMethod("test") { value in
-            self.inlet2 = 0
+        Inlet("test") { value in
+//            self.inlet2 = 0
             MaxRuntime.post("test: \(value)")
         }
         
-        MaxMethod() { (value:[MaxValue]) in
+        Inlet() { (value:[MaxValue]) in
             MaxRuntime.post("list: \(value)")
         }
         
         // MARK: - builder:  I/O
-        Inlet() { (v:Int) in self.inlet2 = v }
+        Inlet(inlet: .index(1)) { }
 
         Outlet(0) { self.$value }
         Outlet { self.$value }

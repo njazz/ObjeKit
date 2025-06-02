@@ -7,9 +7,9 @@
 
 /// Helper class to attach dynamically to instance components: I/O, Methods
 public protocol MaxIOVisitor {
-    func visit<T>(_ inlet: Inlet<T>)
+//    func visit<T>(_ inlet: Inlet<T>)
     func visit<T>(_ outlet: Outlet<T>)
-    func visit(_ method: MaxMethod)
+    func visit(_ method: Inlet)
     
     func visit<T>(_ argument: Argument<T>) -> Bool
 }

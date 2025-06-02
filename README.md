@@ -34,17 +34,15 @@ final class DemoObject: MaxObject {
     @MaxIOBuilder
     var io: any MaxIOComponent {
 
-	    @MaxMethod(.bang)
-	    var onBang = {
+	    MaxMethod() {
 	        print("Received bang")
 	    }
 
-	    @MaxMethod(.int)
-	    var onInt = { value in
+	    MaxMethod() { (value : Int) in
 	        print("Received int:", value)
 	    }
 
-	    @Outlet(0) { self.$someValue }
+	    Outlet(0) { self.$someValue }
 	}
 
     required init() {}

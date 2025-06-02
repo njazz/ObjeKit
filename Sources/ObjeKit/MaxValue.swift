@@ -32,7 +32,7 @@ extension MaxValue {
 }
 
 extension MaxValue {
-    init(any value: Any) {
+    public init(any value: Any) {
         switch value {
         case let int as Int:
             self = .int(int)
@@ -138,13 +138,17 @@ extension Array where Element == String {
 public protocol MaxValueConvertible {}
 
 extension Int: MaxValueConvertible {}
+extension Int16: MaxValueConvertible {}
+extension Int32: MaxValueConvertible {}
 extension UInt: MaxValueConvertible {}
+extension UInt16: MaxValueConvertible {}
+extension UInt32: MaxValueConvertible {}
 extension Double: MaxValueConvertible {}
 extension Float: MaxValueConvertible {}
 extension String: MaxValueConvertible {}
 
-extension MaxValue {
-    func convert<T: MaxValueConvertible>(to type: T.Type) -> T? {
+public extension MaxValue {
+   public func convert<T: MaxValueConvertible>(to type: T.Type) -> T? {
         switch (self, type) {
         case (.int(let i), is Int.Type): return i as? T
         case (.float(let f), is Double.Type): return f as? T

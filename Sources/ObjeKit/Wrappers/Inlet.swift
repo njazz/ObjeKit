@@ -1,0 +1,118 @@
+//
+//  MaxMethod.swift
+//  ObjeKit
+//
+//  Created by alex on 26/05/2025.
+//
+
+// TODO: exclude from property wrappers?
+
+public enum InletIndex {
+    case index(Int), any, available
+}
+
+public enum InletKind {
+    case bang
+    case int
+    case float
+    case selector(String)
+    case list
+}
+
+// MARK: - Inlet / Method combined
+
+// @propertyWrapper
+public struct Inlet: MaxIOComponent {
+    public let kind: InletKind
+    // TODO:
+    public var index: InletIndex = .index(0)
+
+    private let _contents: Any
+
+    // Type-erased function getter
+    public var wrappedValue: Any {
+        _contents
+    }
+
+    public init() {
+        _contents = { (_: [MaxValue]) in }
+        kind = .list
+    }
+
+    // dispatch
+//    public init(wrappedValue: Any, _ name: String) {
+//        if let fn = wrappedValue as? ([MaxValue]) -> Void { self.init(name, fn) }
+//
+//        self.init()
+//    }
+
+//    public init<T>(wrappedValue: T, _ index: UInt8? = nil) {
+//        _contents = wrappedValue
+//
+//        kind = .list
+//    }
+
+    // Store any function matching known signatures
+    public init(inlet: InletIndex = .index(0), _ function: @escaping () -> Void) {
+        self.index = inlet
+        kind = .bang
+        _contents = function
+    }
+
+    public init(_ function: @escaping (CDouble) -> Void) {
+        kind = .float
+        _contents = function
+    }
+
+    public init(inlet: InletIndex = .index(0), _ function: @escaping (CLong) -> Void) {
+        self.index = inlet
+        kind = .int
+        _contents = function
+    }
+
+    public init(_ function: @escaping ([MaxValue]) -> Void) {
+        kind = .list
+        _contents = function
+    }
+
+    public init(inlet: InletIndex = .index(0),_ name: String, _ function: @escaping ([MaxValue]) -> Void) {
+        self.index = inlet
+        kind = .selector(name)
+        _contents = function
+    }
+
+    public init(inlet: InletIndex = .index(0), _ name: String, _ function: @escaping () -> Void) {
+        self.index = inlet
+        kind = .selector(name)
+        _contents = { (_: [MaxValue]) in function() }
+    }
+
+    public func accept<V: MaxIOVisitor>(visitor: V) {
+        visitor.visit(self)
+    }
+
+    // Optionally, helper to call with dynamic casting
+    public func callAsBang() {
+        if let fn = _contents as? () -> Void {
+            fn()
+        }
+    }
+
+    public func callAsFloat(_ v: Double) {
+        if let fn = _contents as? (Double) -> Void {
+            fn(v)
+        }
+    }
+
+    public func callAsInt(_ v: CLong) {
+        if let fn = _contents as? (CLong) -> Void {
+            fn(v)
+        }
+    }
+
+    public func callAsSelector(_ args: [MaxValue]) {
+        if let fn = _contents as? ([MaxValue]) -> Void {
+            fn(args)
+        }
+    }
+}
