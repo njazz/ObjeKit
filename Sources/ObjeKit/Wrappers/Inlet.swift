@@ -5,8 +5,6 @@
 //  Created by alex on 26/05/2025.
 //
 
-// TODO: exclude from property wrappers?
-
 public enum PortIndex {
     case index(Int), any, available
 }

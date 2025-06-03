@@ -2,13 +2,13 @@
 
 Swift DSL for Max SDK (Unofficial)
 
-## Overview
+## 📦 Overview
 
-This project provides a minimal, declarative Swift framework for authoring Max/MSP external objects. It leverages Swift’s modern language features—such as property wrappers, result builders, and reflection—to define Max object components (inlets, outlets, and methods) with minimal boilerplate.
+This project aims to provide a compact syntax alternative to the traditional Max/MSP C API, enabling seamless integration with existing Swift codebases.
 
-By prioritizing native macOS interop and Swift’s type system, the framework offers a compact, expressive API for Max external development. The tradeoff is limited cross-platform portability, as the implementation is closely tied to the Max SDK and Apple's platform constraints.
-
-This approach is intended for developers who value concise syntax and native Swift tooling over C-level compatibility or multi-platform deployment.
+Tradeoffs:  
+- Introduces an additional dynamic dispatch layer, which may have performance implications in tight DSP loops.  
+- Requires explicit initialization logic to bridge Swift objects with Max/MSP's C-based runtime.  
 
 ## 🧪 Quick Start
 
@@ -64,7 +64,7 @@ Version number: 0.0.1
 🔄 Outlets  
 🔄 MaxOutput - generic output  
 ✅ Arguments  
-❌` Attributes  
+❌ Attributes  
 ❌ DSP  
 ❌ Jitter  
 

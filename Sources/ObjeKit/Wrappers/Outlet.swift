@@ -27,10 +27,7 @@ public struct MaxOutput: MaxIOComponent {
     }
 }
 
-//@propertyWrapper
-public class Outlet<T /*: MaxValueConvertible*/>: MaxIOComponent {
-//    var index_: UInt8?  // append new if nil
-    
+public class Outlet<T /*: MaxValueConvertible*/>: MaxIOComponent {    
     public let kind: PortKind = .list
     public var index: PortIndex = .available
     

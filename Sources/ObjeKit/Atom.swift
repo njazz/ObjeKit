@@ -7,6 +7,7 @@
 
 @_implementationOnly import MSDKBridge
 
+/// low-level Max SDK type wrap
 enum Atom {
     case float(Double)
     case int(Int)
@@ -55,7 +56,7 @@ extension Array where Element == Atom {
     }
 }
 
-// MARK: -
+// MARK: - C interop
 
 func atomsFromPointer(_ count: CLong, _ ptr: UnsafeMutablePointer<t_atom>?) -> [Atom] {
     guard let ptr = ptr else { return [] }

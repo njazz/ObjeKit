@@ -66,7 +66,7 @@ internal func _ctor(_ p: UnsafeMutableRawPointer?,
         
         let atoms = atomsFromPointer(argc, argv).asMaxList
         
-        for var i in 0..<atoms.count {
+        for i in 0..<atoms.count {
             let v = atoms[i]
             if i < box.value.arguments.count {
                 let arg = box.value.arguments[i]

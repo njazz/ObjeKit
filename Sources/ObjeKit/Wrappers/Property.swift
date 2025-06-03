@@ -5,7 +5,6 @@
 //  Created by alex on 26/05/2025.
 //
 
-
 @propertyWrapper
 public struct MaxBinding<T> : MaxIOComponent {
     

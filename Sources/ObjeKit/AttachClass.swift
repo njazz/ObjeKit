@@ -7,6 +7,7 @@
 
 @_implementationOnly import MSDKBridge
 
+/// currently unused
 class AttachClass : MaxClassIOVisitor {
     var object : UnsafeMutablePointer<t_class>
     
