@@ -12,11 +12,9 @@ This approach is intended for developers who value concise syntax and native Swi
 
 ## 🧪 Quick Start
 
-### ✅ Prerequisites
+### ✅ Installation
 
-- macOS with Xcode  
-- Max SDK (bridged to Swift via module map or wrapper)  
-- Swift package or Xcode project integrating this framework  
+- add package to the project
 
 ---
 
@@ -31,6 +29,8 @@ final class DemoObject: MaxObject {
     @Inlet var input = 0
     @MaxState someValue = 123.45
 
+    @MaxOutput var genericOutput
+
     @MaxIOBuilder
     var io: any MaxIOComponent {
 
@@ -42,7 +42,7 @@ final class DemoObject: MaxObject {
 	        print("Received int:", value)
 	    }
 
-	    Outlet(0) { self.$someValue }
+	    Outlet(.index(0)) { self.$someValue }
 	}
 
     required init() {}
@@ -53,3 +53,21 @@ public func ext_main(_ r: UnsafeMutableRawPointer) {
     MaxDispatcher.setup(DemoObject.self)
 }
 ```
+
+---
+
+### Status
+
+Version number: 0.0.1  
+  
+✅ Inlets  
+🔄 Outlets  
+🔄 MaxOutput - generic output  
+✅ Arguments  
+❌` Attributes  
+❌ DSP  
+❌ Jitter  
+
+---
+
+Max and Max/MSP are trademarks of Cycling '74. This project is not affiliated with, endorsed by, or sponsored by Cycling '74.
