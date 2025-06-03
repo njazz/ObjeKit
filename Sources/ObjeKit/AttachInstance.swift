@@ -27,37 +27,57 @@ class AttachInstance: MaxIOVisitor {
 //        let this_inlet = inlet_new(self.object, nil)
 //    }
     
-    func visit<T>(_ outlet: Outlet<T>) {
+    func visit<T/*: MaxValueConvertible*/>(_ outlet: Outlet<T>) {
         MaxRuntime.post("\((object)) : Registering outlet with value: \(outlet.wrappedValue)")
         
+        // add inlets accordingly
+//        if case .available = outlet.index {
+        
         let this_outlet = outlet_new(self.object, nil)
+        if this_outlet != nil  { wrapper.outlets.append(this_outlet!) }
+        
+//        }
         
         outlet.onChange = { [this_outlet] value in
-            MaxRuntime.post("outlet")
-            outlet_bang(this_outlet)
+//
+            if T.Type.self == MaxList.self {
+                let v = value as? MaxList
+                if v?.count == 0 {
+                    MaxRuntime.post("outlet bang")
+                    outlet_bang(this_outlet)
+                }
+                else {
+                    let atoms = makeAtomPointer(from: v!.asAtoms )
+                    outlet_list(this_outlet, nil, Int16(atoms.argc), atoms.argv)
+                    // NB list size is limited to 256
+                    MaxRuntime.post("outlet list \(atoms)")
+                }
+                
+            }
         }
         
     }
     
-    func visit(_ method: Inlet) {
-        MaxRuntime.post("\((object)) : Registering method \(method.kind)")
+    func visit(_ inlet: Inlet) {
+        MaxRuntime.post("\((object)) : Registering method \(inlet.kind)")
         
-        switch method.kind {
+        switch inlet.kind {
         case .bang:
-            wrapper.onBang = method.callAsBang
+            wrapper.onBang = inlet.callAsBang
         case .int:
-            wrapper.onInt = method.callAsInt
+            wrapper.onInt = inlet.callAsInt
         case .float:
-            wrapper.onDouble = method.callAsFloat
+            wrapper.onDouble = inlet.callAsFloat
         case .selector(let name):
-            wrapper.onSelector[name] = method.callAsSelector
+            wrapper.onSelector[name] = inlet.callAsSelector
         case .list:
-            wrapper.onList = method.callAsSelector
+            wrapper.onList = inlet.callAsSelector
         }
         
         // add inlets accordingly
-        if case .available = method.index{
+        if case .available = inlet.index{
             let this_inlet = inlet_new(self.object, nil)
+            if this_inlet != nil { wrapper.inlets.append(this_inlet!) }
         }
     }
     

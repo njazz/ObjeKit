@@ -23,6 +23,12 @@ class ObjeKitTest : MaxObject {
     @MaxState
     var value : Float = 3.3
     
+    @MaxState
+    var bangOutlet : MaxList = []
+    
+    @MaxOutput()
+    var testOutlet
+    
     @MaxIOBuilder
     var io: any MaxIOComponent {
         
@@ -32,7 +38,7 @@ class ObjeKitTest : MaxObject {
         Argument( description: "optional argument, int") { (v:Int) in }
         
         // MARK: - builder:  methods
-        Inlet("method1")
+        Inlet(name:"method1")
         {
             MaxRuntime.post("method1")
         }
@@ -50,20 +56,23 @@ class ObjeKitTest : MaxObject {
             MaxRuntime.post("int: \(value)")
         }
                 
-        Inlet("test") { value in
+        Inlet(name:"test") { value in
 //            self.inlet2 = 0
             MaxRuntime.post("test: \(value)")
         }
         
         Inlet() { (value:[MaxValue]) in
             MaxRuntime.post("list: \(value)")
+            self.testOutlet.bang()
         }
         
         // MARK: - builder:  I/O
-        Inlet(inlet: .index(1)) { }
+        Inlet(.index(1)) { }
 
-        Outlet(0) { self.$value }
+        Outlet(.index(0)) { self.$value }
         Outlet { self.$value }
+        
+//        Outlet { self.$bangOutlet }
     }
     
 //    @MaxObjectBuilder

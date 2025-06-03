@@ -5,27 +5,38 @@
 //  Created by alex on 26/05/2025.
 //
 
+// NB: statless wrapper
+@propertyWrapper
+public struct MaxOutput: MaxIOComponent {
+    public var onChange: ((MaxList) -> Void)? // to be provided by AttachInstance
+    
+    public struct Sender {
+        public func bang() {}
+    }
+    
+    public let index: PortIndex
+    public var wrappedValue: Sender
+
+    public init(_ outlet: PortIndex = .index(0)) {
+        self.index = outlet
+        self.wrappedValue = Sender()
+    }
+
+    public func accept<V: MaxIOVisitor>(visitor: V) {
+//        visitor.visit(self)
+    }
+}
 
 //@propertyWrapper
-//public struct Inlet<T>: MaxIOComponent {
-//    var index : UInt8?  // append new if nil
-//    
-//    public var wrappedValue: T
-//    public init(wrappedValue: T, _ index: UInt8? = nil) {
-//        self.wrappedValue = wrappedValue
-//    }
-//    
-//    public func accept<V>(visitor: V) where V : MaxIOVisitor {
-//        visitor.visit(self)
-//    }
-//}
-
-@propertyWrapper
-public class Outlet<T>: MaxIOComponent {
-    var index: UInt8?  // append new if nil
+public class Outlet<T /*: MaxValueConvertible*/>: MaxIOComponent {
+//    var index_: UInt8?  // append new if nil
+    
+    public let kind: PortKind = .list
+    public var index: PortIndex = .available
+    
     private var binding: MaxBinding<T>
 
-    public var onChange: ((T) -> Void)?
+    public var onChange: ((T) -> Void)? // to be provided by AttachInstance
     
     public var wrappedValue: T {
         get { binding.get() }
@@ -33,8 +44,8 @@ public class Outlet<T>: MaxIOComponent {
     }
 
     // Init with index and a binding provider closure
-    public init(_ index: UInt8? = nil, _ bindingProvider: @escaping () -> MaxBinding<T>) {
-        self.index = index
+    public init(_ outlet: PortIndex = .index(0), _ bindingProvider: @escaping () -> MaxBinding<T>) {
+        self.index = outlet
         self.binding = bindingProvider()
         
         self.binding.observe { newValue in
@@ -43,13 +54,26 @@ public class Outlet<T>: MaxIOComponent {
     }
     
     public init( bindingProvider: @escaping () -> MaxBinding<T>) {
-        self.index = nil
+        self.index = .index(0)
         self.binding = bindingProvider()
         
         self.binding.observe { newValue in
             self.onChange?(newValue)
         }
     }
+    
+//    public init(bindingProvider: @escaping () -> Void) {
+//        self.index = .index(0)
+//        self.binding = {
+//            MaxBinding<T>(
+//                get: { T() },
+//                set: { _ in },
+//                observe: { callback in
+//                   
+//                }
+//            )
+//        }()
+//    }
 
     public func accept<V>(visitor: V) where V: MaxIOVisitor {
         visitor.visit(self)

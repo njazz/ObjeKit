@@ -27,6 +27,9 @@ class DispatcherClass: Initializable {
     // 
     var arguments : [ArgumentData] = []
     var requiredArguments : UInt = 0
+    
+    var inlets : [UnsafeMutableRawPointer] = []
+    var outlets : [UnsafeMutableRawPointer] = []
 }
 
 struct DispatcherClassMetadata {

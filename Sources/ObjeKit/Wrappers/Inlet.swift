@@ -7,11 +7,11 @@
 
 // TODO: exclude from property wrappers?
 
-public enum InletIndex {
+public enum PortIndex {
     case index(Int), any, available
 }
 
-public enum InletKind {
+public enum PortKind {
     case bang
     case int
     case float
@@ -21,11 +21,10 @@ public enum InletKind {
 
 // MARK: - Inlet / Method combined
 
-// @propertyWrapper
+/// default inlet 0
 public struct Inlet: MaxIOComponent {
-    public let kind: InletKind
-    // TODO:
-    public var index: InletIndex = .index(0)
+    public let kind: PortKind
+    public var index: PortIndex
 
     private let _contents: Any
 
@@ -33,60 +32,46 @@ public struct Inlet: MaxIOComponent {
     public var wrappedValue: Any {
         _contents
     }
-
-    public init() {
-        _contents = { (_: [MaxValue]) in }
-        kind = .list
-    }
-
-    // dispatch
-//    public init(wrappedValue: Any, _ name: String) {
-//        if let fn = wrappedValue as? ([MaxValue]) -> Void { self.init(name, fn) }
-//
-//        self.init()
-//    }
-
-//    public init<T>(wrappedValue: T, _ index: UInt8? = nil) {
-//        _contents = wrappedValue
-//
-//        kind = .list
-//    }
-
-    // Store any function matching known signatures
-    public init(inlet: InletIndex = .index(0), _ function: @escaping () -> Void) {
+    
+    // MARK: -
+    
+    public init(_ inlet: PortIndex = .index(0), _ function: @escaping () -> Void) {
         self.index = inlet
         kind = .bang
         _contents = function
     }
 
-    public init(_ function: @escaping (CDouble) -> Void) {
+    public init(_ inlet: PortIndex = .index(0), _ function: @escaping (CDouble) -> Void) {
+        self.index = inlet
         kind = .float
         _contents = function
     }
 
-    public init(inlet: InletIndex = .index(0), _ function: @escaping (CLong) -> Void) {
+    public init(_ inlet: PortIndex = .index(0), _ function: @escaping (CLong) -> Void) {
         self.index = inlet
         kind = .int
         _contents = function
     }
 
-    public init(inlet: InletIndex = .index(0), _ function: @escaping ([MaxValue]) -> Void) {
+    public init(_ inlet: PortIndex = .index(0), _ function: @escaping ([MaxValue]) -> Void) {
         self.index = inlet
         kind = .list
         _contents = function
     }
 
-    public init(inlet: InletIndex = .index(0),_ name: String, _ function: @escaping ([MaxValue]) -> Void) {
+    public init(_ inlet: PortIndex = .index(0), name: String, _ function: @escaping ([MaxValue]) -> Void) {
         self.index = inlet
         kind = .selector(name)
         _contents = function
     }
 
-    public init(inlet: InletIndex = .index(0), _ name: String, _ function: @escaping () -> Void) {
+    public init(_ inlet: PortIndex = .index(0),  name: String, _ function: @escaping () -> Void) {
         self.index = inlet
         kind = .selector(name)
         _contents = { (_: [MaxValue]) in function() }
     }
+    
+    // MARK: -
 
     public func accept<V: MaxIOVisitor>(visitor: V) {
         visitor.visit(self)
