@@ -1,6 +1,0 @@
-[ ] Inlets / Methods : Methods -> Inlet(0)
-[ ] Outlets
-[x] Arguments
-[ ] Attributes
-[ ] DSP
-[ ] Jitter
