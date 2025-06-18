@@ -61,7 +61,25 @@ extension Array: MaxAttributeValue where Element: MaxAttributeValueElement {}
  
  */
 
-enum AttributeStyle { case text, onoff, rgba, maxEnum, maxEnumindex, rect, font, file };
+enum AttributeStyle /* : CaseIterable, RawRepresentable*/ { case text, onoff, rgba, maxEnum, maxEnumindex, rect, font, file
+    
+/*
+ init?(rawValue: String) {
+         let caseName = "m_\(rawValue)"
+         if let value = MyEnum.allCases.first(where: { "\($0)" == caseName }) {
+             self = value
+         } else {
+             return nil
+         }
+     }
+
+     var rawValue: String {
+         let fullName = String(describing: self)
+         guard fullName.hasPrefix("m_") else { return fullName }
+         return String(fullName.dropFirst(2))
+     }
+ */
+};
 
 /// Attribute wrapper (R/W)
 @propertyWrapper

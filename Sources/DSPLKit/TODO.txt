@@ -5,4 +5,6 @@
 [ ] Node
 [ ] basic
 
-[ ] merge dsp525
+[ ] blocksize/resample
+
+[-] merge dsp525

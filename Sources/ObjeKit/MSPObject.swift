@@ -7,7 +7,7 @@
 
 import DSPLKit
 
-// yet unused
+// STUB
 protocol MSPObject : MaxObject {
   func setupDSP(sampleRate: Double, vectorSize: UInt)
 

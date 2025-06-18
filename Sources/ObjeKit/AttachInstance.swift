@@ -108,8 +108,7 @@ class AttachInstance: MaxIOVisitor {
             ArgumentData(untypedSetter: untypedSetter,
                          optional: argument.optional,
                          description: argument.description)
-        )
-        
+        )        
         currentArgumentIndex += 1
         
         if !currentArgumentIsOptional

@@ -38,7 +38,6 @@ let package = Package(
                         .headerSearchPath("../../ThirdParty/max-sdk\(sdkVersionSuffix)/source/max-sdk-base/c74support/msp-includes"),
                     ],
                     cxxSettings: [
-                                   
                                    .unsafeFlags(["-std=c++17"])
                                ]
                 ),
@@ -57,7 +56,12 @@ let package = Package(
                 .headerSearchPath("../../ThirdParty/max-sdk\(sdkVersionSuffix)/source/max-sdk-base/c74support/max-includes"),
                 .headerSearchPath("../../ThirdParty/max-sdk\(sdkVersionSuffix)/source/max-sdk-base/c74support/msp-includes"),
             ]
-        )
+        ),
+//        
+//        .testTarget(
+//                    name: "ObjeKitTests",
+//                    dependencies: ["ObjeKit"]
+//                ),
         
 
     ]

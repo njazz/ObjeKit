@@ -15,12 +15,12 @@ public protocol MaxIOVisitor {
     func visit<T>(_ argument: Argument<T>) -> Bool
 }
 
-/// Helper class to attach dynamically to class components: Arguments, Attributes
+/// Helper class to attach dynamically to class components: Attributes
 public protocol MaxClassIOVisitor {
     func visit<T>(_ attribute: Attribute<T>)
 }
 
-// MARK: -
+// MARK: - default implementation
 
 public extension MaxIOVisitor {
     func visit(_ outlet: MaxOutput) {}

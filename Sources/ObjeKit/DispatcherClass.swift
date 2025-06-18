@@ -12,6 +12,10 @@ struct ArgumentData {
     var description : String?
 }
 
+struct AttributeData {
+    var description : String?
+}
+
 /// Proxy class forwarding to swift object
 class DispatcherClass: Initializable {
     required init() {}
@@ -30,8 +34,11 @@ class DispatcherClass: Initializable {
     
     var inlets : [UnsafeMutableRawPointer] = []
     var outlets : [UnsafeMutableRawPointer] = []
+    
+    var attributes : [AttributeData] = []
 }
 
+// TODO: use
 struct DispatcherClassMetadata {
     var maxClass: UnsafeMutablePointer<t_class>
     var objectType : MaxObject.Type

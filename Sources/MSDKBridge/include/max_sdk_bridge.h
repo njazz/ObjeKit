@@ -5,7 +5,6 @@
 //  Created by alex on 25/05/2025.
 //
 
-//static t_symbol* _CLASS_BOX = CLASS_BOX;
 #ifdef __cplusplus
 extern "C" {
 #endif

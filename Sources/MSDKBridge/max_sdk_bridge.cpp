@@ -10,6 +10,8 @@
 #include <iostream>
 #include <array>
 
+// MARK: - function pointer wrappers
+
 thread_local method_ctor _wrapperTarget {nullptr};
 
 template <int N>
@@ -35,8 +37,6 @@ static int currentIndex = 0;
 
 extern "C" {
 
-
-
 // C function to get the next function pointer (rotating)
 method_ctor get_next_ctor(method_ctor ctor) {
     _wrapperTarget = (method_ctor)ctor;
@@ -47,6 +47,6 @@ method_ctor get_next_ctor(method_ctor ctor) {
     return f;
 }
 
-
+// MARK: -
 
 } // extern "C"
