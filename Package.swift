@@ -19,6 +19,10 @@ let package = Package(
             name: "MSDKBridge",
             targets: ["MSDKBridge"]
         ),
+        .library(
+            name: "MockSDK",
+            targets: ["MockSDK"]
+        ),
     ],
     dependencies: [
         
@@ -57,11 +61,27 @@ let package = Package(
                 .headerSearchPath("../../ThirdParty/max-sdk\(sdkVersionSuffix)/source/max-sdk-base/c74support/msp-includes"),
             ]
         ),
-//        
-//        .testTarget(
-//                    name: "ObjeKitTests",
-//                    dependencies: ["ObjeKit"]
-//                ),
+        
+        .target(
+            name: "MockSDK",
+//            dependencies: ["MSDKBridge", "DSPLKit"],
+            path: "Sources/MockSDK",
+            cSettings: [
+//                .headerSearchPath("include"),
+                .headerSearchPath("../../ThirdParty/max-sdk\(sdkVersionSuffix)/source/max-sdk-base/c74support/max-includes"),
+                .headerSearchPath("../../ThirdParty/max-sdk\(sdkVersionSuffix)/source/max-sdk-base/c74support/msp-includes"),
+            ]
+        ),
+        
+        .testTarget(
+                    name: "ObjeKitTests",
+                    dependencies: ["MSDKBridge", "ObjeKit", "MockSDK"],
+                    cSettings: [
+                        .headerSearchPath("include"),
+                        .headerSearchPath("../../ThirdParty/max-sdk\(sdkVersionSuffix)/source/max-sdk-base/c74support/max-includes"),
+                        .headerSearchPath("../../ThirdParty/max-sdk\(sdkVersionSuffix)/source/max-sdk-base/c74support/msp-includes"),
+                    ]
+                ),
         
 
     ]

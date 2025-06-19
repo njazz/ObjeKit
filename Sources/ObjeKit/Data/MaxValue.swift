@@ -5,13 +5,24 @@
 //  Created by alex on 27/05/2025.
 //
 
-
 // minimal
 public enum MaxValue {
     case int(Int)
     case float(Double)
     case symbol(String)
     case unknown
+}
+
+extension MaxValue: Equatable {
+    public static func == (lhs: MaxValue, rhs: MaxValue) -> Bool {
+        switch (lhs, rhs) {
+        case let (.int(a), .int(b)): return a == b
+        case let (.float(a), .float(b)): return a == b
+        case let (.symbol(a), .symbol(b)): return a == b
+        case (.unknown, .unknown): return true
+        default: return false
+        }
+    }
 }
 
 public typealias MaxList = [MaxValue]

@@ -48,6 +48,18 @@ extension Atom {
     }
 }
 
+extension Atom: Equatable {
+    public static func == (lhs: Atom, rhs: Atom) -> Bool {
+        switch (lhs, rhs) {
+        case let (.float(a), .float(b)): return a == b
+        case let (.int(a), .int(b)): return a == b
+        case let (.symbol(a), .symbol(b)): return a == b
+        case (.unknown, .unknown): return true
+        default: return false
+        }
+    }
+}
+
 // MARK: -
 
 extension Array where Element == Atom {
