@@ -9,16 +9,26 @@
 
 /// Some wrappers for Max API
 public enum MaxRuntime {
+    internal static var _postImpl: (UnsafePointer<CChar>?) -> Void = poststring
+    internal static var _warningImpl: (UnsafePointer<CChar>?) -> Void = _warning
+    internal static var _errorImpl: (UnsafePointer<CChar>?) -> Void = _error
+    
     public static func post(_ text: String) {
-        poststring(text)
+        let v = strdup(text)
+        _postImpl(v)
+        free(v)
     }
     
     public static func warning(_ text: String) {
-        _warning(text)        
+        let v = strdup(text)
+        _warningImpl(v)
+        free(v)
     }
     
     public static func error(_ text: String) {
-        _error(text)
+        let v = strdup(text)
+        _errorImpl(v)
+        free(v)
     }
     
 }
