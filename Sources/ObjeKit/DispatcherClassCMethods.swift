@@ -11,6 +11,8 @@ internal func _ctor(_ p: UnsafeMutableRawPointer?,
 //                    _ s: UnsafeMutablePointer<t_symbol>?,
                     _ argc: CLong,
                     _ argv: UnsafeMutablePointer<t_atom>?) -> UnsafeMutableRawPointer? {
+    // extra test
+    if p == nil { return nil }
     
     MaxRuntime.post("input pointer: \(String(describing: p))")
     let ctor_ptr = unsafeBitCast(p, to: UnsafeRawPointer.self)

@@ -99,7 +99,10 @@ public class Attribute<T: MaxAttributeValue>: MaxIOComponent {
 
     public var wrappedValue: T {
         get { binding.get() }
-        set { binding.set(newValue) }
+        set {
+            binding.set(newValue)
+            if let c = onChange { c(newValue) }
+        }
     }
 
     // Init with index and a binding provider closure

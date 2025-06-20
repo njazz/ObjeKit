@@ -32,7 +32,9 @@ public protocol MaxIOComponent {
 // MARK: -
 
 public extension MaxObject {
+    /// NB: not yet used:
     var objects: MaxObject { CompositeMaxObject() }
+    
     var io: MaxIOComponent { CompositeMaxIO() }
 }
 

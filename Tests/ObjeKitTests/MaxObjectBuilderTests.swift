@@ -69,14 +69,14 @@ final class MaxBuilderTests: XCTestCase {
 
         let result = MaxObjectBuilder.buildBlock(obj1, obj2)
 
-        guard let composite = result as? CompositeMaxObject else {
+        guard let composite = result as? ObjeKit.CompositeMaxObject else {
             XCTFail("Expected CompositeMaxObject")
             return
         }
 
-        XCTAssertEqual(composite.components.count, 2)
-        XCTAssertTrue(composite.components[0] === obj1)
-        XCTAssertTrue(composite.components[1] === obj2)
+        XCTAssertEqual(composite.objects.count, 2)
+        XCTAssertTrue(composite.objects[0] === obj1)
+        XCTAssertTrue(composite.objects[1] === obj2)
     }
 
     func testMaxObjectBuilder_optionalComponent_present_returnsIt() {
@@ -90,12 +90,12 @@ final class MaxBuilderTests: XCTestCase {
     func testMaxObjectBuilder_optionalComponent_nil_returnsEmptyComposite() {
         let result = MaxObjectBuilder.buildOptional(nil)
 
-        guard let composite = result as? CompositeMaxObject else {
+        guard let composite = result as? ObjeKit.CompositeMaxObject else {
             XCTFail("Expected CompositeMaxObject")
             return
         }
 
-        XCTAssertEqual(composite.components.count, 0)
+        XCTAssertEqual(composite.objects.count, 0)
     }
 
     func testMaxObjectBuilder_buildEither_first() {
@@ -117,12 +117,12 @@ final class MaxBuilderTests: XCTestCase {
 
         let result = MaxObjectBuilder.buildArray(objs)
 
-        guard let composite = result as? CompositeMaxObject else {
+        guard let composite = result as? ObjeKit.CompositeMaxObject else {
             XCTFail("Expected CompositeMaxObject")
             return
         }
 
-        XCTAssertEqual(composite.components.count, 3)
+        XCTAssertEqual(composite.objects.count, 3)
     }
 
     func testMaxIOBuilder_buildBlock_returnsComposite() {
@@ -131,13 +131,13 @@ final class MaxBuilderTests: XCTestCase {
 
         let result = MaxIOBuilder.buildBlock(io1, io2)
 
-        guard let composite = result as? CompositeMaxIO else {
+        guard let composite = result as? ObjeKit.CompositeMaxIO else {
             XCTFail("Expected CompositeMaxIO")
             return
         }
 
-        XCTAssertEqual(composite.components.count, 2)
-//        XCTAssertTrue(composite.components[0] === io1)
-//        XCTAssertTrue(composite.components[1] === io2)
+        XCTAssertEqual(composite.io.count, 2)
+//        XCTAssertTrue(composite.io[0] === io1)
+//        XCTAssertTrue(composite.io[1] === io2)
     }
 }

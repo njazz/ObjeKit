@@ -55,7 +55,7 @@ final class CompositeMaxTests: XCTestCase {
     func testCompositeMaxObject_DefaultInit() {
         let composite = CompositeMaxObject()
         XCTAssertEqual(composite.objects.objects is CompositeMaxObject, true)
-        XCTAssertTrue(composite.components is CompositeMaxIO)
+        XCTAssertTrue(composite.components is [ObjeKit.MaxObject])
     }
 
     func testCompositeMaxObject_WithChildren() {

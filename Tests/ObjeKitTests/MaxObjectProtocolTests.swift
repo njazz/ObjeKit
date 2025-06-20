@@ -12,7 +12,9 @@ import XCTest
 final class MaxObjectProtocolTests: XCTestCase {
     
     class DummyObject: MaxObject {
-        required init() {}
+        required init() {
+            
+        }
         static var className: String = "DummyObject"
         
         // Not overriding default 'objects' and 'io'
@@ -20,12 +22,13 @@ final class MaxObjectProtocolTests: XCTestCase {
     
     func testDefaultObjectsPropertyReturnsCompositeMaxObject() {
         let obj = DummyObject()
-        XCTAssertTrue(type(of: obj.objects) == CompositeMaxObject.self)
+        XCTAssertTrue(type(of: obj.objects) == ObjeKit.CompositeMaxObject.self)
     }
     
     func testDefaultIOPropertyReturnsCompositeMaxIO() {
         let obj = DummyObject()
-        XCTAssertTrue(type(of: obj.io) == CompositeMaxIO.self)
+        let io = obj.io
+        XCTAssertTrue(type(of: obj.io) == ObjeKit.CompositeMaxIO.self)
     }
 }
 
