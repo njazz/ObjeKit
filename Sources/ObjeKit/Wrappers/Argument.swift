@@ -18,6 +18,6 @@ public struct Argument<T : MaxValueConvertible>: MaxIOComponent {
     }
     
     public func accept<V>(visitor: V) where V : MaxIOVisitor {
-        visitor.visit(self)
+        let _ = visitor.visit(self)
     }
 }

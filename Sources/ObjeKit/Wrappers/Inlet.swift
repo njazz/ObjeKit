@@ -9,7 +9,7 @@ public enum PortIndex {
     case index(Int), any, available
 }
 
-public enum PortKind {
+public enum PortKind : Equatable {
     case bang
     case int
     case float

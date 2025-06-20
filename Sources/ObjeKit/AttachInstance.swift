@@ -21,13 +21,7 @@ class AttachInstance: MaxIOVisitor {
         self.wrapper = wrapper
     }
     
-//    func visit<T>(_ inlet: Inlet<T>) {
-//        MaxRuntime.post("\((object)) : Registering inlet with value: \(inlet.wrappedValue)")
-//        
-//        let this_inlet = inlet_new(self.object, nil)
-//    }
-    
-    func visit<T/*: MaxValueConvertible*/>(_ outlet: Outlet<T>) {
+    func visit<T>(_ outlet: Outlet<T>) {
         MaxRuntime.post("\((object)) : Registering outlet with value: \(outlet.wrappedValue)")
         
         // add inlets accordingly
@@ -122,6 +116,5 @@ class AttachInstance: MaxIOVisitor {
     }
 }
 
-// MARK: -
 
 
