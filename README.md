@@ -6,6 +6,7 @@ Swift DSL for Max SDK (**Unofficial**)
 ![Swift Version](https://img.shields.io/badge/swift-5.9-orange.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Platform](https://img.shields.io/badge/platform-macOS%2011%2B-lightgrey.svg)
+![Build Status](https://github.com/your-username/your-repo-name/actions/workflows/build.yml/badge.svg)
 
 ## 📦 Overview
 
