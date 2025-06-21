@@ -8,7 +8,6 @@
 import XCTest
 @testable import ObjeKit
 
-
 final class AttributeStyleTests: XCTestCase {
     
     func testRawValueConversion() {

@@ -1,6 +1,11 @@
 # ObjeKit
 
-Swift DSL for Max SDK (Unofficial)
+Swift DSL for Max SDK (**Unofficial**)
+
+![WIP](https://img.shields.io/badge/status-WIP-yellow.svg)
+![Swift Version](https://img.shields.io/badge/swift-5.9-orange.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Platform](https://img.shields.io/badge/platform-macOS%2011%2B-lightgrey.svg)
 
 ## 📦 Overview
 
@@ -111,7 +116,9 @@ public func ext_main(_ r: UnsafeMutableRawPointer) {
 
 ### Status
 
-Version number: 0.0.1  
+⚠️ **Work In Progress** — This project is currently experimental and not ready for production use.
+
+Version number: 0.0.1 - Proof of concept
   
 ✅ Inlets  
 🔄 Outlets  
