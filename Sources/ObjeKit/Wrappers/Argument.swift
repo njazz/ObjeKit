@@ -11,7 +11,7 @@ public struct Argument<T : MaxValueConvertible>: MaxIOComponent {
     var description: String?
     var setter: (T)->Void
     
-    public init(optional: Bool = true, description : String? = nil, setter: @escaping (T)->Void = { (x:T) in }) {
+    public init(optional: Bool = true, _ description : String? = nil, setter: @escaping (T)->Void = { (x:T) in }) {
         self.setter = setter
         self.optional = optional
         self.description = description

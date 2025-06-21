@@ -10,8 +10,13 @@
 public struct MaxOutput: MaxIOComponent {
     public var onChange: ((MaxList) -> Void)? // to be provided by AttachInstance
     
-    public struct Sender {
-        public func bang() {}
+    public class Sender {
+        var action : (()->Void)?
+        public func bang() {
+            self.action?()
+        }
+        
+        
     }
     
     public let index: PortIndex
@@ -19,17 +24,27 @@ public struct MaxOutput: MaxIOComponent {
 
     public init(_ outlet: PortIndex = .index(0)) {
         self.index = outlet
+        
+
         self.wrappedValue = Sender()
+        
+        
+
+        
     }
 
     public func accept<V: MaxIOVisitor>(visitor: V) {
-//        visitor.visit(self)
+        visitor.visit(self)
+        self.wrappedValue.action = {
+            self.onChange?([])
+        }
+        
     }
 }
 
-public class Outlet<T /*: MaxValueConvertible*/>: MaxIOComponent {    
+public class Outlet<T>: MaxIOComponent {    
     public let kind: PortKind = .list
-    public var index: PortIndex = .available
+    public var index: PortIndex = .index(0)
     
     private var binding: MaxBinding<T>
 

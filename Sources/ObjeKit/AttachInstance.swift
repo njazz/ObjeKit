@@ -21,39 +21,10 @@ class AttachInstance: MaxIOVisitor {
         self.wrapper = wrapper
     }
     
-    func visit<T>(_ outlet: Outlet<T>) {
-        MaxRuntime.post("\((object)) : Registering outlet with value: \(outlet.wrappedValue)")
-        
-        // add inlets accordingly
-//        if case .available = outlet.index {
-        
-        let this_outlet = outlet_new(self.object, nil)
-        if this_outlet != nil  { wrapper.outlets.append(this_outlet!) }
-        
-//        }
-        
-        outlet.onChange = { [this_outlet] value in
-//
-            if T.Type.self == MaxList.self {
-                let v = value as? MaxList
-                if v?.count == 0 {
-                    MaxRuntime.post("outlet bang")
-                    outlet_bang(this_outlet)
-                }
-                else {
-                    let atoms = makeAtomPointer(from: v!.asAtoms )
-                    outlet_list(this_outlet, nil, Int16(atoms.argc), atoms.argv)
-                    // NB list size is limited to 256
-                    MaxRuntime.post("outlet list \(atoms)")
-                }
-                
-            }
-        }
-        
-    }
+    // MARK: -
     
     func visit(_ inlet: Inlet) {
-        MaxRuntime.post("\((object)) : Registering method \(inlet.kind)")
+        MaxRuntime.post("\((object)) : Registering method \(inlet.kind) port: \(inlet.index)")
         
         switch inlet.kind {
         case .bang:
@@ -72,8 +43,93 @@ class AttachInstance: MaxIOVisitor {
         if case .available = inlet.index{
             let this_inlet = inlet_new(self.object, nil)
             if this_inlet != nil { wrapper.inlets.append(this_inlet!) }
+            MaxRuntime.post("added next inlet");
         }
+        
+//        if case let .index(x) = inlet.index {
+//            if (wrapper.inlets.count == 0) {
+//                let this_inlet = inlet_new(self.object, nil)
+//                if this_inlet != nil { wrapper.inlets.append(this_inlet!) }
+//                MaxRuntime.post("added inlet");
+//            }
+//        }
     }
+    
+    func visit<T>(_ outlet: Outlet<T>) {
+        MaxRuntime.post("\((object)) : Registering outlet with value: \(outlet.wrappedValue) port: \(outlet.index)")
+
+        if case .available = outlet.index{
+            let this_outlet = outlet_new(self.object, nil)
+            if this_outlet != nil  { wrapper.outlets.append(this_outlet!) }
+            
+            //
+            outlet.onChange = { [this_outlet] value in
+
+                if T.Type.self == MaxList.self {
+                    let v = value as? MaxList
+                    if v?.count == 0 {
+                        MaxRuntime.post("outlet bang")
+                        outlet_bang(this_outlet)
+                    }
+                    else {
+                        let atoms = makeAtomPointer(from: v!.asAtoms )
+                        outlet_list(this_outlet, nil, Int16(atoms.argc), atoms.argv)
+                        // NB list size is limited to 256
+                        MaxRuntime.post("outlet list \(atoms)")
+                    }
+                    
+                }
+            }
+        }
+        
+        if case let .index(x) = outlet.index {
+            
+            
+            if (wrapper.outlets.count == 0) {
+                MaxRuntime.post("adding outlet")
+                let this_outlet = outlet_new(self.object, nil)
+                if this_outlet != nil  { wrapper.outlets.append(this_outlet!) }
+            }
+        }
+        
+        if case let .index(x) = outlet.index {
+            let this_outlet = wrapper.outlets[x]
+            MaxRuntime.post("attaching")
+            
+            outlet.onChange = { [this_outlet] value in
+                MaxRuntime.post("onchange \(T.Type.self)")
+                if let v = value as? MaxList {
+                    
+                    if v.count == 0 {
+                        MaxRuntime.post("outlet bang")
+                        outlet_bang(this_outlet)
+                    }
+                    else {
+                        let atoms = makeAtomPointer(from: v.asAtoms )
+                        outlet_list(this_outlet, nil, Int16(atoms.argc), atoms.argv)
+                        // NB list size is limited to 256
+                        MaxRuntime.post("outlet list \(atoms)")
+                    }
+                    
+                }
+                
+                if let v = value as? CLong {
+                    outlet_int(this_outlet, v)
+                }
+                
+                if let v = value as? Double{
+                    outlet_float(this_outlet, v)
+                }
+            }
+        }
+        
+       
+        
+        
+        
+    }
+    
+    // MARK: -
     
     func visit<T: MaxValueConvertible>(_ argument: Argument<T>) -> Bool {
         MaxRuntime.post("\((object)) : Registering \(argument.optional ? "optional ":"")argument at \(currentArgumentIndex) \(argument.description != nil ? "(\(argument.description!))" : "" )")
@@ -83,7 +139,6 @@ class AttachInstance: MaxIOVisitor {
         }
         
         if (!currentArgumentIsOptional && argument.optional) { currentArgumentIsOptional = true }
-        
         
         let untypedSetter = { (v:MaxValue) in
             

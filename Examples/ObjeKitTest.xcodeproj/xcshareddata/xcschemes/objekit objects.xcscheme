@@ -16,8 +16,22 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FAE80BAE2DE35FCB00574E37"
-               BuildableName = "objekit.test.mxo"
-               BlueprintName = "objekit.test"
+               BuildableName = "okt_simple.mxo"
+               BlueprintName = "okt_simple"
+               ReferencedContainer = "container:ObjeKitTest.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "FAEBCDD62E06DE0A0013A06C"
+               BuildableName = "okt_arguments.mxo"
+               BlueprintName = "okt_arguments"
                ReferencedContainer = "container:ObjeKitTest.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -53,8 +67,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FAE80BAE2DE35FCB00574E37"
-            BuildableName = "objekit.test.mxo"
-            BlueprintName = "objekit.test"
+            BuildableName = "okt_simple.mxo"
+            BlueprintName = "okt_simple"
             ReferencedContainer = "container:ObjeKitTest.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

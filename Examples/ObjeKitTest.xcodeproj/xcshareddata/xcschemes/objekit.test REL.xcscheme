@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FAE80BAE2DE35FCB00574E37"
-               BuildableName = "objekit.test.mxo"
-               BlueprintName = "objekit.test"
+               BuildableName = "okt_simple.mxo"
+               BlueprintName = "okt_simple"
                ReferencedContainer = "container:ObjeKitTest.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -51,8 +51,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FAE80BAE2DE35FCB00574E37"
-            BuildableName = "objekit.test.mxo"
-            BlueprintName = "objekit.test"
+            BuildableName = "okt_simple.mxo"
+            BlueprintName = "okt_simple"
             ReferencedContainer = "container:ObjeKitTest.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

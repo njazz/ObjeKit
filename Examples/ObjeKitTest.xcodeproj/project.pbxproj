@@ -3,13 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FA41EB872DE376D2002D63B0 /* tester.maxpat in CopyFiles */ = {isa = PBXBuildFile; fileRef = FA41EB832DE37632002D63B0 /* tester.maxpat */; };
 		FACB4A1D2DE6692D0084C9D8 /* ObjeKit in Frameworks */ = {isa = PBXBuildFile; productRef = FACB4A1C2DE6692D0084C9D8 /* ObjeKit */; };
-		FAE80BBA2DE3647000574E37 /* ObjeKitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE80BB92DE35FF600574E37 /* ObjeKitTest.swift */; };
+		FAE80BBA2DE3647000574E37 /* okt_simple.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE80BB92DE35FF600574E37 /* okt_simple.swift */; };
+		FAEBCDD52E06DC460013A06C /* objekit_test.maxpat in CopyFiles */ = {isa = PBXBuildFile; fileRef = FAEBCDD32E06DC320013A06C /* objekit_test.maxpat */; };
+		FAEBCDDD2E06DE0A0013A06C /* ObjeKit in Frameworks */ = {isa = PBXBuildFile; productRef = FAEBCDD82E06DE0A0013A06C /* ObjeKit */; };
+		FAEBCDE62E06DE1A0013A06C /* okt_arguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEBCDE52E06DE1A0013A06C /* okt_arguments.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -19,16 +21,27 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				FA41EB872DE376D2002D63B0 /* tester.maxpat in CopyFiles */,
+				FAEBCDD52E06DC460013A06C /* objekit_test.maxpat in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAEBCDDF2E06DE0A0013A06C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		FA41EB832DE37632002D63B0 /* tester.maxpat */ = {isa = PBXFileReference; lastKnownFileType = text; path = tester.maxpat; sourceTree = SOURCE_ROOT; };
-		FAE80BAF2DE35FCB00574E37 /* objekit.test.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = objekit.test.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
-		FAE80BB92DE35FF600574E37 /* ObjeKitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjeKitTest.swift; sourceTree = "<group>"; };
+		FAE80BAF2DE35FCB00574E37 /* okt_simple.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = okt_simple.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAE80BB92DE35FF600574E37 /* okt_simple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = okt_simple.swift; sourceTree = "<group>"; };
+		FAEBCDD32E06DC320013A06C /* objekit_test.maxpat */ = {isa = PBXFileReference; lastKnownFileType = text; path = objekit_test.maxpat; sourceTree = "<group>"; };
+		FAEBCDE42E06DE0A0013A06C /* okt_arguments.mxo */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = okt_arguments.mxo; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAEBCDE52E06DE1A0013A06C /* okt_arguments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = okt_arguments.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +50,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				FACB4A1D2DE6692D0084C9D8 /* ObjeKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAEBCDDC2E06DE0A0013A06C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAEBCDDD2E06DE0A0013A06C /* ObjeKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,8 +74,9 @@
 		FAE80BA62DE35FCB00574E37 = {
 			isa = PBXGroup;
 			children = (
-				FA41EB832DE37632002D63B0 /* tester.maxpat */,
-				FAE80BB92DE35FF600574E37 /* ObjeKitTest.swift */,
+				FAEBCDD32E06DC320013A06C /* objekit_test.maxpat */,
+				FAE80BB92DE35FF600574E37 /* okt_simple.swift */,
+				FAEBCDE52E06DE1A0013A06C /* okt_arguments.swift */,
 				FA41EB6D2DE368BB002D63B0 /* Frameworks */,
 				FAE80BB02DE35FCB00574E37 /* Products */,
 			);
@@ -63,7 +85,8 @@
 		FAE80BB02DE35FCB00574E37 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FAE80BAF2DE35FCB00574E37 /* objekit.test.mxo */,
+				FAE80BAF2DE35FCB00574E37 /* okt_simple.mxo */,
+				FAEBCDE42E06DE0A0013A06C /* okt_arguments.mxo */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,9 +94,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FAE80BAE2DE35FCB00574E37 /* objekit.test */ = {
+		FAE80BAE2DE35FCB00574E37 /* okt_simple */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FAE80BB32DE35FCB00574E37 /* Build configuration list for PBXNativeTarget "objekit.test" */;
+			buildConfigurationList = FAE80BB32DE35FCB00574E37 /* Build configuration list for PBXNativeTarget "okt_simple" */;
 			buildPhases = (
 				FAE80BAB2DE35FCB00574E37 /* Sources */,
 				FAE80BAC2DE35FCB00574E37 /* Frameworks */,
@@ -85,12 +108,34 @@
 			dependencies = (
 				FACB4A1B2DE669290084C9D8 /* PBXTargetDependency */,
 			);
-			name = objekit.test;
+			name = okt_simple;
 			packageProductDependencies = (
 				FACB4A1C2DE6692D0084C9D8 /* ObjeKit */,
 			);
 			productName = "max-sdk-kit-test";
-			productReference = FAE80BAF2DE35FCB00574E37 /* objekit.test.mxo */;
+			productReference = FAE80BAF2DE35FCB00574E37 /* okt_simple.mxo */;
+			productType = "com.apple.product-type.bundle";
+		};
+		FAEBCDD62E06DE0A0013A06C /* okt_arguments */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAEBCDE12E06DE0A0013A06C /* Build configuration list for PBXNativeTarget "okt_arguments" */;
+			buildPhases = (
+				FAEBCDDA2E06DE0A0013A06C /* Sources */,
+				FAEBCDDC2E06DE0A0013A06C /* Frameworks */,
+				FAEBCDDE2E06DE0A0013A06C /* Resources */,
+				FAEBCDDF2E06DE0A0013A06C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FAEBCDD72E06DE0A0013A06C /* PBXTargetDependency */,
+			);
+			name = okt_arguments;
+			packageProductDependencies = (
+				FAEBCDD82E06DE0A0013A06C /* ObjeKit */,
+			);
+			productName = "max-sdk-kit-test";
+			productReference = FAEBCDE42E06DE0A0013A06C /* okt_arguments.mxo */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -101,6 +146,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1620;
+				ORGANIZATIONNAME = "Alex Nadzharov";
 				TargetAttributes = {
 					FAE80BAE2DE35FCB00574E37 = {
 						CreatedOnToolsVersion = 16.2;
@@ -108,6 +154,7 @@
 				};
 			};
 			buildConfigurationList = FAE80BAA2DE35FCB00574E37 /* Build configuration list for PBXProject "ObjeKitTest" */;
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -119,18 +166,25 @@
 			packageReferences = (
 				FACB4A192DE667CA0084C9D8 /* XCLocalSwiftPackageReference "../../ObjeKit" */,
 			);
-			preferredProjectObjectVersion = 77;
 			productRefGroup = FAE80BB02DE35FCB00574E37 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FAE80BAE2DE35FCB00574E37 /* objekit.test */,
+				FAE80BAE2DE35FCB00574E37 /* okt_simple */,
+				FAEBCDD62E06DE0A0013A06C /* okt_arguments */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		FAE80BAD2DE35FCB00574E37 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAEBCDDE2E06DE0A0013A06C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -144,7 +198,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAE80BBA2DE3647000574E37 /* ObjeKitTest.swift in Sources */,
+				FAE80BBA2DE3647000574E37 /* okt_simple.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAEBCDDA2E06DE0A0013A06C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAEBCDE62E06DE1A0013A06C /* okt_arguments.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +214,10 @@
 
 /* Begin PBXTargetDependency section */
 		FACB4A1B2DE669290084C9D8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = FACB4A1A2DE669290084C9D8 /* ObjeKit */;
+		};
+		FAEBCDD72E06DE0A0013A06C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = FACB4A1A2DE669290084C9D8 /* ObjeKit */;
 		};
@@ -321,6 +387,54 @@
 			};
 			name = Release;
 		};
+		FAEBCDE22E06DE0A0013A06C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 85478UQJJR;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-Wl,-undefined,dynamic_lookup";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alexnadzharov.max-sdk-kit-test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				WRAPPER_EXTENSION = mxo;
+			};
+			name = Debug;
+		};
+		FAEBCDE32E06DE0A0013A06C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 85478UQJJR;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPrincipalClass = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-Wl,-undefined,dynamic_lookup";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alexnadzharov.max-sdk-kit-test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				WRAPPER_EXTENSION = mxo;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -333,7 +447,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FAE80BB32DE35FCB00574E37 /* Build configuration list for PBXNativeTarget "objekit.test" */ = {
+		FAE80BB32DE35FCB00574E37 /* Build configuration list for PBXNativeTarget "okt_simple" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FAE80BB42DE35FCB00574E37 /* Debug */,
@@ -342,10 +456,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		FAEBCDE12E06DE0A0013A06C /* Build configuration list for PBXNativeTarget "okt_arguments" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAEBCDE22E06DE0A0013A06C /* Debug */,
+				FAEBCDE32E06DE0A0013A06C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
 		FACB4A192DE667CA0084C9D8 /* XCLocalSwiftPackageReference "../../ObjeKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../ObjeKit;
+		};
+		FAEBCDD92E06DE0A0013A06C /* XCLocalSwiftPackageReference "../../ObjeKit" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../../ObjeKit;
 		};
@@ -360,6 +487,11 @@
 		FACB4A1C2DE6692D0084C9D8 /* ObjeKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FACB4A192DE667CA0084C9D8 /* XCLocalSwiftPackageReference "../../ObjeKit" */;
+			productName = ObjeKit;
+		};
+		FAEBCDD82E06DE0A0013A06C /* ObjeKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAEBCDD92E06DE0A0013A06C /* XCLocalSwiftPackageReference "../../ObjeKit" */;
 			productName = ObjeKit;
 		};
 /* End XCSwiftPackageProductDependency section */

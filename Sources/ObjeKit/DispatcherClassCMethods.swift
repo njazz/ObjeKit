@@ -8,7 +8,6 @@
 @_implementationOnly import MSDKBridge
 
 internal func _ctor(_ p: UnsafeMutableRawPointer?,
-//                    _ s: UnsafeMutablePointer<t_symbol>?,
                     _ argc: CLong,
                     _ argv: UnsafeMutablePointer<t_atom>?) -> UnsafeMutableRawPointer? {
     // extra test
@@ -28,7 +27,7 @@ internal func _ctor(_ p: UnsafeMutableRawPointer?,
 
     let typed_obj = obj!.assumingMemoryBound(to: t_wrapped_object.self) // as! UnsafeMutablePointer<t_wrapped_object>?
 
-    t_wrapped_object_allocate_proxy(typed_obj)
+    // t_wrapped_object_allocate_proxy(typed_obj)
 
     if let swiftClass = MaxDispatcher._swiftClassMap["\(ctor_ptr)"] {
         let box = Box.create(DispatcherClass.self)
@@ -98,7 +97,7 @@ internal func _dtor(ptr: UnsafeMutableRawPointer?) -> UnsafeMutableRawPointer? {
 
     let obj = ptr!.assumingMemoryBound(to: t_wrapped_object.self)
 
-    t_wrapped_object_free_proxy(obj)
+    // t_wrapped_object_free_proxy(obj)
 
     let p = obj.pointee.box
 

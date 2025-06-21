@@ -9,20 +9,25 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>objekit.test REL.xcscheme_^#shared#^_</key>
+		<key>objekit objects.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>objekit.test.xcscheme_^#shared#^_</key>
+		<key>objekit.test REL.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>3</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>FAE80BAE2DE35FCB00574E37</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FAEBCDD62E06DE0A0013A06C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

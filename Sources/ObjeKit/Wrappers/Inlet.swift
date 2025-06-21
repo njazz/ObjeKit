@@ -19,7 +19,7 @@ public enum PortKind : Equatable {
 
 // MARK: - Inlet / Method combined
 
-/// default inlet 0
+/// NB default is always inlet 0
 public struct Inlet: MaxIOComponent {
     public let kind: PortKind
     public var index: PortIndex
