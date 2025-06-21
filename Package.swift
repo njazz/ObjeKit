@@ -64,10 +64,8 @@ let package = Package(
         
         .target(
             name: "MockSDK",
-//            dependencies: ["MSDKBridge", "DSPLKit"],
             path: "Sources/MockSDK",
             cSettings: [
-//                .headerSearchPath("include"),
                 .headerSearchPath("../../ThirdParty/max-sdk\(sdkVersionSuffix)/source/max-sdk-base/c74support/max-includes"),
                 .headerSearchPath("../../ThirdParty/max-sdk\(sdkVersionSuffix)/source/max-sdk-base/c74support/msp-includes"),
             ]
