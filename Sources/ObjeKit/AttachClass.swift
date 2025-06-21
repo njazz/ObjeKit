@@ -2,7 +2,7 @@
 //  AttachClass.swift
 //  ObjeKit
 //
-//  Created by alex on 02/06/2025.
+//  Created by Alex Nadzharov on 02/06/2025.
 //
 
 @_implementationOnly import MSDKBridge

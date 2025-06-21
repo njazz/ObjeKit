@@ -2,7 +2,7 @@
 //  test_mocks.c
 //  ObjeKit
 //
-//  Created by alex on 19/06/2025.
+//  Created by Alex Nadzharov on 19/06/2025.
 //
 
 #include "ext.h"
@@ -35,6 +35,8 @@ void *object_alloc(t_class *c){}
 void object_warn(t_object *x, C74_CONST char *s, ...){}
 
 void *outlet_bang(t_outlet *x){}
+void *outlet_float(t_outlet *x, double v){}
+void *outlet_int(t_outlet *x, long v){}
 void *outlet_list(t_outlet *x, t_symbol *s, short ac, t_atom *av){}
 
 void *proxy_new(void *x, long id, long *stuffloc){}

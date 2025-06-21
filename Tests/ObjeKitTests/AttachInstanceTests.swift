@@ -2,7 +2,7 @@
 //  MockDispatcherClass.swift
 //  ObjeKit
 //
-//  Created by alex on 20/06/2025.
+//  Created by Alex Nadzharov on 20/06/2025.
 //
 
 
@@ -106,7 +106,7 @@ final class AttachInstanceTests: XCTestCase {
     func testVisitArgumentAppendsArgumentAndUpdatesFlags() {
         let attach = AttachInstance(objectPtr, wrapper: dispatcher)
         
-        let argument = Argument<Int>(optional: false, description: "Test Arg", setter: { _ in })
+        let argument = Argument<Int>(optional: false, "Test Arg", setter: { _ in })
         
         let result = attach.visit(argument)
         
@@ -120,10 +120,10 @@ final class AttachInstanceTests: XCTestCase {
     func testVisitArgumentLogsWarningIfNonOptionalAfterOptional() {
         let attach = AttachInstance(objectPtr, wrapper: dispatcher)
         
-        let optionalArg = Argument<Int>(optional: true, description: nil, setter: { _ in })
+        let optionalArg = Argument<Int>(optional: true, nil, setter: { _ in })
         _ = attach.visit(optionalArg)
         
-        let nonOptionalArg = Argument<Int>(optional: false, description: nil, setter: { _ in })
+        let nonOptionalArg = Argument<Int>(optional: false, nil, setter: { _ in })
         _ = attach.visit(nonOptionalArg)
         
         XCTAssertTrue(MockMaxRuntime.warnings.contains(where: { $0.contains("Non-optional argument at index") }))

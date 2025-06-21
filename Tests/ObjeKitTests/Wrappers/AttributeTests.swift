@@ -2,7 +2,7 @@
 //  AttributeStyleTests.swift
 //  ObjeKit
 //
-//  Created by alex on 20/06/2025.
+//  Created by Alex Nadzharov on 20/06/2025.
 //
 
 import XCTest

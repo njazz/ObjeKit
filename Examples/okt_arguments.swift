@@ -2,7 +2,7 @@
 //  ObjeKit.swift
 //  ObjeKitTest
 //
-//  Created by alex on 21/06/2025.
+//  Created by Alex Nadzharov on 21/06/2025.
 //
 
 import ObjeKit

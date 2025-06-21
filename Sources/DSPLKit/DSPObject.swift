@@ -2,7 +2,7 @@
 //  DSPObject.swift
 //  ObjeKit
 //
-//  Created by alex on 26/05/2025.
+//  Created by Alex Nadzharov on 26/05/2025.
 //
 
 public struct DSPConfiguration {

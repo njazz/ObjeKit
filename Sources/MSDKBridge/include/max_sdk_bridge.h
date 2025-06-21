@@ -2,7 +2,7 @@
 //  max_api_kit.h
 //  ObjeKit
 //
-//  Created by alex on 25/05/2025.
+//  Created by Alex Nadzharov on 25/05/2025.
 //
 
 #ifdef __cplusplus

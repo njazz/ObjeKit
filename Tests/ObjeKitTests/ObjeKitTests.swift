@@ -2,7 +2,7 @@
 //  ObjeKitTests.swift
 //  ObjeKit
 //
-//  Created by alex on 18/06/2025.
+//  Created by Alex Nadzharov on 18/06/2025.
 //
 
 import XCTest

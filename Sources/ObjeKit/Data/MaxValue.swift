@@ -2,7 +2,7 @@
 //  MaxValue.swift
 //  ObjeKit
 //
-//  Created by alex on 27/05/2025.
+//  Created by Alex Nadzharov on 27/05/2025.
 //
 
 // minimal
