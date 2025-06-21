@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "4038D267-F8C7-496B-AA42-B5EC2C5A3B61"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "770679C1-2A1A-49C0-BFC9-E986B6D9EE9C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../MaxAPIKit/Sources/MaxAPIKit/Common/MaxDispatcher.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "setup(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D88C4265-95E2-48D3-A4F4-F1209CB70F93"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../MaxAPIKit/Sources/MaxAPIKit/Common/MaxDispatcher.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "setup(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "460C5A81-3D05-42F3-A473-8BBF76D7D5BE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../MaxAPIKit/Sources/MaxAPIKit/Common/MaxDispatcher.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "setup(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DB8BA191-0249-49A3-A0F0-5BF2DB9FB3F4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Sources/ObjeKit/DispatcherClassCMethods.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "_ctor(_:_:_:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "DB8BA191-0249-49A3-A0F0-5BF2DB9FB3F4 - aa5a6830b4ed6fd7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ObjeKit._ctor(Swift.Optional&lt;Swift.UnsafeMutableRawPointer&gt;, Swift.Int, Swift.Optional&lt;Swift.UnsafeMutablePointer&lt;__C.atom&gt;&gt;) -&gt; Swift.Optional&lt;Swift.UnsafeMutableRawPointer&gt;"
+                  moduleName = "okt_simple"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alex/Documents/ios-macmini/ObjeKit/Sources/ObjeKit/DispatcherClassCMethods.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53">
+               </Location>
+               <Location
+                  uuid = "DB8BA191-0249-49A3-A0F0-5BF2DB9FB3F4 - 341c2c4faa1f8e06"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ObjeKit._ctor(Swift.Optional&lt;Swift.UnsafeMutableRawPointer&gt;, Swift.Int, Swift.Optional&lt;Swift.UnsafeMutablePointer&lt;__C.atom&gt;&gt;) -&gt; Swift.Optional&lt;Swift.UnsafeMutableRawPointer&gt;"
+                  moduleName = "okt_arguments"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alex/Documents/ios-macmini/ObjeKit/Sources/ObjeKit/DispatcherClassCMethods.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7DA1696B-C403-4B11-8DE2-FB6252E7C914"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Sources/MockSDK/MockSDK.c"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F27C0807-1B7A-42C8-B1DE-AEC1C7534BDD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Sources/ObjeKit/AttachInstance.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "visit(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F27C0807-1B7A-42C8-B1DE-AEC1C7534BDD - f4c208bc4b9fec42"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ObjeKit.AttachInstance.visit(ObjeKit.Inlet) -&gt; ()"
+                  moduleName = "okt_simple"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alex/Documents/ios-macmini/ObjeKit/Sources/ObjeKit/AttachInstance.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44">
+               </Location>
+               <Location
+                  uuid = "F27C0807-1B7A-42C8-B1DE-AEC1C7534BDD - 6a844cc3556d0d93"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ObjeKit.AttachInstance.visit(ObjeKit.Inlet) -&gt; ()"
+                  moduleName = "okt_arguments"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alex/Documents/ios-macmini/ObjeKit/Sources/ObjeKit/AttachInstance.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "41E976BA-CBB5-4485-8E87-C697F8CEB4E1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Sources/ObjeKit/AttachInstance.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "visit(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "41E976BA-CBB5-4485-8E87-C697F8CEB4E1 - f4c208bc4b9fecb9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ObjeKit.AttachInstance.visit(ObjeKit.Inlet) -&gt; ()"
+                  moduleName = "okt_simple"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alex/Documents/ios-macmini/ObjeKit/Sources/ObjeKit/AttachInstance.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51">
+               </Location>
+               <Location
+                  uuid = "41E976BA-CBB5-4485-8E87-C697F8CEB4E1 - 6a844cc3556d0d68"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ObjeKit.AttachInstance.visit(ObjeKit.Inlet) -&gt; ()"
+                  moduleName = "okt_arguments"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alex/Documents/ios-macmini/ObjeKit/Sources/ObjeKit/AttachInstance.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
