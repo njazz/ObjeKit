@@ -119,7 +119,7 @@ public func ext_main(_ r: UnsafeMutableRawPointer) {
 
 ⚠️ **Work In Progress** — This project is currently experimental and not ready for production use.
 
-Version number: 0.0.1 - Proof of concept
+Version number: 0.0.2 - Proof of concept
   
 ✅ Inlets  
 🔄 Outlets  
