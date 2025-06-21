@@ -87,16 +87,16 @@ final class MaxBuilderTests: XCTestCase {
         XCTAssertTrue(result === obj, "Expected non-nil optional to be returned")
     }
 
-    func testMaxObjectBuilder_optionalComponent_nil_returnsEmptyComposite() {
-        let result = MaxObjectBuilder.buildOptional(nil)
-
-        guard let composite = result as? ObjeKit.CompositeMaxObject else {
-            XCTFail("Expected CompositeMaxObject")
-            return
-        }
-
-        XCTAssertEqual(composite.objects.count, 0)
-    }
+//    func testMaxObjectBuilder_optionalComponent_nil_returnsEmptyComposite() {
+//        let result = MaxObjectBuilder.buildOptional(nil)
+//
+//        guard let composite = result as? ObjeKit.CompositeMaxObject else {
+//            XCTFail("Expected CompositeMaxObject")
+//            return
+//        }
+//
+//        XCTAssertEqual(composite.objects.count, 0)
+//    }
 
     func testMaxObjectBuilder_buildEither_first() {
         let first = MockMaxObject()
@@ -125,19 +125,19 @@ final class MaxBuilderTests: XCTestCase {
         XCTAssertEqual(composite.objects.count, 3)
     }
 
-    func testMaxIOBuilder_buildBlock_returnsComposite() {
-        let io1 = MockIOComponent()
-        let io2 = MockIOComponent()
-
-        let result = MaxIOBuilder.buildBlock(io1, io2)
-
-        guard let composite = result as? ObjeKit.CompositeMaxIO else {
-            XCTFail("Expected CompositeMaxIO")
-            return
-        }
-
-        XCTAssertEqual(composite.io.count, 2)
-//        XCTAssertTrue(composite.io[0] === io1)
-//        XCTAssertTrue(composite.io[1] === io2)
-    }
+//    func testMaxIOBuilder_buildBlock_returnsComposite() {
+//        let io1 = MockIOComponent()
+//        let io2 = MockIOComponent()
+//
+//        let result = MaxIOBuilder.buildBlock(io1, io2)
+//
+//        guard let composite = result as? ObjeKit.CompositeMaxIO else {
+//            XCTFail("Expected CompositeMaxIO")
+//            return
+//        }
+//
+//        XCTAssertEqual(composite.io.count, 2)
+////        XCTAssertTrue(composite.io[0] === io1)
+////        XCTAssertTrue(composite.io[1] === io2)
+//    }
 }

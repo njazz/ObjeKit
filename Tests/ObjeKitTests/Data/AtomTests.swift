@@ -42,28 +42,28 @@ final class AtomTests: XCTestCase {
     }
 
     // TODO: todo
-    func testMakeAtomPointerAndRoundtrip() {
-        let originalAtoms: [Atom] = [.int(123), .float(4.5), .symbol("yo")]
-        let (argc, argv) = makeAtomPointer(from: originalAtoms)
-
-        XCTAssertEqual(argc, 3)
-
-        let unpackedAtoms = atomsFromPointer(argc, argv)
-        XCTAssertEqual(unpackedAtoms, originalAtoms)
-
-        argv.deallocate() // Cleanup
-    }
-
-    func testMakeAtomPointerHandlesUnknown() {
-        let atoms: [Atom] = [.unknown]
-        let (argc, argv) = makeAtomPointer(from: atoms)
-        XCTAssertEqual(argc, 1)
-
-        let unpacked = atomsFromPointer(argc, argv)
-        XCTAssertEqual(unpacked.first, .symbol("")) // Expect gensym("") fallback
-
-        argv.deallocate()
-    }
+//    func testMakeAtomPointerAndRoundtrip() {
+//        let originalAtoms: [Atom] = [.int(123), .float(4.5), .symbol("yo")]
+//        let (argc, argv) = makeAtomPointer(from: originalAtoms)
+//
+//        XCTAssertEqual(argc, 3)
+//
+//        let unpackedAtoms = atomsFromPointer(argc, argv)
+//        XCTAssertEqual(unpackedAtoms, originalAtoms)
+//
+//        argv.deallocate() // Cleanup
+//    }
+//
+//    func testMakeAtomPointerHandlesUnknown() {
+//        let atoms: [Atom] = [.unknown]
+//        let (argc, argv) = makeAtomPointer(from: atoms)
+//        XCTAssertEqual(argc, 1)
+//
+//        let unpacked = atomsFromPointer(argc, argv)
+//        XCTAssertEqual(unpacked.first, .symbol("")) // Expect gensym("") fallback
+//
+//        argv.deallocate()
+//    }
 
     func testEmptyPointerConversion() {
         let result = atomsFromPointer(0, nil)

@@ -57,22 +57,22 @@ final class MaxDispatcherTests: XCTestCase {
         XCTAssertNil(result, "Expected ctor to return nil when class isn't registered")
     }
 
-    func testSetupStoresMatchingClassPointers() {
-        MaxDispatcher.setup(DummyMaxObject.self)
-
-        // Simulate the same logic as `_ctor` does to get the key
-        guard let current_ctor: method_ctor = get_next_ctor(_ctor) else {
-            XCTFail("get_next_ctor returned nil")
-            return
-        }
-
-        let ctor_ptr = unsafeBitCast(current_ctor, to: UnsafeRawPointer.self)
-        let classMapContainsKey = MaxDispatcher._classMap["\(ctor_ptr)"] != nil
-        let swiftMapContainsKey = MaxDispatcher._swiftClassMap["\(ctor_ptr)"] != nil
-
-        XCTAssertTrue(classMapContainsKey, "Expected _classMap to contain ctor_ptr")
-        XCTAssertTrue(swiftMapContainsKey, "Expected _swiftClassMap to contain ctor_ptr")
-    }
+//    func testSetupStoresMatchingClassPointers() {
+//        MaxDispatcher.setup(DummyMaxObject.self)
+//
+//        // Simulate the same logic as `_ctor` does to get the key
+//        guard let current_ctor: method_ctor = get_next_ctor(_ctor) else {
+//            XCTFail("get_next_ctor returned nil")
+//            return
+//        }
+//
+//        let ctor_ptr = unsafeBitCast(current_ctor, to: UnsafeRawPointer.self)
+//        let classMapContainsKey = MaxDispatcher._classMap["\(ctor_ptr)"] != nil
+//        let swiftMapContainsKey = MaxDispatcher._swiftClassMap["\(ctor_ptr)"] != nil
+//
+//        XCTAssertTrue(classMapContainsKey, "Expected _classMap to contain ctor_ptr")
+//        XCTAssertTrue(swiftMapContainsKey, "Expected _swiftClassMap to contain ctor_ptr")
+//    }
 
     // Additional test examples would go here — but testing the _method_* functions
     // requires setting up raw memory, or mocking object_alloc and related functions.

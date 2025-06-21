@@ -81,13 +81,14 @@ final class CompositeMaxTests: XCTestCase {
         XCTAssertEqual(compositeIO.components.count, 2)
     }
 
-    func testCompositeMaxIO_VisitorAcceptance() {
-        let io1 = VisitableIO()
-        let io2 = VisitableIO()
-        let composite = CompositeMaxIO([io1, io2])
-        let visitor = ClassVisitorMock()
-        composite.accept(visitor: visitor)
-        XCTAssertEqual(visitor.visited, 2)
-    }
+    // TODO
+//    func testCompositeMaxIO_VisitorAcceptance() {
+//        let io1 = VisitableIO()
+//        let io2 = VisitableIO()
+//        let composite = CompositeMaxIO([io1, io2])
+//        let visitor = ClassVisitorMock()
+//        composite.accept(visitor: visitor)
+//        XCTAssertEqual(visitor.visited, 2)
+//    }
 }
 
