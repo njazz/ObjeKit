@@ -60,7 +60,7 @@ let package = Package(
                 .headerSearchPath("include"),
                 .headerSearchPath("../../ThirdParty/max-sdk\(sdkVersionSuffix)/source/max-sdk-base/c74support/max-includes"),
                 .headerSearchPath("../../ThirdParty/max-sdk\(sdkVersionSuffix)/source/max-sdk-base/c74support/msp-includes"),
-            ],
+            ]
             
         ),
         
