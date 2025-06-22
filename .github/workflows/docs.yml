@@ -24,7 +24,7 @@ jobs:
         run: swift --version
         
       - name: Build doc archive
-        run: swift build docc --target ObjeKit
+        run: swift build --target ObjeKit
 
       - name: Generate HTML docs with docc tool
         run: docc convert .build/docc/ObjeKit.doccarchive --output-path docs --hosting-base-path /
