@@ -20,11 +20,11 @@ jobs:
         with:
           fetch-depth: 0   # needed for pushing back to gh-pages
 
-      - name: Check Swift version
-        run: swift --version
+      # - name: Check Swift version
+        # run: swift --version
         
       - name: Build doc archive
-        run: swift build --target ObjeKit
+        run: swift package generate-documentation
 
       - name: Generate HTML docs with docc tool
         run: docc convert .build/docc/ObjeKit.doccarchive --output-path docs --hosting-base-path /
