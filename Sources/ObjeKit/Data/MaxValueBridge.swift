@@ -15,7 +15,7 @@ extension MaxValue {
         case A_FLOAT.rawValue:
             self = .float(Double(atom_getfloat(ptr)))
         case A_LONG.rawValue:
-            self = .int(Int(atom_getlong(ptr)))
+            self = .int(Int64(atom_getlong(ptr)))
         case A_SYM.rawValue:
             let symbol = atom_getsym(ptr)
             self = .symbol(String(cString: symbol!.pointee.s_name))
@@ -28,7 +28,7 @@ extension MaxValue {
 // MARK: - C interop
 
 /// Convert Atom List from C API argc, argv
-func atomsFromPointer(_ count: CLong, _ ptr: UnsafeMutablePointer<t_atom>?) -> [MaxValue] {
+func maxListFromPointer(_ count: CLong, _ ptr: UnsafeMutablePointer<t_atom>?) -> [MaxValue] {
     guard let ptr = ptr else { return [] }
     return (0 ..< count).map { i in
         MaxValue(ptr.advanced(by: Int(i)))

@@ -33,7 +33,7 @@ public final class MaxStateObserver<T: Equatable>: ObservableObject {
 
     public init(_ maxBinding: MaxBinding<T>) {
         self.maxBinding = maxBinding
-        self.value = maxBinding.get()
+        value = maxBinding.get()
 
         // Observe changes via MaxBinding
         maxBinding.observe { [weak self] newValue in

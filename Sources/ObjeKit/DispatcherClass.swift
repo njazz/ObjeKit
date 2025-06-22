@@ -8,14 +8,14 @@
 
 /// Internal data for Argument class
 struct ArgumentData {
-    var untypedSetter : (MaxValue)->Bool    /// returns false if fails type conversion
-    var optional : Bool
-    var description : String?
+    var untypedSetter: (MaxValue) -> Bool /// returns false if fails type conversion
+    var optional: Bool
+    var description: String?
 }
 
 /// Internal data for Attribute class
 struct AttributeData {
-    var description : String?
+    var description: String?
 }
 
 // MARK: -
@@ -23,31 +23,31 @@ struct AttributeData {
 /// Proxy class forwarding to Swift MaxObject
 class DispatcherClass: Initializable {
     required init() {}
-    
+
     var object: MaxObject?
-    
-    var onBang : ()->Void = {}
-    var onDouble : (Double)->Void = {_ in}
-    var onInt : (CLong)->Void = {_ in}
-    var onSelector : [String : ([MaxValue])->Void] = [:]
-    var onList : ([MaxValue])->Void = {_ in}
-    
-    // 
-    var arguments : [ArgumentData] = []
-    var requiredArguments : UInt = 0
-    
-    var inlets : [UnsafeMutableRawPointer] = []
-    var outlets : [UnsafeMutableRawPointer] = []
-    
-    var attributes : [AttributeData] = []
+
+    var onBang: () -> Void = {}
+    var onDouble: (Double) -> Void = { _ in }
+    var onInt: (CLong) -> Void = { _ in }
+    var onSelector: [String: ([MaxValue]) -> Void] = [:]
+    var onList: ([MaxValue]) -> Void = { _ in }
+
+    //
+    var arguments: [ArgumentData] = []
+    var requiredArguments: UInt = 0
+
+    var inlets: [UnsafeMutableRawPointer] = []
+    var outlets: [UnsafeMutableRawPointer] = []
+
+    var attributes: [AttributeData] = []
 }
 
 /// Metadata used by DispatcherClass
 struct DispatcherClassMetadata {
     var maxClass: UnsafeMutablePointer<t_class>
-    var objectType : MaxObject.Type
-    
+    var objectType: MaxObject.Type
+
     // unused?
-    var inletCount : UInt8?
-    var outletCount : UInt8?
+    var inletCount: UInt8?
+    var outletCount: UInt8?
 }

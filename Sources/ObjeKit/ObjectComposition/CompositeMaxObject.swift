@@ -27,23 +27,23 @@ public class CompositeMaxObject: MaxObject {
 
 // MARK: -
 
-public class CompositeMaxIO : MaxIOComponent {
+public class CompositeMaxIO: MaxIOComponent {
     public let io: [MaxIOComponent]
-    
+
     public required init() {
         io = []
     }
-    
+
     public init(_ io: [MaxIOComponent] = []) {
         self.io = io
     }
-    
+
     public func accept<V: MaxIOVisitor>(visitor: V) {
         for component in io {
             component.accept(visitor: visitor)
         }
     }
-    
+
     public func accept<V: MaxClassIOVisitor>(visitor: V) {
         for component in io {
             component.accept(visitor: visitor)

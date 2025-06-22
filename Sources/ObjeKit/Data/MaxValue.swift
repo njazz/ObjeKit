@@ -10,7 +10,7 @@
 /// Supported types: float, int, symbol
 public enum MaxValue {
     case float(Double)
-    case int(Int)
+    case int(Int64)
     case symbol(String)
 
     case unknown
@@ -32,20 +32,15 @@ extension MaxValue: Equatable {
 
 // MARK: -
 
-extension Array where Element == MaxValue {
-    var asMaxList: MaxList {
-        map(MaxValue.init)
-    }
-}
-
-// MARK: -
-
 public typealias MaxList = [MaxValue]
 
 extension MaxValue {
+    /// Wraps a value of any common Swift type into a MaxValue.
+    /// Supported: Int, Double, Float, String, Bool, Int32/64, UInt.
+    /// Falls back to `.unknown` for unsupported types.
     public init(any value: Any) {
         switch value {
-        case let int as Int:
+        case let int as Int64:
             self = .int(int)
         case let double as Double:
             self = .float(double)
@@ -54,15 +49,16 @@ extension MaxValue {
         case let string as String:
             self = .symbol(string)
         case let int32 as Int32:
-            self = .int(Int(int32))
+            self = .int(Int64(int32))
         case let int64 as Int64:
-            self = .int(Int(int64))
+            self = .int(Int64(int64))
         case let uint as UInt:
-            self = .int(Int(uint))
+            self = .int(Int64(uint))
         case let bool as Bool:
             self = .int(bool ? 1 : 0)
         default:
             self = .unknown
+            MaxLogger.shared.warning("Unsupported MaxValue type: \(type(of: value))")
         }
     }
 }
@@ -70,14 +66,14 @@ extension MaxValue {
 // MARK: -
 
 extension MaxValue {
-    var asInt: Int? {
+    var asInt: Int64? {
         if case let .int(i) = self { return i } else { return nil }
     }
 
     var asDouble: Double? {
         switch self {
-        case .float(let f): return f
-        case .int(let i): return Double(i)
+        case let .float(f): return f
+        case let .int(i): return Double(i)
         default: return nil
         }
     }
@@ -85,16 +81,20 @@ extension MaxValue {
     var asString: String? {
         if case let .symbol(s) = self { return s } else { return nil }
     }
+
+    var asBool: Bool? {
+        if case let .int(i) = self { return i != 0 } else { return nil }
+    }
 }
 
 // MARK: - Array conversions
 
 extension Array where Element == MaxValue {
     var asAtoms: [MaxValue] {
-        self.map(MaxValue.init)
+        map(MaxValue.init)
     }
 
-    var asIntArray: [Int]? {
+    var asIntArray: [Int64]? {
         allSatisfy {
             if case .int = $0 { true } else { false }
         } ? map { ($0.asInt)! } : nil
@@ -116,16 +116,16 @@ extension Array where Element == MaxValue {
     }
 }
 
-extension Array where Element == Int {
-    var asMaxList: MaxList { self.map { .int($0) } }
+extension Array where Element == Int64 {
+    var asMaxList: MaxList { map { .int($0) } }
 }
 
 extension Array where Element == Double {
-    var asMaxList: MaxList { self.map { .float($0) } }
+    var asMaxList: MaxList { map { .float($0) } }
 }
 
 extension Array where Element == String {
-    var asMaxList: MaxList { self.map { .symbol($0) } }
+    var asMaxList: MaxList { map { .symbol($0) } }
 }
 
 // MARK: - Lossless unpacking
@@ -145,12 +145,15 @@ extension String: MaxValueConvertible {}
 // MARK: -
 
 public extension MaxValue {
-   func convert<T: MaxValueConvertible>(to type: T.Type) -> T? {
+    /// Attempts to convert the value to a desired Swift type, if representable.
+    func convert<T: MaxValueConvertible>(to type: T.Type) -> T? {
         switch (self, type) {
         case (.int(let i), is Int.Type): return i as? T
         case (.float(let f), is Double.Type): return f as? T
         case (.int(let i), is Double.Type): return Double(i) as? T
         case (.symbol(let s), is String.Type): return s as? T
+        case (.float(let f), is Float.Type): return Float(f) as? T
+        case (.int(let i), is UInt.Type): return UInt(exactly: i) as? T
         default: return nil
         }
     }
@@ -160,6 +163,11 @@ extension MaxList {
     public func unpack<T1>() -> T1? where T1: MaxValueConvertible {
         guard count == 1 else { return nil }
         return self[0].convert(to: T1.self)
+    }
+
+    subscript<T: MaxValueConvertible>(typed index: Int) -> T? {
+        guard index < count else { return nil }
+        return self[index].convert(to: T.self)
     }
 
     public func unpack<T1, T2>() -> (T1, T2)? where T1: MaxValueConvertible, T2: MaxValueConvertible {
@@ -173,11 +181,36 @@ extension MaxList {
         return (v1, v2)
     }
 
-    // Add more arities as needed...
+    func unpack<T1, T2, T3>() -> (T1, T2, T3)? where T1: MaxValueConvertible, T2: MaxValueConvertible, T3: MaxValueConvertible {
+        guard count == 3,
+              let v1 = self[0].convert(to: T1.self),
+              let v2 = self[1].convert(to: T2.self),
+              let v3 = self[2].convert(to: T3.self) else { return nil }
+        return (v1, v2, v3)
+    }
+
+    func unpack<T1, T2, T3, T4>() -> (T1, T2, T3, T4)? where T1: MaxValueConvertible, T2: MaxValueConvertible, T3: MaxValueConvertible, T4: MaxValueConvertible {
+        guard count == 4,
+              let v1 = self[0].convert(to: T1.self),
+              let v2 = self[1].convert(to: T2.self),
+              let v3 = self[2].convert(to: T3.self),
+              let v4 = self[3].convert(to: T4.self) else { return nil }
+        return (v1, v2, v3, v4)
+    }
+
+    func unpack<T1, T2, T3, T4, T5>() -> (T1, T2, T3, T4, T5)? where T1: MaxValueConvertible, T2: MaxValueConvertible, T3: MaxValueConvertible, T4: MaxValueConvertible, T5: MaxValueConvertible {
+        guard count == 5,
+              let v1 = self[0].convert(to: T1.self),
+              let v2 = self[1].convert(to: T2.self),
+              let v3 = self[2].convert(to: T3.self),
+              let v4 = self[3].convert(to: T4.self),
+              let v5 = self[4].convert(to: T5.self) else { return nil }
+        return (v1, v2, v3, v4, v5)
+    }
 }
 
 /*
- 
+
  To reduce boilerplate and improve flexibility in your MaxValue system while maintaining safety and clarity, consider the following enhancements:
  ✅ 1. Use LosslessStringConvertible for broader conversion
 

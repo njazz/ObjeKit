@@ -87,13 +87,12 @@ public enum AttributeStyle: CaseIterable, RawRepresentable {
 
 /// Max Attribute wrapper (R/W)
 ///
-/// Parameter style: display style in Inspector
-/// Parameter label: label in Inspector, optional
-/// Parameter name: name to be used within object & Inspector
-/// Parameter transitional: if true, value is not stored within Max patch
+/// - Parameter style: display style in Inspector
+/// - Parameter label: label in Inspector, optional
+/// - Parameter name: name to be used within object & Inspector
+/// - Parameter transitional: if true, value is not stored within Max patch
 @propertyWrapper
 public class Attribute<T: MaxAttributeValue>: MaxIOComponent {
-    
     var style: AttributeStyle = .m_text
     var label: String? /// use full name if nil
     var name: String
@@ -116,7 +115,7 @@ public class Attribute<T: MaxAttributeValue>: MaxIOComponent {
         self.style = style
         self.label = label
         self.transitional = transitional
-        
+
         binding = bindingProvider()
 
         binding.observe { newValue in

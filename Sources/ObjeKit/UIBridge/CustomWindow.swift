@@ -5,14 +5,14 @@
 //  Created by Alex Nadzharov on 22/06/2025.
 //
 
-import SwiftUI
 import AppKit
+import SwiftUI
 
 /// Create a window with title and SwiftUI View inside.
 ///
 /// NB show/hide calls are thread-safe
 public class CustomWindow<Content: View> {
-    private var window: NSWindow? = nil
+    private var window: NSWindow?
     private let title: String
     private let content: () -> Content
 
@@ -41,5 +41,4 @@ public class CustomWindow<Content: View> {
             self.window?.orderOut(nil)
         }
     }
-
 }

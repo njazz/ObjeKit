@@ -5,7 +5,6 @@
 //  Created by Alex Nadzharov on 26/05/2025.
 //
 
-
 /// Builder class for MaxObject components
 @resultBuilder
 public struct MaxIOBuilder {

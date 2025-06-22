@@ -6,7 +6,7 @@
 //
 
 /// Generic container
-public class Box<T : Initializable > {
+public class Box<T: Initializable> {
     var value: T
 
     public init(_ value: T) {
