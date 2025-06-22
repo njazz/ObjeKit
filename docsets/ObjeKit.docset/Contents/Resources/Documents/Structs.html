@@ -17,7 +17,7 @@
     <a title="Structures  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">ObjeKit Docs</a> (21% documented)</p>
+        <p><a href="index.html">ObjeKit Docs</a> (33% documented)</p>
         <div class="header-right">
           <form role="search" action="search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -138,9 +138,6 @@
                 <a href="Protocols/MaxClassIOVisitor.html">MaxClassIOVisitor</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/MaxComponent.html">MaxComponent</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Protocols/MaxIOComponent.html">MaxIOComponent</a>
               </li>
               <li class="nav-group-task">
@@ -203,35 +200,6 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7ObjeKit16MaxObjectBuilderV"></a>
-                    <a name="//apple_ref/swift/Struct/MaxObjectBuilder" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7ObjeKit16MaxObjectBuilderV">MaxObjectBuilder</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                        <a href="Structs/MaxObjectBuilder.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@resultBuilder</span>
-<span class="kd">public</span> <span class="kd">struct</span> <span class="kt">MaxObjectBuilder</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/s:7ObjeKit12MaxIOBuilderV"></a>
                     <a name="//apple_ref/swift/Struct/MaxIOBuilder" class="dashAnchor"></a>
                     <a class="token" href="#/s:7ObjeKit12MaxIOBuilderV">MaxIOBuilder</a>
@@ -242,7 +210,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Builder class for MaxObject components</p>
 
                         <a href="Structs/MaxIOBuilder.html" class="slightly-smaller">See more</a>
                       </div>
@@ -252,6 +220,35 @@
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@resultBuilder</span>
 <span class="kd">public</span> <span class="kd">struct</span> <span class="kt">MaxIOBuilder</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ObjeKit16MaxObjectBuilderV"></a>
+                    <a name="//apple_ref/swift/Struct/MaxObjectBuilder" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ObjeKit16MaxObjectBuilderV">MaxObjectBuilder</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>NB: Stub for composite object builder</p>
+
+                        <a href="Structs/MaxObjectBuilder.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@resultBuilder</span>
+<span class="kd">public</span> <span class="kd">struct</span> <span class="kt">MaxObjectBuilder</span></code></pre>
 
                         </div>
                       </div>
@@ -271,7 +268,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Binding wrapper for MaxObject</p>
+
+<p>Used by Outlet() object</p>
 
                         <a href="Structs/MaxBinding.html" class="slightly-smaller">See more</a>
                       </div>
@@ -300,7 +299,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Read-only argument wrapper</p>
+                        <p>Read-only Max Argument wrapper</p>
+
+<p>NB should support only 1 atom &amp; should later include type check</p>
 
                         <a href="Structs/Argument.html" class="slightly-smaller">See more</a>
                       </div>
@@ -341,7 +342,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>NB default is always inlet 0</p>
+                        <p>Max Inlet component</p>
+
+<p>NB default is always inlet 0</p>
 
                         <a href="Structs/Inlet.html" class="slightly-smaller">See more</a>
                       </div>
@@ -369,7 +372,10 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Max Outlet property wrapper</p>
+
+<p>NB: this is a stateless shortcut for each outlet to output data directly
+TODO: currently N/A</p>
 
                         <a href="Structs/MaxOutput.html" class="slightly-smaller">See more</a>
                       </div>

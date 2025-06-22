@@ -17,7 +17,7 @@
     <a title="Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">ObjeKit Docs</a> (21% documented)</p>
+        <p><a href="index.html">ObjeKit Docs</a> (33% documented)</p>
         <div class="header-right">
           <form role="search" action="search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -138,9 +138,6 @@
                 <a href="Protocols/MaxClassIOVisitor.html">MaxClassIOVisitor</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/MaxComponent.html">MaxComponent</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Protocols/MaxIOComponent.html">MaxIOComponent</a>
               </li>
               <li class="nav-group-task">
@@ -213,7 +210,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>generic container</p>
+                        <p>Generic container</p>
 
                         <a href="Classes/Box.html" class="slightly-smaller">See more</a>
                       </div>
@@ -222,6 +219,34 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Box</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Initializable.html">Initializable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7ObjeKit13MaxDispatcherC"></a>
+                    <a name="//apple_ref/swift/Class/MaxDispatcher" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7ObjeKit13MaxDispatcherC">MaxDispatcher</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Dynamically dispatching Max object</p>
+
+                        <a href="Classes/MaxDispatcher.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">MaxDispatcher</span></code></pre>
 
                         </div>
                       </div>
@@ -241,7 +266,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Stub for possible class composition</p>
 
                         <a href="Classes/CompositeMaxObject.html" class="slightly-smaller">See more</a>
                       </div>
@@ -287,34 +312,6 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7ObjeKit13MaxDispatcherC"></a>
-                    <a name="//apple_ref/swift/Class/MaxDispatcher" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7ObjeKit13MaxDispatcherC">MaxDispatcher</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Dynamically dispatching max object</p>
-
-                        <a href="Classes/MaxDispatcher.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">MaxDispatcher</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/s:7ObjeKit12CustomWindowC"></a>
                     <a name="//apple_ref/swift/Class/CustomWindow" class="dashAnchor"></a>
                     <a class="token" href="#/s:7ObjeKit12CustomWindowC">CustomWindow</a>
@@ -325,7 +322,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Create a window with title and SwiftUI View inside.</p>
+
+<p>NB show/hide calls are thread-safe</p>
 
                         <a href="Classes/CustomWindow.html" class="slightly-smaller">See more</a>
                       </div>
@@ -353,7 +352,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>ObservableObject wrapper for MaxBinding</p>
 
                         <a href="Classes/MaxStateObserver.html" class="slightly-smaller">See more</a>
                       </div>
@@ -381,7 +380,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Attribute wrapper (R/W)</p>
+                        <p>Max Attribute wrapper (R/W)</p>
+
+<p>Parameter style: display style in Inspector
+Parameter label: label in Inspector, optional
+Parameter name: name to be used within object &amp; Inspector
+Parameter transitional: if true, value is not stored within Max patch</p>
 
                         <a href="Classes/Attribute.html" class="slightly-smaller">See more</a>
                       </div>
@@ -410,7 +414,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Max Outlet component</p>
+
+<p>NB default is always inlet 0</p>
 
                         <a href="Classes/Outlet.html" class="slightly-smaller">See more</a>
                       </div>
@@ -438,7 +444,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Local state storage for MaxObject</p>
+
+<p>Used with MaxBinding by Outlet() object</p>
 
                         <a href="Classes/MaxState.html" class="slightly-smaller">See more</a>
                       </div>
