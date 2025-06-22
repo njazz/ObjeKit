@@ -40,6 +40,8 @@ extension MaxValue {
     /// Falls back to `.unknown` for unsupported types.
     public init(any value: Any) {
         switch value {
+        case let int as Int:
+                self = .int(Int64(int))
         case let int as Int64:
             self = .int(int)
         case let double as Double:
@@ -145,17 +147,22 @@ extension String: MaxValueConvertible {}
 public extension MaxValue {
     /// Attempts to convert the value to a desired Swift type, if representable.
     func convert<T: MaxValueConvertible>(to type: T.Type) -> T? {
-        switch (self, type) {
-        case (.int(let i), is Int.Type): return i as? T
-        case (.int(let i), is Int32.Type): return i as? T
-        case (.int(let i), is Int64.Type): return i as? T
-        case (.float(let f), is Double.Type): return f as? T
-        case (.int(let i), is Double.Type): return Double(i) as? T
-        case (.symbol(let s), is String.Type): return s as? T
-        case (.float(let f), is Float.Type): return Float(f) as? T
-        case (.int(let i), is UInt.Type): return UInt(exactly: i) as? T
-        default: return nil
+        switch self {
+        case let .int(i):
+            if T.self == Int.self { return Int(exactly: i) as? T }
+            if T.self == Int32.self { return Int32(exactly: i) as? T }
+            if T.self == Int64.self { return Int64(i) as? T }
+            if T.self == UInt.self { return UInt(exactly: i) as? T }
+            if T.self == Double.self { return Double(i) as? T }
+        case let .float(f):
+            if T.self == Double.self { return f as? T }
+            if T.self == Float.self { return Float(f) as? T }
+        case let .symbol(s):
+            if T.self == String.self { return s as? T }
+        default:
+            return nil
         }
+        return nil
     }
 }
 

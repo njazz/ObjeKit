@@ -66,7 +66,7 @@ final class AtomTests: XCTestCase {
 //    }
 
     func testEmptyPointerConversion() {
-        let result = atomsFromPointer(0, nil)
+        let result = maxListFromPointer(0, nil)
         XCTAssertTrue(result.isEmpty)
     }
 }

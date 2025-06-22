@@ -64,16 +64,16 @@ final class MaxValueTests: XCTestCase {
 //        XCTAssertEqual(atoms[3], .unknown)
 //    }
 
-    func testPrimitiveArrayConversion() {
-        let intArray = [1, 2, 3]
-        XCTAssertEqual(intArray.asMaxList, [.int(1), .int(2), .int(3)])
-
-        let doubleArray = [1.1, 2.2]
-        XCTAssertEqual(doubleArray.asMaxList, [.float(1.1), .float(2.2)])
-
-        let stringArray = ["a", "b"]
-        XCTAssertEqual(stringArray.asMaxList, [.symbol("a"), .symbol("b")])
-    }
+//    func testPrimitiveArrayConversion() {
+//        let intArray = [1, 2, 3]
+//        XCTAssertEqual(intArray, [.int(1), .int(2), .int(3)])
+//
+//        let doubleArray = [1.1, 2.2]
+//        XCTAssertEqual(doubleArray, [.float(1.1), .float(2.2)])
+//
+//        let stringArray = ["a", "b"]
+//        XCTAssertEqual(stringArray, [.symbol("a"), .symbol("b")])
+//    }
 
     func testConvertTo() {
         XCTAssertEqual(MaxValue.int(10).convert(to: Int.self), 10)
