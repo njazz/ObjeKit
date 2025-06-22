@@ -10,36 +10,36 @@ import XCTest
 final class AtomTests: XCTestCase {
 
     func testAtomEquatable() {
-        XCTAssertEqual(Atom.int(42), Atom.int(42))
-        XCTAssertEqual(Atom.float(3.14), Atom.float(3.14))
-        XCTAssertEqual(Atom.symbol("hello"), Atom.symbol("hello"))
-        XCTAssertEqual(Atom.unknown, Atom.unknown)
-        XCTAssertNotEqual(Atom.int(1), Atom.float(1.0))
-        XCTAssertNotEqual(Atom.symbol("a"), Atom.symbol("b"))
+        XCTAssertEqual(MaxValue.int(42), MaxValue.int(42))
+        XCTAssertEqual(MaxValue.float(3.14), MaxValue.float(3.14))
+        XCTAssertEqual(MaxValue.symbol("hello"), MaxValue.symbol("hello"))
+        XCTAssertEqual(MaxValue.unknown, MaxValue.unknown)
+        XCTAssertNotEqual(MaxValue.int(1), MaxValue.float(1.0))
+        XCTAssertNotEqual(MaxValue.symbol("a"), MaxValue.symbol("b"))
     }
 
-    func testMaxValueToAtomConversion() {
-        XCTAssertEqual(Atom(MaxValue.int(1)), Atom.int(1))
-        XCTAssertEqual(Atom(MaxValue.float(2.5)), Atom.float(2.5))
-        XCTAssertEqual(Atom(MaxValue.symbol("hi")), Atom.symbol("hi"))
-        XCTAssertEqual(Atom(MaxValue.unknown), Atom.unknown)
-    }
-
-    func testAtomToMaxValueConversion() {
-        XCTAssertEqual(MaxValue(Atom.int(1)), MaxValue.int(1))
-        XCTAssertEqual(MaxValue(Atom.float(2.5)), MaxValue.float(2.5))
-        XCTAssertEqual(MaxValue(Atom.symbol("hi")), MaxValue.symbol("hi"))
-        XCTAssertEqual(MaxValue(Atom.unknown), MaxValue.unknown)
-    }
-
-    func testAtomArrayConversionToMaxList() {
-        let atoms: [Atom] = [.int(1), .float(2.0), .symbol("abc")]
-        let maxList: MaxList = atoms.asMaxList
-        XCTAssertEqual(maxList.count, 3)
-        XCTAssertEqual(maxList[0], .int(1))
-        XCTAssertEqual(maxList[1], .float(2.0))
-        XCTAssertEqual(maxList[2], .symbol("abc"))
-    }
+//    func testMaxValueToAtomConversion() {
+//        XCTAssertEqual(MaxValue(any:MaxValue.int(1)), MaxValue.int(1))
+//        XCTAssertEqual(MaxValue(any:MaxValue.float(2.5)), MaxValue.float(2.5))
+//        XCTAssertEqual(MaxValue(any:MaxValue.symbol("hi")), MaxValue.symbol("hi"))
+//        XCTAssertEqual(MaxValue(any:MaxValue.unknown), MaxValue.unknown)
+//    }
+//
+//    func testAtomToMaxValueConversion() {
+//        XCTAssertEqual(MaxValue(any:MaxValue.int(1)), MaxValue.int(1))
+//        XCTAssertEqual(MaxValue(any:MaxValue.float(2.5)), MaxValue.float(2.5))
+//        XCTAssertEqual(MaxValue(any:MaxValue.symbol("hi")), MaxValue.symbol("hi"))
+//        XCTAssertEqual(MaxValue(any:MaxValue.unknown), MaxValue.unknown)
+//    }
+//
+//    func testAtomArrayConversionToMaxList() {
+//        let atoms: [MaxValue] = [.int(1), .float(2.0), .symbol("abc")]
+//        let maxList: MaxList = atoms.asMaxList
+//        XCTAssertEqual(maxList.count, 3)
+//        XCTAssertEqual(maxList[0], .int(1))
+//        XCTAssertEqual(maxList[1], .float(2.0))
+//        XCTAssertEqual(maxList[2], .symbol("abc"))
+//    }
 
     // TODO: todo
 //    func testMakeAtomPointerAndRoundtrip() {

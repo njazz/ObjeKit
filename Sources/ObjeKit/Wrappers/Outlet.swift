@@ -5,51 +5,53 @@
 //  Created by Alex Nadzharov on 26/05/2025.
 //
 
-// NB: statless wrapper
+/// Max Outlet property wrapper
+///
+/// NB: this is a stateless shortcut for each outlet to output data directly
+/// TODO: currently N/A
 @propertyWrapper
 public struct MaxOutput: MaxIOComponent {
     public var onChange: ((MaxList) -> Void)? // to be provided by AttachInstance
-    
+
+    /// Sender class for Outlet - use it to send different data
+    ///
+    /// TODO: yet N/A
     public class Sender {
-        var action : (()->Void)?
+        var action: (() -> Void)?
         public func bang() {
-            self.action?()
+            action?()
         }
-        
-        
     }
-    
+
     public let index: PortIndex
     public var wrappedValue: Sender
 
     public init(_ outlet: PortIndex = .index(0)) {
-        self.index = outlet
-        
-
-        self.wrappedValue = Sender()
-        
-        
-
-        
+        index = outlet
+        wrappedValue = Sender()
     }
 
     public func accept<V: MaxIOVisitor>(visitor: V) {
         visitor.visit(self)
-        self.wrappedValue.action = {
+        wrappedValue.action = {
             self.onChange?([])
         }
-        
     }
 }
 
-public class Outlet<T>: MaxIOComponent {    
+// MARK: -
+
+/// Max Outlet component
+///
+/// NB default is always inlet 0
+public class Outlet<T>: MaxIOComponent {
     public let kind: PortKind = .list
     public var index: PortIndex = .index(0)
-    
+
     private var binding: MaxBinding<T>
 
     public var onChange: ((T) -> Void)? // to be provided by AttachInstance
-    
+
     public var wrappedValue: T {
         get { binding.get() }
         set { binding.set(newValue) }
@@ -57,23 +59,23 @@ public class Outlet<T>: MaxIOComponent {
 
     // Init with index and a binding provider closure
     public init(_ outlet: PortIndex = .index(0), _ bindingProvider: @escaping () -> MaxBinding<T>) {
-        self.index = outlet
-        self.binding = bindingProvider()
-        
-        self.binding.observe { newValue in
+        index = outlet
+        binding = bindingProvider()
+
+        binding.observe { newValue in
             self.onChange?(newValue)
         }
     }
-    
-    public init( bindingProvider: @escaping () -> MaxBinding<T>) {
-        self.index = .index(0)
-        self.binding = bindingProvider()
-        
-        self.binding.observe { newValue in
+
+    public init(bindingProvider: @escaping () -> MaxBinding<T>) {
+        index = .index(0)
+        binding = bindingProvider()
+
+        binding.observe { newValue in
             self.onChange?(newValue)
         }
     }
-    
+
 //    public init(bindingProvider: @escaping () -> Void) {
 //        self.index = .index(0)
 //        self.binding = {
@@ -81,7 +83,7 @@ public class Outlet<T>: MaxIOComponent {
 //                get: { T() },
 //                set: { _ in },
 //                observe: { callback in
-//                   
+//
 //                }
 //            )
 //        }()

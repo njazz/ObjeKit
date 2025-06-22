@@ -5,11 +5,14 @@
 //  Created by Alex Nadzharov on 26/05/2025.
 //
 
+/// Inlet / Outlet port
+///
+/// index: may be exact (**.index()**) next **.available** or a wildcard **.any**
 public enum PortIndex {
     case index(Int), any, available
 }
 
-public enum PortKind : Equatable {
+public enum PortKind: Equatable {
     case bang
     case int
     case float
@@ -19,6 +22,8 @@ public enum PortKind : Equatable {
 
 // MARK: - Inlet / Method combined
 
+/// Max Inlet component
+///
 /// NB default is always inlet 0
 public struct Inlet: MaxIOComponent {
     public let kind: PortKind
@@ -30,45 +35,45 @@ public struct Inlet: MaxIOComponent {
     public var wrappedValue: Any {
         _contents
     }
-    
+
     // MARK: -
-    
+
     public init(_ inlet: PortIndex = .index(0), _ function: @escaping () -> Void) {
-        self.index = inlet
+        index = inlet
         kind = .bang
         _contents = function
     }
 
     public init(_ inlet: PortIndex = .index(0), _ function: @escaping (CDouble) -> Void) {
-        self.index = inlet
+        index = inlet
         kind = .float
         _contents = function
     }
 
     public init(_ inlet: PortIndex = .index(0), _ function: @escaping (CLong) -> Void) {
-        self.index = inlet
+        index = inlet
         kind = .int
         _contents = function
     }
 
     public init(_ inlet: PortIndex = .index(0), _ function: @escaping ([MaxValue]) -> Void) {
-        self.index = inlet
+        index = inlet
         kind = .list
         _contents = function
     }
 
     public init(_ inlet: PortIndex = .index(0), name: String, _ function: @escaping ([MaxValue]) -> Void) {
-        self.index = inlet
+        index = inlet
         kind = .selector(name)
         _contents = function
     }
 
-    public init(_ inlet: PortIndex = .index(0),  name: String, _ function: @escaping () -> Void) {
-        self.index = inlet
+    public init(_ inlet: PortIndex = .index(0), name: String, _ function: @escaping () -> Void) {
+        index = inlet
         kind = .selector(name)
         _contents = { (_: [MaxValue]) in function() }
     }
-    
+
     // MARK: -
 
     public func accept<V: MaxIOVisitor>(visitor: V) {
@@ -76,7 +81,7 @@ public struct Inlet: MaxIOComponent {
     }
 
     // MARK: -
-    
+
     // Optionally, helper to call with dynamic casting
     public func callAsBang() {
         if let fn = _contents as? () -> Void {

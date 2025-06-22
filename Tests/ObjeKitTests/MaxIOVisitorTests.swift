@@ -86,7 +86,7 @@ final class MaxClassIOVisitorTests: XCTestCase {
             
         }
         
-        visitor.visit(Attribute<Int>({b1}))
+        visitor.visit(Attribute<Int>("test"){b1})
         // No crash and no effect to assert
     }
     
@@ -97,7 +97,7 @@ final class MaxClassIOVisitorTests: XCTestCase {
             
         }
         
-        visitor.visit(Attribute<Int>({b1}))
+        visitor.visit(Attribute<Int>("test"){b1})
         XCTAssertEqual(visitor.visitedAttributes, 1)
     }
 }

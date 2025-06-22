@@ -1,4 +1,7 @@
-//
+/// C methods for the DispatcherClass
+/// To be forwarded to Max C/C++ SDK
+///
+
 //  CMethods.swift
 //  ObjeKit
 //
@@ -12,14 +15,16 @@ internal func _ctor(_ p: UnsafeMutableRawPointer?,
                     _ argv: UnsafeMutablePointer<t_atom>?) -> UnsafeMutableRawPointer? {
     // extra test
     if p == nil { return nil }
-    
-    MaxRuntime.post("input pointer: \(String(describing: p))")
-    let ctor_ptr = unsafeBitCast(p, to: UnsafeRawPointer.self)
 
-    let cls = MaxDispatcher._classMap["\(ctor_ptr)"]
+    MaxLogger.shared.post("input pointer: \(String(describing: p))")
+    let ctor_ptr = unsafeBitCast(p, to: UnsafeRawPointer.self)
+    let ctor_ptr_value = CtorPointer(unsafeBitCast(p, to: UnsafeRawPointer.self))
+
+//    let cls = MaxDispatcher._classMap["\(ctor_ptr)"]
+    let cls = MaxDispatcher._metadata[ctor_ptr_value]?.maxClass
 
     if cls == nil {
-        MaxRuntime.post("class error: \(ctor_ptr)")
+        MaxRuntime.error("Unknown class error: \(ctor_ptr)")
     }
 
     let obj = object_alloc(cls)
@@ -29,7 +34,9 @@ internal func _ctor(_ p: UnsafeMutableRawPointer?,
 
     // t_wrapped_object_allocate_proxy(typed_obj)
 
-    if let swiftClass = MaxDispatcher._swiftClassMap["\(ctor_ptr)"] {
+    // if let swiftClass = MaxDispatcher._swiftClassMap["\(ctor_ptr)"] {
+
+    if let swiftClass = MaxDispatcher._metadata[ctor_ptr_value]?.objectType {
         let box = Box.create(DispatcherClass.self)
         box.value.object = swiftClass.init()
         typed_obj.pointee.box = box.toRaw()
@@ -57,21 +64,21 @@ internal func _ctor(_ p: UnsafeMutableRawPointer?,
         box.value.object!.io.accept(visitor: visitor)
 
         // arguments
-        MaxRuntime.post("Required argument count: \(box.value.requiredArguments)")
-        
+        MaxLogger.shared.post("Required argument count: \(box.value.requiredArguments)")
+
         // check size / fail
-        if (argc < box.value.requiredArguments){
-            MaxRuntime.error("Missing arguments: \(box.value.arguments[0...argc].map { e in e.description ?? "[No description]" })")
+        if argc < box.value.requiredArguments {
+            MaxRuntime.error("Missing arguments: \(box.value.arguments[0 ... argc].map { e in e.description ?? "[No description]" })")
             return nil
         }
-        
-        let atoms = atomsFromPointer(argc, argv).asMaxList
-        
-        for i in 0..<atoms.count {
+
+        let atoms = maxListFromPointer(argc, argv)
+
+        for i in 0 ..< atoms.count {
             let v = atoms[i]
             if i < box.value.arguments.count {
                 let arg = box.value.arguments[i]
-                
+
                 let result = arg.untypedSetter(v)
                 if !result {
                     MaxRuntime.error("Bad argument provided: \(v) for \(arg.description ?? "[No description]")")
@@ -79,14 +86,14 @@ internal func _ctor(_ p: UnsafeMutableRawPointer?,
                 }
             }
         }
-        
+
         // extra
-        if (argc > box.value.arguments.count){
+        if argc > box.value.arguments.count {
             MaxRuntime.warning("Extra arguments provided: \(argc) of \(box.value.arguments.count)")
         }
 
         // load arguments values
-        MaxRuntime.post("Arguments provided: \(argc)")
+        MaxLogger.shared.post("Arguments provided: \(argc)")
     }
 
     return obj
@@ -158,8 +165,7 @@ internal func _method_list(_ ptr: UnsafeMutableRawPointer?,
 //        MaxRuntime.post("perform: \(sSymbol)")
         guard let fn = object.onSelector[sSymbol] else { return }
 
-        let atoms = atomsFromPointer(argc, argv)
-        let maxList = atoms.asMaxList
+        let maxList = maxListFromPointer(argc, argv)
 
         fn(maxList)
         return
@@ -167,12 +173,13 @@ internal func _method_list(_ ptr: UnsafeMutableRawPointer?,
 
     // list
 
-    MaxRuntime.post("perform list")
+    MaxLogger.shared.post("perform list")
 
-    let atoms = atomsFromPointer(argc, argv)
-    let maxList = atoms.asMaxList
+    let maxList = maxListFromPointer(argc, argv)
 
     object.onList(maxList)
 
 //    dispatcher.takeUnretainedValue().value.onDouble(value)
 }
+
+// MARK: -

@@ -1,2 +1,4 @@
 .swiftpm/*
 /Examples/Build/*
+.build
+docs/*

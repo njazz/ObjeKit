@@ -5,8 +5,8 @@
 //  Created by Alex Nadzharov on 25/05/2025.
 //
 
-/// generic container
-public class Box<T : Initializable > {
+/// Generic container
+public class Box<T: Initializable> {
     var value: T
 
     public init(_ value: T) {

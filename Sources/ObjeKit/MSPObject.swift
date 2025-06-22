@@ -7,9 +7,9 @@
 
 import DSPLKit
 
-// STUB
-protocol MSPObject : MaxObject {
-  func setupDSP(sampleRate: Double, vectorSize: UInt)
+/// STUB for DSP object
+protocol MSPObject: MaxObject {
+    func setupDSP(sampleRate: Double, vectorSize: UInt)
 
-  func perform(inputVectors: [UnsafePointer<Float>], outputVectors: [UnsafeMutablePointer<Float>], vectorSize: UInt)
+    func perform(inputVectors: [UnsafePointer<Float>], outputVectors: [UnsafeMutablePointer<Float>], vectorSize: UInt)
 }

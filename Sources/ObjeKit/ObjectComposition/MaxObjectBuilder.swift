@@ -1,10 +1,11 @@
 //
-//  MaxIOBuilder.swift
+//  MaxObjectBuilder 2.swift
 //  ObjeKit
 //
-//  Created by Alex Nadzharov on 26/05/2025.
+//  Created by alex on 22/06/2025.
 //
 
+/// NB: Stub for composite object builder
 @resultBuilder
 public struct MaxObjectBuilder {
     public static func buildBlock(_ components: MaxObject...) -> MaxObject {
@@ -33,14 +34,5 @@ public struct MaxObjectBuilder {
     // Optional: support for arrays of components (e.g. loops)
     public static func buildArray(_ components: [MaxObject]) -> MaxObject {
         CompositeMaxObject(components)
-    }
-}
-
-// MARK: -
-
-@resultBuilder
-public struct MaxIOBuilder {
-    public static func buildBlock(_ components: MaxIOComponent...) -> MaxIOComponent {
-        CompositeMaxIO(components)
     }
 }

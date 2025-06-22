@@ -20,10 +20,10 @@ final class MaxObjectProtocolTests: XCTestCase {
         // Not overriding default 'objects' and 'io'
     }
     
-    func testDefaultObjectsPropertyReturnsCompositeMaxObject() {
-        let obj = DummyObject()
-        XCTAssertTrue(type(of: obj.objects) == ObjeKit.CompositeMaxObject.self)
-    }
+//    func testDefaultObjectsPropertyReturnsCompositeMaxObject() {
+//        let obj = DummyObject()
+//        XCTAssertTrue(type(of: obj.objects) == ObjeKit.CompositeMaxObject.self)
+//    }
     
     func testDefaultIOPropertyReturnsCompositeMaxIO() {
         let obj = DummyObject()

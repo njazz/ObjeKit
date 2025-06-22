@@ -30,7 +30,7 @@ final class AttributeTests: XCTestCase {
     func testAttributeWrappedValue() {
         var internalValue = "hello"
         
-        let attribute = Attribute<String> {
+        let attribute = Attribute<String> ("test") {
             MaxBinding<String>(
                 get: { internalValue },
                 set: { internalValue = $0 },
@@ -47,7 +47,7 @@ final class AttributeTests: XCTestCase {
         var value = 123
         var observed: Int?
 
-        let attr = Attribute<Int> {
+        let attr = Attribute<Int> ("test2") {
             MaxBinding<Int>(
                 get: { value },
                 set: { value = $0 },
