@@ -24,13 +24,7 @@ jobs:
         # run: swift --version
         
       - name: Build doc archive
-        run: swift package --allow-writing-to-directory ./docs \
-          generate-documentation \
-          --disable-indexing \
-          --transform-for-static-hosting \
-          --hosting-base-path njazz.github.io/ObjeKit \
-          --target ObjeKit \
-          --output-path ./docs
+        run: swift package --allow-writing-to-directory ./docs generate-documentation --disable-indexing --transform-for-static-hosting --hosting-base-path njazz.github.io/ObjeKit --target ObjeKit --output-path ./docs
 
       - name: Deploy to GitHub Pages (gh-pages branch)
         uses: peaceiris/actions-gh-pages@v3
