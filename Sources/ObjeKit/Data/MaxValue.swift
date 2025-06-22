@@ -90,10 +90,6 @@ extension MaxValue {
 // MARK: - Array conversions
 
 extension Array where Element == MaxValue {
-    var asAtoms: [MaxValue] {
-        map(MaxValue.init)
-    }
-
     var asIntArray: [Int64]? {
         allSatisfy {
             if case .int = $0 { true } else { false }
@@ -135,9 +131,11 @@ public protocol MaxValueConvertible {}
 extension Int: MaxValueConvertible {}
 extension Int16: MaxValueConvertible {}
 extension Int32: MaxValueConvertible {}
+extension Int64: MaxValueConvertible {}
 extension UInt: MaxValueConvertible {}
 extension UInt16: MaxValueConvertible {}
 extension UInt32: MaxValueConvertible {}
+extension UInt64: MaxValueConvertible {}
 extension Double: MaxValueConvertible {}
 extension Float: MaxValueConvertible {}
 extension String: MaxValueConvertible {}
@@ -149,6 +147,8 @@ public extension MaxValue {
     func convert<T: MaxValueConvertible>(to type: T.Type) -> T? {
         switch (self, type) {
         case (.int(let i), is Int.Type): return i as? T
+        case (.int(let i), is Int32.Type): return i as? T
+        case (.int(let i), is Int64.Type): return i as? T
         case (.float(let f), is Double.Type): return f as? T
         case (.int(let i), is Double.Type): return Double(i) as? T
         case (.symbol(let s), is String.Type): return s as? T
