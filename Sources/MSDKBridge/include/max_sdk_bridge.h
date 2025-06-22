@@ -108,6 +108,7 @@ void _class_attr_save(t_class* cls, const char* name, const bool v);
 
 void _class_attr_accessors(t_class* cls, const char* name, _attr_getter getter, _attr_setter setter);
 
+
 #ifdef __cplusplus
 }
 #endif
