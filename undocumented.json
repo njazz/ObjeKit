@@ -30,6 +30,13 @@
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Data/MaxValue.swift",
+      "line": 12,
+      "symbol": "MaxValue.float(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Data/MaxValue.swift",
       "line": 13,
       "symbol": "MaxValue.int(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
@@ -38,13 +45,6 @@
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Data/MaxValue.swift",
       "line": 14,
-      "symbol": "MaxValue.float(_:)",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Data/MaxValue.swift",
-      "line": 15,
       "symbol": "MaxValue.symbol(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
@@ -58,49 +58,49 @@
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Data/MaxValue.swift",
-      "line": 31,
+      "line": 43,
       "symbol": "MaxList",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Data/MaxValue.swift",
-      "line": 49,
+      "line": 46,
       "symbol": "MaxValue.init(any:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Data/MaxValue.swift",
-      "line": 136,
+      "line": 133,
       "symbol": "MaxValueConvertible",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Data/MaxValue.swift",
-      "line": 151,
+      "line": 148,
       "symbol": "MaxValue.convert(to:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Data/MaxValue.swift",
-      "line": 162,
+      "line": 159,
       "symbol": "MaxList",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Data/MaxValue.swift",
-      "line": 163,
+      "line": 160,
       "symbol": "MaxList.unpack()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Data/MaxValue.swift",
-      "line": 168,
+      "line": 165,
       "symbol": "MaxList.unpack()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
