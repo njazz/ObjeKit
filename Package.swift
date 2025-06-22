@@ -62,10 +62,6 @@ let package = Package(
                 .headerSearchPath("../../ThirdParty/max-sdk\(sdkVersionSuffix)/source/max-sdk-base/c74support/msp-includes"),
             ],
             
-            plugins: [
-//                            .plugin(name: "SwiftDocCPlugin", package: "swift-docc-plugin")
-//                .plugin(name: "docc")
-                        ]
         ),
         
         .target(
