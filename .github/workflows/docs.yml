@@ -26,9 +26,6 @@ jobs:
       - name: Build doc archive
         run: swift package --allow-writing-to-directory ./docs generate-documentation --target ObjeKit --output-path ./docs
 
-      # - name: Generate HTML docs with docc tool
-        # run: docc convert .build/docc/ObjeKit.doccarchive --output-path docs --hosting-base-path /
-
       - name: Deploy to GitHub Pages (gh-pages branch)
         uses: peaceiris/actions-gh-pages@v3
         with:
