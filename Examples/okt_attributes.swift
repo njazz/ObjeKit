@@ -12,7 +12,7 @@ public func ext_main(_ r: UnsafeMutableRawPointer) {
     MaxDispatcher.setup(ObjeKitTest_Attributes.self)
 }
 
-/// small class to display agrument values
+/// small class to load / store attributes
 class ObjeKitTest_Attributes : MaxObject {
     static var className: String { "okt_attributes"}
     

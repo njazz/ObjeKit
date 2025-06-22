@@ -125,7 +125,7 @@ Version number: 0.0.2 - Proof of concept
 🔄 Outlets  
 🔄 MaxOutput - generic output  
 ✅ Arguments  
-❌ Attributes  
+🔄 Attributes  
 
 🔄 Tests
 

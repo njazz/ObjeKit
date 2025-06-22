@@ -92,9 +92,13 @@ void _warning(const char* str){
 
 // MARK: -
 
+#ifdef __cplusplus
 extern "C" {
+#endif
 
 void _class_add_attr_long(t_class* cls, const char* name);
 void _class_add_attr_double(t_class* cls, const char* name);
 
+#ifdef __cplusplus
 }
+#endif

@@ -71,22 +71,6 @@ public class MaxDispatcher {
         
         let visitor = AttachClass(object: _class!)
 
-//        let mirror = Mirror(reflecting: _instance)
-//
-//        // Gather all property wrappers conforming to MaxIOComponent
-//        let wrappers = mirror.children.compactMap { child -> MaxIOComponent? in
-//            // Property wrappers are stored under _propertyName, or sometimes with $propertyName, so we test both
-//            if let component = child.value as? MaxIOComponent {
-//                return component
-//            }
-//            return nil
-//        }
-//
-//        // properties
-//        for component in wrappers {
-//            MaxRuntime.post("visitor \(visitor) component \(component)")
-//            component.accept(visitor: visitor)
-//        }
         MaxRuntime.post("visitor \(visitor) instance \(_instance) io \(_instance.io)")
         _instance.io.accept(visitor: visitor)
         
