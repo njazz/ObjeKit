@@ -24,7 +24,7 @@ jobs:
         # run: swift --version
         
       - name: Build doc archive
-        run: swift package generate-documentation --output-path ./docs
+        run: swift package generate-documentation --target ObjeKit --output-path ./docs
 
       # - name: Generate HTML docs with docc tool
         # run: docc convert .build/docc/ObjeKit.doccarchive --output-path docs --hosting-base-path /
