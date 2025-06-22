@@ -828,14 +828,14 @@
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Property.swift",
-      "line": 53,
+      "line": 51,
       "symbol": "MaxState.projectedValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Property.swift",
-      "line": 64,
+      "line": 62,
       "symbol": "MaxState.init(wrappedValue:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
