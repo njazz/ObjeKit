@@ -65,7 +65,7 @@
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Data/MaxValue.swift",
-      "line": 133,
+      "line": 129,
       "symbol": "MaxValueConvertible",
       "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
