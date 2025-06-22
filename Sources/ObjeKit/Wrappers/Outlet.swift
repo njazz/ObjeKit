@@ -5,18 +5,22 @@
 //  Created by Alex Nadzharov on 26/05/2025.
 //
 
-// NB: statless wrapper
+/// Max Outlet property wrapper
+///
+/// NB: this is a stateless shortcut for each outlet to output data directly
+/// TODO: currently N/A
 @propertyWrapper
 public struct MaxOutput: MaxIOComponent {
     public var onChange: ((MaxList) -> Void)? // to be provided by AttachInstance
     
+    /// Sender class for Outlet - use it to send different data
+    ///
+    /// TODO: yet N/A
     public class Sender {
         var action : (()->Void)?
         public func bang() {
             self.action?()
         }
-        
-        
     }
     
     public let index: PortIndex
@@ -24,13 +28,7 @@ public struct MaxOutput: MaxIOComponent {
 
     public init(_ outlet: PortIndex = .index(0)) {
         self.index = outlet
-        
-
         self.wrappedValue = Sender()
-        
-        
-
-        
     }
 
     public func accept<V: MaxIOVisitor>(visitor: V) {
@@ -42,7 +40,12 @@ public struct MaxOutput: MaxIOComponent {
     }
 }
 
-public class Outlet<T>: MaxIOComponent {    
+// MARK: -
+
+/// Max Outlet component
+///
+/// NB default is always inlet 0
+public class Outlet<T>: MaxIOComponent {
     public let kind: PortKind = .list
     public var index: PortIndex = .index(0)
     

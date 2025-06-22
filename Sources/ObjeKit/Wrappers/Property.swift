@@ -5,6 +5,9 @@
 //  Created by Alex Nadzharov on 26/05/2025.
 //
 
+/// Binding wrapper for MaxObject
+///
+/// Used by Outlet() object
 @propertyWrapper
 public struct MaxBinding<T> : MaxIOComponent {
     
@@ -30,7 +33,10 @@ public struct MaxBinding<T> : MaxIOComponent {
  
 // MARK: -
 
- @propertyWrapper
+/// Local state storage for MaxObject
+///
+/// Used with MaxBinding by Outlet() object
+@propertyWrapper
 public class MaxState<T:Equatable> : MaxIOComponent  {
      private var value: T
      private var observers: [(T) -> Void] = []

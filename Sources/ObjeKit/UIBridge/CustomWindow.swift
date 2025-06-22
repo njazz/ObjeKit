@@ -8,6 +8,9 @@
 import SwiftUI
 import AppKit
 
+/// Create a window with title and SwiftUI View inside.
+///
+/// NB show/hide calls are thread-safe
 public class CustomWindow<Content: View> {
     private var window: NSWindow? = nil
     private let title: String

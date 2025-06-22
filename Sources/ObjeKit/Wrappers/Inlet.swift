@@ -5,6 +5,9 @@
 //  Created by Alex Nadzharov on 26/05/2025.
 //
 
+/// Inlet / Outlet port
+///
+/// index: may be exact (**.index()**) next **.available** or a wildcard **.any**
 public enum PortIndex {
     case index(Int), any, available
 }
@@ -19,6 +22,8 @@ public enum PortKind : Equatable {
 
 // MARK: - Inlet / Method combined
 
+/// Max Inlet component
+///
 /// NB default is always inlet 0
 public struct Inlet: MaxIOComponent {
     public let kind: PortKind

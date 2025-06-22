@@ -24,6 +24,7 @@ func runOnMainThread(_ block: @escaping () -> Void) {
 
 // MARK: -
 
+/// ObservableObject wrapper for MaxBinding
 public final class MaxStateObserver<T: Equatable>: ObservableObject {
     @Published public var value: T
 

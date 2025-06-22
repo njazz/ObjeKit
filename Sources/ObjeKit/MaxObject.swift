@@ -14,17 +14,14 @@ public protocol Initializable {
 // MARK: -
 
 public protocol MaxObject: AnyObject, Initializable {
+    /// This must be provided by object and is used in object's setup() function
     static var className: String { get }
     
     /// some special case: if returns true, the class instantiation during object setup will be bypassed (avoiding registering the Attribute classes)
     static var disableClassInstance : Bool { get }
 
-    var objects: MaxObject { get }
+    /// object elements: Inlets, Outlets, Arguments, Attributes
     var io: MaxIOComponent { get }
-}
-
-public protocol MaxComponent: AnyObject, Initializable {
-    var children: [MaxComponent] { get }
 }
 
 public protocol MaxIOComponent {
@@ -35,9 +32,6 @@ public protocol MaxIOComponent {
 // MARK: -
 
 public extension MaxObject {
-    /// NB: not yet used:
-    var objects: MaxObject { CompositeMaxObject() }
-    
     var io: MaxIOComponent { CompositeMaxIO() }
     
     static var disableClassInstance : Bool { get { false } }

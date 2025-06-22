@@ -7,6 +7,7 @@
 
 @_implementationOnly import MSDKBridge
 
+/// Hashable object constructor pointer
 struct CtorPointer: Hashable {
     let raw: UnsafeRawPointer
 
@@ -24,7 +25,9 @@ struct CtorPointer: Hashable {
     }
 }
 
-/// Dynamically dispatching max object
+// MARK: -
+
+/// Dynamically dispatching Max object
 public class MaxDispatcher {
     
     static var _metadata: [CtorPointer: DispatcherClassMetadata] = [:]

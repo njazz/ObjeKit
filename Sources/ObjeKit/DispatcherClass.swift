@@ -6,17 +6,21 @@
 //
 @_implementationOnly import MSDKBridge
 
+/// Internal data for Argument class
 struct ArgumentData {
     var untypedSetter : (MaxValue)->Bool    /// returns false if fails type conversion
     var optional : Bool
     var description : String?
 }
 
+/// Internal data for Attribute class
 struct AttributeData {
     var description : String?
 }
 
-/// Proxy class forwarding to swift object
+// MARK: -
+
+/// Proxy class forwarding to Swift MaxObject
 class DispatcherClass: Initializable {
     required init() {}
     
@@ -38,7 +42,7 @@ class DispatcherClass: Initializable {
     var attributes : [AttributeData] = []
 }
 
-// TODO: use
+/// Metadata used by DispatcherClass
 struct DispatcherClassMetadata {
     var maxClass: UnsafeMutablePointer<t_class>
     var objectType : MaxObject.Type

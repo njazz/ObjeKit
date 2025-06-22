@@ -5,7 +5,7 @@
 //  Created by Alex Nadzharov on 25/05/2025.
 //
 
-/// generic container
+/// Generic container
 public class Box<T : Initializable > {
     var value: T
 

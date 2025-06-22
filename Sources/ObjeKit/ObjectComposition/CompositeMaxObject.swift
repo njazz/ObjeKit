@@ -1,3 +1,5 @@
+/// Stub for possible class composition
+
 //
 //  CompositeMaxObject.swift
 //  ObjeKit

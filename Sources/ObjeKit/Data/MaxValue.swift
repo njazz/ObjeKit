@@ -5,7 +5,10 @@
 //  Created by Alex Nadzharov on 27/05/2025.
 //
 
-// minimal
+/// Minimalistic MAxValue type
+///
+/// Supported types: int, float, symbol
+/// NB: currently redundant with Atom; TODO
 public enum MaxValue {
     case int(Int)
     case float(Double)

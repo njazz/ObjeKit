@@ -1,4 +1,7 @@
-//
+/// C methods for the DispatcherClass
+/// To be forwarded to Max C/C++ SDK
+///
+
 //  CMethods.swift
 //  ObjeKit
 //

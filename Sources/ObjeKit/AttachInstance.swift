@@ -8,7 +8,9 @@
 
 @_implementationOnly import MSDKBridge
 
-/// Attach DispatcherClass instance to max object instance
+/// Attach DispatcherClass instance to MaxObject instance
+///
+/// Connects Inlet(), Outlet(), Argument() to DispatcherClass
 class AttachInstance: MaxIOVisitor {
     var object : UnsafeMutablePointer<t_object>
     var wrapper : DispatcherClass

@@ -7,7 +7,9 @@
 
 @_implementationOnly import MSDKBridge
 
-/// low-level Max SDK type wrap
+/// Low-level Max SDK type wrap
+///
+/// Supported types: float, int, symbol
 enum Atom {
     case float(Double)
     case int(Int)
@@ -70,6 +72,7 @@ extension Array where Element == Atom {
 
 // MARK: - C interop
 
+/// Convert Atom List from C API argc, argv
 func atomsFromPointer(_ count: CLong, _ ptr: UnsafeMutablePointer<t_atom>?) -> [Atom] {
     guard let ptr = ptr else { return [] }
     return (0 ..< count).map { i in
@@ -77,6 +80,7 @@ func atomsFromPointer(_ count: CLong, _ ptr: UnsafeMutablePointer<t_atom>?) -> [
     }
 }
 
+/// Convert Array of Atoms to C API argc, argv
 func makeAtomPointer(from atoms: [Atom]) -> (argc: CLong, argv: UnsafeMutablePointer<t_atom>) {
     let argc = CLong(atoms.count)
     let argv = UnsafeMutablePointer<t_atom>.allocate(capacity: atoms.count)

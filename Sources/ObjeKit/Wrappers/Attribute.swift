@@ -63,6 +63,7 @@ extension Array: MaxAttributeValue where Element: MaxAttributeValueElement {}
 
 // MARK: -
 
+/// Max Attribute style enum
 public enum AttributeStyle: CaseIterable, RawRepresentable {
     case m_text, m_onoff, m_rgba, m_enum, m_enumindex, m_rect, m_font, m_file
 
@@ -84,7 +85,12 @@ public enum AttributeStyle: CaseIterable, RawRepresentable {
 
 // MARK: -
 
-/// Attribute wrapper (R/W)
+/// Max Attribute wrapper (R/W)
+///
+/// Parameter style: display style in Inspector
+/// Parameter label: label in Inspector, optional
+/// Parameter name: name to be used within object & Inspector
+/// Parameter transitional: if true, value is not stored within Max patch
 @propertyWrapper
 public class Attribute<T: MaxAttributeValue>: MaxIOComponent {
     

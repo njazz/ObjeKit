@@ -7,17 +7,15 @@
 
 @_implementationOnly import MSDKBridge
 
-/// currently unused
+/// Connects DispatcherClass with MaxObject Instance 'static' properties
+///
+/// Currently this is used only for Attribute() elements
 class AttachClass : MaxClassIOVisitor {
     var object : UnsafeMutablePointer<t_class>
     
     init(object: UnsafeMutablePointer<t_class>) {
         self.object = object
     }
-    
-//    func visit<T>(_ argument: Argument<T>) {
-//        
-//    }
     
     func visit<T>(_ attribute: Attribute<T>) {
         MaxRuntime.post("Register Attribute: \(attribute.name) \(attribute.label) \(attribute.style) transitional:\(attribute.transitional)")
