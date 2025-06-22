@@ -43,10 +43,10 @@ public class MaxState<T: Equatable>: MaxIOComponent {
     public var wrappedValue: T {
         get { value }
         set {
-            if value != newValue {
-                value = newValue
-                notifyObservers()
-            }
+//            if value != newValue {
+            value = newValue
+            notifyObservers()
+//            }
         }
     }
 

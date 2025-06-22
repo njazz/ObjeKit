@@ -41,7 +41,7 @@ extension MaxValue {
     public init(any value: Any) {
         switch value {
         case let int as Int:
-                self = .int(Int64(int))
+            self = .int(Int64(int))
         case let int as Int64:
             self = .int(int)
         case let double as Double:

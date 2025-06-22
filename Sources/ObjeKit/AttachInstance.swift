@@ -77,7 +77,7 @@ class AttachInstance: MaxIOVisitor {
                         let atoms = makeAtomPointer(from: v!)
                         outlet_list(this_outlet, nil, Int16(atoms.argc), atoms.argv)
                         // NB list size is limited to 256
-                        MaxLogger.shared.post("outlet list \(atoms)")
+                        MaxLogger.shared.post("outlet list \(value) -> \(v) -> \(atoms)")
                     }
                 }
             }

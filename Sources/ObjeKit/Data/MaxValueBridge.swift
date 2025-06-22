@@ -52,6 +52,7 @@ func makeAtomPointer(from atoms: [MaxValue]) -> (argc: CLong, argv: UnsafeMutabl
             atom_setsym(ptr, gensym(cstr))
         case .unknown:
             // no-op or set as blank symbol
+            MaxLogger.shared.warning("Unknown atom value: \(atom)")
             atom_setsym(ptr, gensym(""))
         }
     }

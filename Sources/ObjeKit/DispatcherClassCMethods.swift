@@ -173,9 +173,8 @@ internal func _method_list(_ ptr: UnsafeMutableRawPointer?,
 
     // list
 
-    MaxLogger.shared.post("perform list")
-
     let maxList = maxListFromPointer(argc, argv)
+    MaxLogger.shared.post("perform list \(maxList)")
 
     object.onList(maxList)
 
