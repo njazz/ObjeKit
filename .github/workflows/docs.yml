@@ -1,0 +1,39 @@
+name: Build and Publish Swift-DocC Docs
+
+on:
+  push:
+    branches:
+      - dev-1  # change if your default branch is different
+
+jobs:
+  build-docs:
+    runs-on: macos-latest
+    steps:
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      - uses: actions/checkout@v3
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0   # needed for pushing back to gh-pages
+
+      - name: Check Swift version
+        run: swift --version
+        
+      - name: Build doc archive
+        run: swift build docc --target ObjeKit
+
+      - name: Generate HTML docs with docc tool
+        run: docc convert .build/docc/ObjeKit.doccarchive --output-path docs --hosting-base-path /
+
+      - name: Deploy to GitHub Pages (gh-pages branch)
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          publish_branch: gh-pages
+          user_name: github-actions[bot]
+          user_email: github-actions[bot]@users.noreply.github.com
