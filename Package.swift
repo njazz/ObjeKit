@@ -25,7 +25,7 @@ let package = Package(
         ),
     ],
     dependencies: [
-        
+        .package(url: "https://github.com/apple/swift-docc-plugin.git", from: "1.0.0"),
     ],
     targets: [
         
@@ -54,12 +54,17 @@ let package = Package(
         .target(
             name: "ObjeKit",
             dependencies: ["MSDKBridge", "DSPLKit"],
+            
             path: "Sources/ObjeKit",
             cSettings: [
                 .headerSearchPath("include"),
                 .headerSearchPath("../../ThirdParty/max-sdk\(sdkVersionSuffix)/source/max-sdk-base/c74support/max-includes"),
                 .headerSearchPath("../../ThirdParty/max-sdk\(sdkVersionSuffix)/source/max-sdk-base/c74support/msp-includes"),
-            ]
+            ],
+            
+            plugins: [
+                            .plugin(name: "SwiftDocCPlugin", package: "swift-docc-plugin")
+                        ]
         ),
         
         .target(
