@@ -5,22 +5,24 @@
 //  Created by Alex Nadzharov on 27/05/2025.
 //
 
-/// Minimalistic MAxValue type
+/// Low-level Max SDK type wrap
 ///
-/// Supported types: int, float, symbol
-/// NB: currently redundant with Atom; TODO
+/// Supported types: float, int, symbol
 public enum MaxValue {
-    case int(Int)
     case float(Double)
+    case int(Int)
     case symbol(String)
+
     case unknown
 }
+
+// MARK: -
 
 extension MaxValue: Equatable {
     public static func == (lhs: MaxValue, rhs: MaxValue) -> Bool {
         switch (lhs, rhs) {
-        case let (.int(a), .int(b)): return a == b
         case let (.float(a), .float(b)): return a == b
+        case let (.int(a), .int(b)): return a == b
         case let (.symbol(a), .symbol(b)): return a == b
         case (.unknown, .unknown): return true
         default: return false
@@ -28,22 +30,17 @@ extension MaxValue: Equatable {
     }
 }
 
-public typealias MaxList = [MaxValue]
+// MARK: -
 
-extension MaxValue {
-    init(_ atom: Atom) {
-        switch atom {
-        case .float(let value):
-            self = .float(value)
-        case .int(let value):
-            self = .int(value)
-        case .symbol(let value):
-            self = .symbol(value)
-        case .unknown:
-            self = .unknown
-        }
+extension Array where Element == MaxValue {
+    var asMaxList: MaxList {
+        map(MaxValue.init)
     }
 }
+
+// MARK: -
+
+public typealias MaxList = [MaxValue]
 
 extension MaxValue {
     public init(any value: Any) {
@@ -93,8 +90,8 @@ extension MaxValue {
 // MARK: - Array conversions
 
 extension Array where Element == MaxValue {
-    var asAtoms: [Atom] {
-        self.map(Atom.init)
+    var asAtoms: [MaxValue] {
+        self.map(MaxValue.init)
     }
 
     var asIntArray: [Int]? {

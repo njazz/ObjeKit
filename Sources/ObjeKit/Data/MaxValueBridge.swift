@@ -1,21 +1,13 @@
 //
-//  Atom.swift
+//  AtomBridge.swift
 //  ObjeKit
 //
-//  Created by Alex Nadzharov on 25/05/2025.
+//  Created by alex on 22/06/2025.
 //
 
 @_implementationOnly import MSDKBridge
 
-/// Low-level Max SDK type wrap
-///
-/// Supported types: float, int, symbol
-enum Atom {
-    case float(Double)
-    case int(Int)
-    case symbol(String)
-    case unknown
-
+extension MaxValue {
     init(_ ptr: UnsafeMutablePointer<t_atom>) {
         let type = UInt32(atom_gettype(ptr))
 
@@ -33,55 +25,18 @@ enum Atom {
     }
 }
 
-// MARK: -
-
-extension Atom {
-    init(_ maxValue: MaxValue) {
-        switch maxValue {
-        case let .float(value):
-            self = .float(value)
-        case let .int(value):
-            self = .int(value)
-        case let .symbol(value):
-            self = .symbol(value)
-        case .unknown:
-            self = .unknown
-        }
-    }
-}
-
-extension Atom: Equatable {
-    public static func == (lhs: Atom, rhs: Atom) -> Bool {
-        switch (lhs, rhs) {
-        case let (.float(a), .float(b)): return a == b
-        case let (.int(a), .int(b)): return a == b
-        case let (.symbol(a), .symbol(b)): return a == b
-        case (.unknown, .unknown): return true
-        default: return false
-        }
-    }
-}
-
-// MARK: -
-
-extension Array where Element == Atom {
-    var asMaxList: MaxList {
-        map(MaxValue.init)
-    }
-}
-
 // MARK: - C interop
 
 /// Convert Atom List from C API argc, argv
-func atomsFromPointer(_ count: CLong, _ ptr: UnsafeMutablePointer<t_atom>?) -> [Atom] {
+func atomsFromPointer(_ count: CLong, _ ptr: UnsafeMutablePointer<t_atom>?) -> [MaxValue] {
     guard let ptr = ptr else { return [] }
     return (0 ..< count).map { i in
-        Atom(ptr.advanced(by: Int(i)))
+        MaxValue(ptr.advanced(by: Int(i)))
     }
 }
 
 /// Convert Array of Atoms to C API argc, argv
-func makeAtomPointer(from atoms: [Atom]) -> (argc: CLong, argv: UnsafeMutablePointer<t_atom>) {
+func makeAtomPointer(from atoms: [MaxValue]) -> (argc: CLong, argv: UnsafeMutablePointer<t_atom>) {
     let argc = CLong(atoms.count)
     let argv = UnsafeMutablePointer<t_atom>.allocate(capacity: atoms.count)
 

@@ -22,14 +22,14 @@ final class DummyMaxObject2: MaxObject {
     func onBang() { wasBanged = true }
     func onInt(_ value: Int) { receivedInt = value }
     func onDouble(_ value: Double) { receivedFloat = value }
-    func onList(_ list: [Atom]) { receivedList = list }
-    var onSelector: [String: ([Atom]) -> Void] = [:]
+    func onList(_ list: [MaxValue]) { receivedList = list }
+    var onSelector: [String: ([MaxValue]) -> Void] = [:]
 
     // For test verification
     var wasBanged = false
     var receivedInt: Int?
     var receivedFloat: Double?
-    var receivedList: [Atom]?
+    var receivedList: [MaxValue]?
 }
 
 final class DummyIO2: MaxIOComponent {
