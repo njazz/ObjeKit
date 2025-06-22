@@ -58,16 +58,9 @@
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Data/MaxValue.swift",
-      "line": 43,
+      "line": 35,
       "symbol": "MaxList",
       "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Data/MaxValue.swift",
-      "line": 46,
-      "symbol": "MaxValue.init(any:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
@@ -79,35 +72,28 @@
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Data/MaxValue.swift",
-      "line": 148,
-      "symbol": "MaxValue.convert(to:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Data/MaxValue.swift",
-      "line": 159,
+      "line": 162,
       "symbol": "MaxList",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Data/MaxValue.swift",
-      "line": 160,
+      "line": 163,
       "symbol": "MaxList.unpack()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Data/MaxValue.swift",
-      "line": 165,
+      "line": 173,
       "symbol": "MaxList.unpack()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/MaxIOBuilder.swift",
-      "line": 12,
+      "line": 11,
       "symbol": "MaxIOBuilder.buildBlock(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
@@ -165,6 +151,34 @@
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/MaxIOVisitor.swift",
       "line": 32,
       "symbol": "MaxClassIOVisitor.visit(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/MaxLogger.swift",
+      "line": 14,
+      "symbol": "MaxLogger.shared",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/MaxLogger.swift",
+      "line": 18,
+      "symbol": "MaxLogger.post(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/MaxLogger.swift",
+      "line": 24,
+      "symbol": "MaxLogger.warning(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/MaxLogger.swift",
+      "line": 30,
+      "symbol": "MaxLogger.error(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -485,28 +499,28 @@
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Attribute.swift",
-      "line": 104,
+      "line": 103,
       "symbol": "Attribute.onChange",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Attribute.swift",
-      "line": 106,
+      "line": 105,
       "symbol": "Attribute.wrappedValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Attribute.swift",
-      "line": 114,
+      "line": 113,
       "symbol": "Attribute.init(_:style:label:transitional:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Attribute.swift",
-      "line": 127,
+      "line": 126,
       "symbol": "Attribute.accept(visitor:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -716,112 +730,112 @@
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Outlet.swift",
-      "line": 49,
+      "line": 48,
       "symbol": "Outlet.kind",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Outlet.swift",
-      "line": 50,
+      "line": 49,
       "symbol": "Outlet.index",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Outlet.swift",
-      "line": 54,
+      "line": 53,
       "symbol": "Outlet.onChange",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Outlet.swift",
-      "line": 56,
+      "line": 55,
       "symbol": "Outlet.wrappedValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Outlet.swift",
-      "line": 62,
+      "line": 61,
       "symbol": "Outlet.init(_:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Outlet.swift",
-      "line": 71,
+      "line": 70,
       "symbol": "Outlet.init(bindingProvider:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Outlet.swift",
-      "line": 93,
+      "line": 92,
       "symbol": "Outlet.accept(visitor:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Property.swift",
-      "line": 14,
+      "line": 13,
       "symbol": "MaxBinding.wrappedValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Property.swift",
-      "line": 19,
+      "line": 18,
       "symbol": "MaxBinding.get",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Property.swift",
-      "line": 20,
+      "line": 19,
       "symbol": "MaxBinding.set",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Property.swift",
-      "line": 21,
+      "line": 20,
       "symbol": "MaxBinding.observe",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Property.swift",
-      "line": 23,
+      "line": 22,
       "symbol": "MaxBinding.callAsFunction(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Property.swift",
-      "line": 27,
+      "line": 26,
       "symbol": "MaxBinding.init(get:set:observe:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Property.swift",
-      "line": 44,
+      "line": 43,
       "symbol": "MaxState.wrappedValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Property.swift",
-      "line": 54,
+      "line": 53,
       "symbol": "MaxState.projectedValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Property.swift",
-      "line": 65,
+      "line": 64,
       "symbol": "MaxState.init(wrappedValue:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
