@@ -96,12 +96,17 @@ void _warning(const char* str){
 extern "C" {
 #endif
 
+typedef t_max_err (*_attr_getter)(t_object *x, void *attr, long *ac, t_atom **av);
+typedef t_max_err (*_attr_setter)(t_object *x, void *attr, long ac, t_atom *av);
+
 void _class_add_attr_long(t_class* cls, const char* name);
 void _class_add_attr_double(t_class* cls, const char* name);
 void _class_add_attr_symbol(t_class* cls, const char* name);
 
 void _class_attr_label(t_class* cls, const char* name, const char* label);
 void _class_attr_save(t_class* cls, const char* name, const bool v);
+
+void _class_attr_accessors(t_class* cls, const char* name, _attr_getter getter, _attr_setter setter);
 
 #ifdef __cplusplus
 }

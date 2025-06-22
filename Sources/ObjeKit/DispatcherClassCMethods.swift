@@ -183,22 +183,29 @@ internal func _method_list(_ ptr: UnsafeMutableRawPointer?,
 
 // MARK: -
 
-typealias MaxErr = Int32
+typealias MaxErr = t_max_err
 
-func _attr_getter(
-    object: UnsafeMutableRawPointer?,
+typealias AttrGetter = @convention(c) (UnsafeMutablePointer<t_object>?, UnsafeMutableRawPointer?, UnsafeMutablePointer<CLong>?, UnsafeMutablePointer<UnsafeMutablePointer<t_atom>?>?) -> MaxErr
+typealias AttrSetter = @convention(c) (UnsafeMutablePointer<t_object>?, UnsafeMutableRawPointer?, UnsafeMutablePointer<CLong>, UnsafeMutablePointer<t_atom>?) -> MaxErr
+
+internal func _dispatch_attr_getter(
+    object: UnsafeMutablePointer<t_object>?,
     attribute: UnsafeMutableRawPointer?,
-    atomCount: inout Int,
-    atoms: inout UnsafeMutablePointer<t_atom>?
+    atomCount: UnsafeMutablePointer<CLong>?,
+    atoms: UnsafeMutablePointer<UnsafeMutablePointer<t_atom>?>?
 ) -> MaxErr {
+    MaxLogger.shared.post("Test: attribute setter")
+    
     return 0
 }
 
-func _attr_setter(
-    object: UnsafeMutableRawPointer?,
+internal func _dispatch_attr_setter(
+    object: UnsafeMutablePointer<t_object>?,
     attribute: UnsafeMutableRawPointer?,
-    atomCount: Int,
-    atoms: UnsafeMutablePointer<t_atom>
+    atomCount: CLong,
+    atoms: UnsafeMutablePointer<t_atom>?
 ) -> MaxErr {
+    MaxLogger.shared.post("Test: attribute getter")
+    
     return 0
 }

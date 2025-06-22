@@ -59,6 +59,9 @@ void _class_attr_save(t_class* cls, const char* name, const bool v){
     v ? CLASS_ATTR_SAVE(cls, name, ATTR_FLAGS_NONE) : CLASS_ATTR_DONTSAVE(cls, name, ATTR_FLAGS_NONE);
 }
 
+void _class_attr_accessors(t_class* cls, const char* name, _attr_getter getter, _attr_setter setter){
+    CLASS_ATTR_ACCESSORS(cls, name, getter, setter);
+}
 
 
 }
