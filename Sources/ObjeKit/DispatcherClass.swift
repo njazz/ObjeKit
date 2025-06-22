@@ -43,6 +43,7 @@ struct DispatcherClassMetadata {
     var maxClass: UnsafeMutablePointer<t_class>
     var objectType : MaxObject.Type
     
-    var inletCount : UInt8
-    var outletCount : UInt8
+    // unused?
+    var inletCount : UInt8?
+    var outletCount : UInt8?
 }

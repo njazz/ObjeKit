@@ -41,4 +41,10 @@ public class CompositeMaxIO : MaxIOComponent {
             component.accept(visitor: visitor)
         }
     }
+    
+    public func accept<V: MaxClassIOVisitor>(visitor: V) {
+        for component in io {
+            component.accept(visitor: visitor)
+        }
+    }
 }

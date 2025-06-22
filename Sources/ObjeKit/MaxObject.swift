@@ -15,6 +15,9 @@ public protocol Initializable {
 
 public protocol MaxObject: AnyObject, Initializable {
     static var className: String { get }
+    
+    /// some special case: if returns true, the class instantiation during object setup will be bypassed (avoiding registering the Attribute classes)
+    static var disableClassInstance : Bool { get }
 
     var objects: MaxObject { get }
     var io: MaxIOComponent { get }
@@ -36,6 +39,8 @@ public extension MaxObject {
     var objects: MaxObject { CompositeMaxObject() }
     
     var io: MaxIOComponent { CompositeMaxIO() }
+    
+    static var disableClassInstance : Bool { get { false } }
 }
 
 public extension MaxIOComponent {

@@ -35,6 +35,22 @@ constexpr thread_local auto ptrs = makePtrArray(std::make_integer_sequence<int, 
 
 static int currentIndex = 0;
 
+// MARK: -
+
+extern "C" {
+
+void _class_add_attr_long(t_class* cls, const char* name) {
+    CLASS_ATTR_LONG(cls, name, ATTR_FLAGS_NONE, t_wrapped_object, dummyAttribute.longValue);
+}
+
+void _class_add_attr_double(t_class* cls, const char* name) {
+    CLASS_ATTR_DOUBLE(cls, name, ATTR_FLAGS_NONE, t_wrapped_object, dummyAttribute.doubleValue);
+}
+
+}
+
+// MARK: -
+
 extern "C" {
 
 // C function to get the next function pointer (rotating)
@@ -46,7 +62,5 @@ method_ctor get_next_ctor(method_ctor ctor) {
     if (currentIndex>= NumWrappers) return nil;
     return f;
 }
-
-// MARK: -
 
 } // extern "C"

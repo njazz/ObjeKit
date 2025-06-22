@@ -1,2 +1,3 @@
 [ ] proxy_new
 [ ] outlet - data types
+[ ] named outlet

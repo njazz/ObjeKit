@@ -15,8 +15,10 @@ internal func _ctor(_ p: UnsafeMutableRawPointer?,
     
     MaxRuntime.post("input pointer: \(String(describing: p))")
     let ctor_ptr = unsafeBitCast(p, to: UnsafeRawPointer.self)
+    let ctor_ptr_value = CtorPointer(unsafeBitCast(p, to: UnsafeRawPointer.self))
 
-    let cls = MaxDispatcher._classMap["\(ctor_ptr)"]
+//    let cls = MaxDispatcher._classMap["\(ctor_ptr)"]
+    let cls = MaxDispatcher._metadata[ctor_ptr_value]?.maxClass
 
     if cls == nil {
         MaxRuntime.post("class error: \(ctor_ptr)")
@@ -29,7 +31,9 @@ internal func _ctor(_ p: UnsafeMutableRawPointer?,
 
     // t_wrapped_object_allocate_proxy(typed_obj)
 
-    if let swiftClass = MaxDispatcher._swiftClassMap["\(ctor_ptr)"] {
+    // if let swiftClass = MaxDispatcher._swiftClassMap["\(ctor_ptr)"] {
+    
+    if let swiftClass = MaxDispatcher._metadata[ctor_ptr_value]?.objectType {
         let box = Box.create(DispatcherClass.self)
         box.value.object = swiftClass.init()
         typed_obj.pointee.box = box.toRaw()

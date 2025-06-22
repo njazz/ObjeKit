@@ -41,3 +41,8 @@ void *outlet_list(t_outlet *x, t_symbol *s, short ac, t_atom *av){}
 
 void *proxy_new(void *x, long id, long *stuffloc){}
 void proxy_delete(void *xx){}
+
+void class_add_attr();
+t_object *attr_offset_new(C74_CONST char *name, C74_CONST t_symbol *type, long flags, C74_CONST method mget, C74_CONST method mset, long offset){ return 0; }
+
+t_max_err class_addattr(t_class *c,t_object *attr) { return 0; }

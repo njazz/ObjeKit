@@ -15,11 +15,19 @@ class AttachClass : MaxClassIOVisitor {
         self.object = object
     }
     
-    func visit<T>(_ argument: Argument<T>) {
-        
-    }
+//    func visit<T>(_ argument: Argument<T>) {
+//        
+//    }
     
-    func visit<T>(_ argument: Attribute<T>) {
+    func visit<T>(_ attribute: Attribute<T>) {
+        MaxRuntime.post("Register Attribute: \(attribute.name) \(attribute.label) \(attribute.style) transitional:\(attribute.transitional)")
+       
+        if (T.Type.self == CLong.Type.self) {
+            _class_add_attr_long(object, attribute.name)
+        }
         
+        if (T.Type.self == Double.Type.self) {
+            _class_add_attr_double(object, attribute.name)
+        }
     }
 }

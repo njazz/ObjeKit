@@ -16,10 +16,10 @@
 		"default_fontsize" : 12.0,
 		"default_fontface" : 0,
 		"default_fontname" : "Arial",
-		"gridonopen" : 1,
+		"gridonopen" : 2,
 		"gridsize" : [ 15.0, 15.0 ],
-		"gridsnaponopen" : 1,
-		"objectsnaponopen" : 1,
+		"gridsnaponopen" : 2,
+		"objectsnaponopen" : 0,
 		"statusbarvisible" : 2,
 		"toolbarvisible" : 1,
 		"lefttoolbarpinned" : 0,
@@ -39,6 +39,28 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-3",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 30.0, 180.0, 165.0, 22.0 ],
+					"text" : "okt_attributes @floatValue 20"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 30.0, 150.0, 155.0, 22.0 ],
+					"text" : "okt_attributes @intValue 10"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-34",
 					"maxclass" : "message",
@@ -105,9 +127,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 210.0, 225.0, 91.0, 22.0 ],
-					"presentation_linecount" : 2,
-					"text" : "method_any 10"
+					"patching_rect" : [ 210.0, 225.0, 125.0, 22.0 ],
+					"text" : "method_any 10 20 30"
 				}
 
 			}
@@ -139,9 +160,9 @@
 				"box" : 				{
 					"id" : "obj-20",
 					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 30.0, 285.0, 66.0, 22.0 ],
 					"text" : "okt_simple"
 				}
@@ -151,7 +172,7 @@
 				"box" : 				{
 					"id" : "obj-19",
 					"maxclass" : "newobj",
-					"numinlets" : 2,
+					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 30.0, 120.0, 125.0, 22.0 ],
 					"text" : "okt_arguments arg1 2"
@@ -184,7 +205,7 @@
 				"box" : 				{
 					"id" : "obj-14",
 					"maxclass" : "newobj",
-					"numinlets" : 2,
+					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 30.0, 90.0, 115.0, 22.0 ],
 					"text" : "okt_arguments arg1"
@@ -275,6 +296,10 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "okt_arguments.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "okt_attributes.mxo",
 				"type" : "iLaX"
 			}
 , 			{

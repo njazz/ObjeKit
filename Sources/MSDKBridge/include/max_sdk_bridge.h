@@ -30,6 +30,12 @@ typedef struct t_wrapped_object {
     
     void* box;
     
+    union {
+        long longValue;
+        double doubleValue;
+        t_symbol* symbolValue;
+    } dummyAttribute;
+    
 } t_wrapped_object;
 
 static inline size_t t_wrapped_object_size() { return sizeof(t_wrapped_object); }
@@ -82,4 +88,13 @@ void _error(const char* str){
 static inline
 void _warning(const char* str){
     object_warn(0, "%s\n", str);
+}
+
+// MARK: -
+
+extern "C" {
+
+void _class_add_attr_long(t_class* cls, const char* name);
+void _class_add_attr_double(t_class* cls, const char* name);
+
 }

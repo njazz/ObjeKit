@@ -58,6 +58,7 @@ class AttachInstance: MaxIOVisitor {
     func visit<T>(_ outlet: Outlet<T>) {
         MaxRuntime.post("\((object)) : Registering outlet with value: \(outlet.wrappedValue) port: \(outlet.index)")
 
+        // TODO cleanup
         if case .available = outlet.index{
             let this_outlet = outlet_new(self.object, nil)
             if this_outlet != nil  { wrapper.outlets.append(this_outlet!) }
@@ -83,8 +84,6 @@ class AttachInstance: MaxIOVisitor {
         }
         
         if case let .index(x) = outlet.index {
-            
-            
             if (wrapper.outlets.count == 0) {
                 MaxRuntime.post("adding outlet")
                 let this_outlet = outlet_new(self.object, nil)
