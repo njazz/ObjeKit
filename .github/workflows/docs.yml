@@ -23,12 +23,20 @@ jobs:
       # - name: Check Swift version
         # run: swift --version
         
-      - name: Build doc archive
-        run: swift package --allow-writing-to-directory ./docs generate-documentation --target ObjeKit --output-path ./docs
+      # - name: Build doc archive
+      #   run: swift package --allow-writing-to-directory ./docs generate-documentation --target ObjeKit --disable-indexing --transform-for-static-hosting --hosting-base-path https://njazz.github.io/ObjeKit/ --output-path ./docs
 
-      # - name: Generate HTML docs with docc tool
-        # run: docc convert .build/docc/ObjeKit.doccarchive --output-path docs --hosting-base-path /
+      - name: Set up Ruby and install Jazzy
+        run: |
+          sudo gem install jazzy
 
+      - name: Generate Jazzy docs
+        run: |
+          jazzy \
+            --module ObjeKit \
+            --swift-build-tool spm \
+            --output ./docs
+            
       - name: Deploy to GitHub Pages (gh-pages branch)
         uses: peaceiris/actions-gh-pages@v3
         with:
