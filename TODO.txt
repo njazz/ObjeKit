@@ -1,3 +1,4 @@
 [ ] proxy_new
 [ ] outlet - data types
 [ ] named outlet
+[ ] multiple in / multiple out examples

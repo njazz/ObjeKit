@@ -190,7 +190,7 @@ class ObjeKitTest_Attributes: MaxObject {
 
 ⚠️ **Work In Progress** — This project is currently experimental and not ready for production use.
 
-Version number: 0.0.2 - Proof of concept
+Version number: 0.0.3 - Proof of concept
   
 ✅ Inlets  
 🔄 Outlets  
