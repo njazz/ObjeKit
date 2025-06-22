@@ -31,18 +31,20 @@ public struct MaxBinding<T> : MaxIOComponent {
 // MARK: -
 
  @propertyWrapper
- public class MaxState<T> : MaxIOComponent  {
+public class MaxState<T:Equatable> : MaxIOComponent  {
      private var value: T
      private var observers: [(T) -> Void] = []
 
      public var wrappedValue: T {
          get { value }
          set {
-             value = newValue
-             notifyObservers()
+             if value != newValue {
+                 value = newValue
+                 notifyObservers()
+             }
          }
      }
-
+     
      public var projectedValue: MaxBinding<T> {
          MaxBinding(
              get: { self.value },
