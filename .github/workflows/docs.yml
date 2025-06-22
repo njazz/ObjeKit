@@ -9,9 +9,9 @@ jobs:
   build-docs:
     runs-on: macos-latest
     steps:
-      - uses: maxim-lobanov/setup-xcode@v1
-        with:
-          xcode-version: latest-stable
+      # - uses: maxim-lobanov/setup-xcode@v1
+      #   with:
+      #     xcode-version: latest-stable
 
       - uses: actions/checkout@v3
 
@@ -24,7 +24,7 @@ jobs:
         # run: swift --version
         
       - name: Build doc archive
-        run: swift package generate-documentation --target ObjeKit --output-path ./docs
+        run: swift package --allow-writing-to-directory ./docs generate-documentation --target ObjeKit --output-path ./docs
 
       # - name: Generate HTML docs with docc tool
         # run: docc convert .build/docc/ObjeKit.doccarchive --output-path docs --hosting-base-path /
