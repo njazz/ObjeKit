@@ -19,20 +19,24 @@ public class CustomWindow<Content: View> {
     }
 
     public func showWindow() {
-        if window == nil {
-            let hostingController = NSHostingController(rootView: content())
-            let newWindow = NSWindow(contentViewController: hostingController)
-            newWindow.title = title
-            newWindow.setContentSize(NSSize(width: 300, height: 200))
-            newWindow.styleMask.insert([.titled, .closable, .resizable])
-            self.window = newWindow
+        runOnMainThread {
+            if self.window == nil {
+                let hostingController = NSHostingController(rootView: self.content())
+                let newWindow = NSWindow(contentViewController: hostingController)
+                newWindow.title = self.title
+                newWindow.setContentSize(NSSize(width: 300, height: 200))
+                newWindow.styleMask.insert([.titled, .closable, .resizable])
+                self.window = newWindow
+            }
+            self.window?.makeKeyAndOrderFront(nil)
+            NSApp.activate(ignoringOtherApps: true)
         }
-        window?.makeKeyAndOrderFront(nil)
-        NSApp.activate(ignoringOtherApps: true)
     }
 
     public func hideWindow() {
-        window?.orderOut(nil)
+        runOnMainThread {
+            self.window?.orderOut(nil)
+        }
     }
 
 }
