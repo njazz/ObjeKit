@@ -47,6 +47,20 @@ void _class_add_attr_double(t_class* cls, const char* name) {
     CLASS_ATTR_DOUBLE(cls, name, ATTR_FLAGS_NONE, t_wrapped_object, dummyAttribute.doubleValue);
 }
 
+void _class_add_attr_symbol(t_class* cls, const char* name) {
+    CLASS_ATTR_SYM(cls, name, ATTR_FLAGS_NONE, t_wrapped_object, dummyAttribute.symbolValue);
+}
+
+void _class_attr_label(t_class* cls, const char* name, const char* label) {
+    CLASS_ATTR_LABEL(cls, name, ATTR_FLAGS_NONE, label);
+}
+
+void _class_attr_save(t_class* cls, const char* name, const bool v){
+    v ? CLASS_ATTR_SAVE(cls, name, ATTR_FLAGS_NONE) : CLASS_ATTR_DONTSAVE(cls, name, ATTR_FLAGS_NONE);
+}
+
+
+
 }
 
 // MARK: -

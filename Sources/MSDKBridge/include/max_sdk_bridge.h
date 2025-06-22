@@ -98,6 +98,10 @@ extern "C" {
 
 void _class_add_attr_long(t_class* cls, const char* name);
 void _class_add_attr_double(t_class* cls, const char* name);
+void _class_add_attr_symbol(t_class* cls, const char* name);
+
+void _class_attr_label(t_class* cls, const char* name, const char* label);
+void _class_attr_save(t_class* cls, const char* name, const bool v);
 
 #ifdef __cplusplus
 }

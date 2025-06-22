@@ -182,3 +182,23 @@ internal func _method_list(_ ptr: UnsafeMutableRawPointer?,
 }
 
 // MARK: -
+
+typealias MaxErr = Int32
+
+func _attr_getter(
+    object: UnsafeMutableRawPointer?,
+    attribute: UnsafeMutableRawPointer?,
+    atomCount: inout Int,
+    atoms: inout UnsafeMutablePointer<t_atom>?
+) -> MaxErr {
+    return 0
+}
+
+func _attr_setter(
+    object: UnsafeMutableRawPointer?,
+    attribute: UnsafeMutableRawPointer?,
+    atomCount: Int,
+    atoms: UnsafeMutablePointer<t_atom>
+) -> MaxErr {
+    return 0
+}

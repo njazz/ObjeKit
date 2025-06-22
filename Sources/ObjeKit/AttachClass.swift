@@ -22,10 +22,22 @@ class AttachClass: MaxClassIOVisitor {
 
         if T.Type.self == CLong.Type.self {
             _class_add_attr_long(object, attribute.name)
+            _class_attr_save(object, attribute.name, !attribute.transitional);
         }
 
         if T.Type.self == Double.Type.self {
             _class_add_attr_double(object, attribute.name)
+            _class_attr_save(object, attribute.name, !attribute.transitional);
         }
+        
+        if T.Type.self == String.Type.self {
+            _class_add_attr_symbol(object, attribute.name)
+            _class_attr_save(object, attribute.name, !attribute.transitional);
+        }
+        
+        if (attribute.label != nil) {
+            _class_attr_label(object, attribute.name, attribute.label!)
+        }
+        
     }
 }

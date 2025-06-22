@@ -23,7 +23,7 @@ public struct MaxBinding<T>: MaxIOComponent {
         set(newValue)
     }
 
-    public init(get: @escaping () -> T, set: @escaping (T) -> Void, observe: @escaping (@escaping (T) -> Void) -> Void) {
+    public init(get: @escaping () -> T, set: @escaping (T) -> Void, observe: @escaping (@escaping (T) -> Void) -> Void = { _ in }) {
         self.get = get
         self.set = set
         self.observe = observe
@@ -43,10 +43,8 @@ public class MaxState<T: Equatable>: MaxIOComponent {
     public var wrappedValue: T {
         get { value }
         set {
-//            if value != newValue {
             value = newValue
             notifyObservers()
-//            }
         }
     }
 
