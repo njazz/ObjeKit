@@ -499,28 +499,28 @@
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Attribute.swift",
-      "line": 103,
+      "line": 104,
       "symbol": "Attribute.onChange",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Attribute.swift",
-      "line": 105,
+      "line": 106,
       "symbol": "Attribute.wrappedValue",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Attribute.swift",
-      "line": 113,
+      "line": 114,
       "symbol": "Attribute.init(_:style:label:transitional:_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Attribute.swift",
-      "line": 126,
+      "line": 127,
       "symbol": "Attribute.accept(visitor:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -765,14 +765,21 @@
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Outlet.swift",
-      "line": 70,
+      "line": 71,
       "symbol": "Outlet.init(bindingProvider:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Outlet.swift",
-      "line": 92,
+      "line": 81,
+      "symbol": "Outlet.init(_:name:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/ObjeKit/ObjeKit/Sources/ObjeKit/Wrappers/Outlet.swift",
+      "line": 104,
       "symbol": "Outlet.accept(visitor:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
