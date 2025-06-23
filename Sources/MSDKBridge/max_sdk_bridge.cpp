@@ -86,7 +86,7 @@ void _class_attr_style(t_class* cls, const char* name, const char* style){
     CLASS_ATTR_STYLE(cls, name, ATTR_FLAGS_NONE, style);
 }
 
-void _class_attr_style(t_class* cls, const char* name, const char* category){
+void _class_attr_category(t_class* cls, const char* name, const char* category){
     CLASS_ATTR_CATEGORY(cls, name, ATTR_FLAGS_NONE, category);
 }
 

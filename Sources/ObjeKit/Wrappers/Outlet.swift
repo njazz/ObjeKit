@@ -45,7 +45,7 @@ public struct MaxOutput: MaxIOComponent {
 ///
 /// NB default is always inlet 0
 public class Outlet<T>: MaxIOComponent {
-    public let kind: PortKind = .list
+    public let kind: PortKind
     public var index: PortIndex = .index(0)
 
     private var binding: MaxBinding<T>
@@ -61,6 +61,7 @@ public class Outlet<T>: MaxIOComponent {
     public init(_ outlet: PortIndex = .index(0), _ bindingProvider: @escaping () -> MaxBinding<T>) {
         index = outlet
         binding = bindingProvider()
+        kind = .list
 
         binding.observe { newValue in
             self.onChange?(newValue)
@@ -70,13 +71,14 @@ public class Outlet<T>: MaxIOComponent {
     public init(bindingProvider: @escaping () -> MaxBinding<T>) {
         index = .index(0)
         binding = bindingProvider()
+        kind = .list
 
         binding.observe { newValue in
             self.onChange?(newValue)
         }
     }
     
-    public init(_ outlet: PortIndex = .index(0), name: String, _ _ bindingProvider: @escaping () -> MaxBinding<T>) {
+    public init(_ outlet: PortIndex = .index(0), name: String, _ bindingProvider: @escaping () -> MaxBinding<T>) {
         index = outlet
         binding = bindingProvider()
         kind = .selector(name)

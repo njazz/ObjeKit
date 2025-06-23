@@ -44,6 +44,7 @@ void proxy_delete(void *xx){}
 
 void class_add_attr();
 t_object *attr_offset_new(C74_CONST char *name, C74_CONST t_symbol *type, long flags, C74_CONST method mget, C74_CONST method mset, long offset){ return 0; }
+t_object *attr_offset_array_new(C74_CONST char *name, t_symbol *type, long size, long flags, method mget, method mset, long offsetcount, long offset){ return 0; }
 
 t_max_err class_addattr(t_class *c,t_object *attr) { return 0; }
 
@@ -52,6 +53,9 @@ t_max_err class_attr_addattr_parse(t_class *c, C74_CONST char *attrname, C74_CON
 void *class_attr_get(t_class *x, t_symbol *attrname){ return 0; }
 
 t_symbol *gensym_tr(const char *s) { return 0;}
+char *str_tr(const char *s) { return 0; }
 
 void *object_method_imp(void *x, void *sym, void *p1, void *p2, void *p3, void *p4, void *p5, void *p6, void *p7, void *p8) {}
+
+
 

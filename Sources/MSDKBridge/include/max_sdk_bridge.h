@@ -34,9 +34,7 @@ typedef struct t_wrapped_object {
         long longValue;
         double doubleValue;
         t_symbol* symbolValue;
-        t_atom* listValue;
-        long* longValue;
-        double* doubleValue;
+        t_atom* listValue;        
     } dummyAttribute;
     
 } t_wrapped_object;
@@ -110,6 +108,8 @@ void _class_attr_label(t_class* cls, const char* name, const char* label);
 void _class_attr_save(t_class* cls, const char* name, const bool v);
 
 void _class_attr_accessors(t_class* cls, const char* name, _attr_getter getter, _attr_setter setter);
+void _class_attr_style(t_class* cls, const char* name, const char* style);
+void _class_attr_category(t_class* cls, const char* name, const char* category);
 
 #ifdef __cplusplus
 }

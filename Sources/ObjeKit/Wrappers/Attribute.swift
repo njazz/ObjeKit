@@ -59,9 +59,6 @@ extension Double: MaxAttributeValue {}
 extension Float: MaxAttributeValue {}
 extension String: MaxAttributeValue {}
 
-extension [CLong] : MaxAttributeValue {}
-extension [Double] : MaxAttributeValue {}
-
 extension Array: MaxAttributeValue where Element: MaxAttributeValueElement {}
 
 // MARK: -
