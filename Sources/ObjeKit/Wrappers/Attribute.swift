@@ -59,6 +59,9 @@ extension Double: MaxAttributeValue {}
 extension Float: MaxAttributeValue {}
 extension String: MaxAttributeValue {}
 
+extension [CLong] : MaxAttributeValue {}
+extension [Double] : MaxAttributeValue {}
+
 extension Array: MaxAttributeValue where Element: MaxAttributeValueElement {}
 
 // MARK: -
@@ -97,6 +100,7 @@ public class Attribute<T: MaxAttributeValue>: MaxIOComponent {
     var label: String? /// use full name if nil
     var name: String
     var transitional: Bool = false
+    var category: String? = nil
 
     private var binding: MaxBinding<T>
 

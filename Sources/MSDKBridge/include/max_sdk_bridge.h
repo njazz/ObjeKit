@@ -34,6 +34,9 @@ typedef struct t_wrapped_object {
         long longValue;
         double doubleValue;
         t_symbol* symbolValue;
+        t_atom* listValue;
+        long* longValue;
+        double* doubleValue;
     } dummyAttribute;
     
 } t_wrapped_object;

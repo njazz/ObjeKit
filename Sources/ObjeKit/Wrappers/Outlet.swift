@@ -75,6 +75,16 @@ public class Outlet<T>: MaxIOComponent {
             self.onChange?(newValue)
         }
     }
+    
+    public init(_ outlet: PortIndex = .index(0), name: String, _ _ bindingProvider: @escaping () -> MaxBinding<T>) {
+        index = outlet
+        binding = bindingProvider()
+        kind = .selector(name)
+
+        binding.observe { newValue in
+            self.onChange?(newValue)
+        }
+    }
 
 //    public init(bindingProvider: @escaping () -> Void) {
 //        self.index = .index(0)

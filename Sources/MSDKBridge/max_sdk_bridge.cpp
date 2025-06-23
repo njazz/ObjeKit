@@ -51,6 +51,25 @@ void _class_add_attr_symbol(t_class* cls, const char* name) {
     CLASS_ATTR_SYM(cls, name, ATTR_FLAGS_NONE, t_wrapped_object, dummyAttribute.symbolValue);
 }
 
+void _class_attr_list(t_class* cls, const char* name){
+    CLASS_ATTR_ATOMARRAY(cls, name, ATTR_FLAGS_NONE);
+}
+
+void _class_attr_filepath(t_class* cls, const char* name){
+    CLASS_ATTR_FILEPATH(cls, name, ATTR_FLAGS_NONE, t_wrapped_object, dummyAttribute.symbolValue);
+}
+
+void _class_attr_long_array(t_class* cls, const char* name, size_t size){
+    CLASS_ATTR_LONG_ARRAY(cls, name, ATTR_FLAGS_NONE, t_wrapped_object, dummyAttribute.longValue, size);
+}
+
+void _class_attr_double_array(t_class* cls, const char* name, size_t size){
+    CLASS_ATTR_DOUBLE_ARRAY(cls, name, ATTR_FLAGS_NONE, t_wrapped_object, dummyAttribute.longValue, size);
+}
+
+
+// MARK: -
+
 void _class_attr_label(t_class* cls, const char* name, const char* label) {
     CLASS_ATTR_LABEL(cls, name, ATTR_FLAGS_NONE, label);
 }
@@ -61,6 +80,14 @@ void _class_attr_save(t_class* cls, const char* name, const bool v){
 
 void _class_attr_accessors(t_class* cls, const char* name, _attr_getter getter, _attr_setter setter){
     CLASS_ATTR_ACCESSORS(cls, name, getter, setter);
+}
+
+void _class_attr_style(t_class* cls, const char* name, const char* style){
+    CLASS_ATTR_STYLE(cls, name, ATTR_FLAGS_NONE, style);
+}
+
+void _class_attr_style(t_class* cls, const char* name, const char* category){
+    CLASS_ATTR_CATEGORY(cls, name, ATTR_FLAGS_NONE, category);
 }
 
 
