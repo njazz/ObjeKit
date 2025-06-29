@@ -25,6 +25,7 @@ method_ctor get_next_ctor(method_ctor ctor);
 
 typedef struct t_wrapped_object {
     t_object m_obj;
+    
     long m_in;
     void* m_proxy;
     

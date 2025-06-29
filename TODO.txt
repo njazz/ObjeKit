@@ -1,5 +1,7 @@
-[ ] proxy_new
 [ ] outlet - data types
-[ ] named outlet
-[ ] multiple in / multiple out examples
+[ ] attach MaxOutlet
+[ ] attribute handling functions
+[~] named outlet
+[~] multiple in / multiple out examples
+[~] proxy_new
 [ ] disable/enable output filtering for specific Outlet()

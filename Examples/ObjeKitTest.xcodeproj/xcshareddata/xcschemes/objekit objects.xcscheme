@@ -63,6 +63,20 @@
                ReferencedContainer = "container:ObjeKitTest.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "FA87450B2E11495C00AA636F"
+               BuildableName = "okt_io.mxo"
+               BlueprintName = "okt_io"
+               ReferencedContainer = "container:ObjeKitTest.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

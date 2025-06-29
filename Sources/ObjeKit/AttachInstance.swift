@@ -43,19 +43,65 @@ class AttachInstance: MaxIOVisitor {
 
         // add inlets accordingly
         if case .available = inlet.index {
+            // TODO: same code with #2 !
+
+            //
+            if wrapper.inlets.count == 0 {
+                let firstInlet = inlet_nth(self.object, 0)
+                if firstInlet != nil { wrapper.inlets.append(firstInlet!) }
+                else {
+                    MaxLogger.shared.error("error in first inlet object")
+                }
+
+                return
+            }
+
             let this_inlet = inlet_new(self.object, nil)
             if this_inlet != nil { wrapper.inlets.append(this_inlet!) }
+
+            // when added 2nd inlet: create proxy
+            if wrapper.inlets.count == 2 {
+                let typed_obj = unsafeBitCast(object, to: UnsafeMutablePointer<t_wrapped_object>.self)
+                t_wrapped_object_allocate_proxy(typed_obj)
+                wrapper.hasInletProxy = true
+                MaxLogger.shared.post("added inlet proxy")
+            }
+
             MaxLogger.shared.post("added next inlet")
         }
 
-//        if case let .index(x) = inlet.index {
-//            if (wrapper.inlets.count == 0) {
-//                let this_inlet = inlet_new(self.object, nil)
-//                if this_inlet != nil { wrapper.inlets.append(this_inlet!) }
-//                MaxRuntime.post("added inlet");
-//            }
-//        }
+        // #2
+        if case let .index(x) = inlet.index {
+            if wrapper.inlets.count <= x && x > 0 {
+                //
+//                if (wrapper.inlets.count == 0) {
+//                    let firstInlet = inlet_nth(self.object, 0)
+//                    if (firstInlet != nil) { wrapper.inlets.append(firstInlet!) }
+//                    else {
+//                        MaxLogger.shared.error("error in first inlet object")
+//                    }
+//
+//                    return
+//                }
+
+                // when added 2nd inlet: create proxy
+                if wrapper.inlets.count == 0 {
+                    let typed_obj = unsafeBitCast(object, to: UnsafeMutablePointer<t_wrapped_object>.self)
+                    t_wrapped_object_allocate_proxy(typed_obj)
+                    wrapper.hasInletProxy = true
+
+                    MaxLogger.shared.post("added inlet proxy")
+                } else {
+                    let this_inlet = inlet_new(self.object, nil)
+                    if this_inlet != nil { wrapper.inlets.append(this_inlet!) }
+
+                    MaxRuntime.post("added inlet")
+                }
+            }
+        }
     }
+
+    // MARK: -
 
     func visit<T>(_ outlet: Outlet<T>) {
         MaxLogger.shared.post("\(object) : Registering outlet with value: \(outlet.wrappedValue) port: \(outlet.index)")
@@ -84,7 +130,7 @@ class AttachInstance: MaxIOVisitor {
         }
 
         if case let .index(x) = outlet.index {
-            if wrapper.outlets.count == 0 {
+            if wrapper.outlets.count <= x {
                 MaxLogger.shared.post("adding outlet")
                 let this_outlet = outlet_new(self.object, nil)
                 if this_outlet != nil { wrapper.outlets.append(this_outlet!) }
@@ -118,6 +164,11 @@ class AttachInstance: MaxIOVisitor {
                 }
             }
         }
+    }
+
+    // MARK: -
+
+    func visit(_ outlet: MaxOutput) {
     }
 
     // MARK: -

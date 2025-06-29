@@ -29,6 +29,7 @@ void poststring(const char *s){}
 t_symbol *gensym(C74_CONST char *s){}
 
 void *inlet_new(void *x, C74_CONST char *s){return 0;}
+void *inlet_nth(t_object *x, long n){ return 0; }
 void *outlet_new(void *x, C74_CONST char *s){return 0;}
 
 void *object_alloc(t_class *c){}

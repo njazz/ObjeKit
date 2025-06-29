@@ -32,6 +32,7 @@ internal func _ctor(_ p: UnsafeMutableRawPointer?,
 
     let typed_obj = obj!.assumingMemoryBound(to: t_wrapped_object.self) // as! UnsafeMutablePointer<t_wrapped_object>?
 
+    // TEST
     // t_wrapped_object_allocate_proxy(typed_obj)
 
     // if let swiftClass = MaxDispatcher._swiftClassMap["\(ctor_ptr)"] {
@@ -108,7 +109,14 @@ internal func _dtor(ptr: UnsafeMutableRawPointer?) -> UnsafeMutableRawPointer? {
 
     let p = obj.pointee.box
 
-    if p != nil { Box.fromRaw(p!, DispatcherClass.self).release() }
+    if p != nil {
+        let d = Box.fromRaw(p!, DispatcherClass.self)
+        if (d.takeUnretainedValue().value.inlets.count > 0 || d.takeUnretainedValue().value.hasInletProxy){
+            t_wrapped_object_free_proxy(obj)
+        }
+        
+        Box.fromRaw(p!, DispatcherClass.self).release()
+    }
     return nil
 }
 

@@ -38,6 +38,9 @@ class DispatcherClass: Initializable {
 
     var inlets: [UnsafeMutableRawPointer] = []
     var outlets: [UnsafeMutableRawPointer] = []
+    
+    // new:
+    var hasInletProxy: Bool = false
 
     var attributes: [AttributeData] = []
 }

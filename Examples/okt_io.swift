@@ -7,6 +7,13 @@
 
 import Foundation
 
+import ObjeKit
+
+@_cdecl("ext_main")
+public func ext_main(_ r: UnsafeMutableRawPointer) {
+    MaxDispatcher.setup(ObjeKitTest_IO.self)
+}
+
 /// Object with multiple ins and outs
 class ObjeKitTest_IO : MaxObject {
     static var className: String { "okt_io" }
@@ -34,13 +41,13 @@ class ObjeKitTest_IO : MaxObject {
     
     // MARK: -
     
-    @MaxOutput(0)
+    @MaxOutput(.index(0))
     var directOutput1
     
-    @MaxOutput(0)
+    @MaxOutput(.index(1))
     var directOutput2
     
-    @MaxOutput(0)
+    @MaxOutput(.index(2))
     var directOutput3
     
     // MARK: -
@@ -48,15 +55,15 @@ class ObjeKitTest_IO : MaxObject {
     @MaxIOBuilder
     var io: any MaxIOComponent {
         Inlet(.index(0)) {
-        
+            (v:Double) in
         }
         
         Inlet(.index(1)) {
-        
+            (v:CLong) in
         }
         
         Inlet(.index(2)) {
-        
+            (v:MaxList) in
         }
         
         // MARK: -

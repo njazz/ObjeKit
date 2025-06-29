@@ -17,9 +17,10 @@ public struct MaxOutput: MaxIOComponent {
     ///
     /// TODO: yet N/A
     public class Sender {
-        var action: (() -> Void)?
+        var action: (([MaxValue]) -> Void)?
+        
         public func bang() {
-            action?()
+            action?([])
         }
     }
 
@@ -33,8 +34,8 @@ public struct MaxOutput: MaxIOComponent {
 
     public func accept<V: MaxIOVisitor>(visitor: V) {
         visitor.visit(self)
-        wrappedValue.action = {
-            self.onChange?([])
+        wrappedValue.action = { v in
+            self.onChange?(v)
         }
     }
 }
@@ -87,19 +88,6 @@ public class Outlet<T>: MaxIOComponent {
             self.onChange?(newValue)
         }
     }
-
-//    public init(bindingProvider: @escaping () -> Void) {
-//        self.index = .index(0)
-//        self.binding = {
-//            MaxBinding<T>(
-//                get: { T() },
-//                set: { _ in },
-//                observe: { callback in
-//
-//                }
-//            )
-//        }()
-//    }
 
     public func accept<V>(visitor: V) where V: MaxIOVisitor {
         visitor.visit(self)
