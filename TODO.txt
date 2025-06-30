@@ -1,6 +1,7 @@
 [ ] outlet - data types
 [ ] attach MaxOutlet
 [ ] attribute handling functions
+[ ] CMethods cleanup - objects casting
 [~] named outlet
 [~] multiple in / multiple out examples
 [~] proxy_new

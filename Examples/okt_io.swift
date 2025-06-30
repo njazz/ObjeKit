@@ -56,15 +56,34 @@ class ObjeKitTest_IO : MaxObject {
     var io: any MaxIOComponent {
         Inlet(.index(0)) {
             (v:Double) in
+            self.output1 += v
         }
         
         Inlet(.index(1)) {
             (v:CLong) in
+            self.output2 += v
         }
         
         Inlet(.index(2)) {
             (v:MaxList) in
+            self.output3.append(contentsOf: v)
         }
+        
+        // MARK: - methods with same names for different inlets
+        
+        Inlet(.index(0), name: "reset") { self.output1 = 0 }
+        Inlet(.index(1), name: "reset") { self.output1 = 0 }
+        Inlet(.index(2), name: "reset") { self.output1 = 0 }
+        
+        Inlet(.index(0), name: "set") { (v:MaxList) in if let v0 = v[0].convert(to: Double.self) { self.output1 = v0 } }
+        Inlet(.index(1), name: "set") { (v:MaxList) in if let v0 = v[0].convert(to: CLong.self) { self.output2 = v0 } }
+        Inlet(.index(2), name: "set") { (v:MaxList) in self.output3 = v }
+        
+        // MARK: -
+        
+        Inlet(.index(0), name: "method1_a") { (v:MaxList) in self.methodOutput1A = v }
+        Inlet(.index(0), name: "method1_b") { (v:MaxList) in self.methodOutput1B = v }
+        Inlet(.index(0), name: "method2") { (v:MaxList) in self.methodOutput2 = v }
         
         // MARK: -
         
@@ -72,10 +91,10 @@ class ObjeKitTest_IO : MaxObject {
         Outlet(.index(1)) { self.$output2 }
         Outlet(.index(2)) { self.$output3 }
         
-        Outlet(.index(0)) { self.$methodOutput1A }
-        Outlet(.index(0)) { self.$methodOutput1B }
+        Outlet(.index(0), name: "method1_a") { self.$methodOutput1A }
+        Outlet(.index(0), name: "method1_b") { self.$methodOutput1B }
         
-        Outlet(.index(1)) { self.$methodOutput2 }
+        Outlet(.index(1), name: "method2") { self.$methodOutput2 }
         
         }
     

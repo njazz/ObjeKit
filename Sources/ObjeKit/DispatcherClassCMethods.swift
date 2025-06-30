@@ -204,6 +204,20 @@ internal func _dispatch_attr_getter(
 ) -> MaxErr {
     MaxLogger.shared.post("Test: attribute setter")
     
+    // TODO: common code for object casting
+    /*
+     let obj = ptr!.assumingMemoryBound(to: t_wrapped_object.self)
+     let p = obj.pointee.box
+     if p == nil { return }
+
+     let dispatcher = Box.fromRaw(p!, DispatcherClass.self)
+
+     if s == nil { return }
+     guard let symbol = s?.pointee.s_name else { return }
+
+     let object = dispatcher.takeUnretainedValue().value
+     */
+    
     return 0
 }
 
@@ -214,6 +228,7 @@ internal func _dispatch_attr_setter(
     atoms: UnsafeMutablePointer<t_atom>?
 ) -> MaxErr {
     MaxLogger.shared.post("Test: attribute getter")
+
     
     return 0
 }
